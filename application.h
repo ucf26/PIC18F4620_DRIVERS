@@ -8,6 +8,8 @@
 #ifndef APPLICATION_H
 #define	APPLICATION_H
 
+#define ss 6
+
 #include "ECU_Layer/LED/ecu_led.h"
 
 #endif	/* APPLICATION_H */
