@@ -2,5 +2,5 @@
 .nbproject
 .PIC18F4620_DRIVERS
 .gitignore
-.nbproject
-..gitignore
+nbproject
+
