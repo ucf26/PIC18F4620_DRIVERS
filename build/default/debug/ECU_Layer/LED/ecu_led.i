@@ -4660,6 +4660,16 @@ char *ctermid(char *);
 char *tempnam(const char *, const char *);
 # 11 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h" 2
 # 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+
+
+typedef unsigned char uint8;
+typedef unsigned short uint16;
+typedef unsigned long uint32;
+
+
+typedef signed char sint8;
+typedef signed short sint16;
+typedef signed long sint32;
 # 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
 # 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../device_config.h" 1

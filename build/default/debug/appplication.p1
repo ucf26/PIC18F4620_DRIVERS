@@ -1,5 +1,13 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
+"18 appplication.c
+[; ;appplication.c: 18:     struct{
+[s S273 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S273 . SELF_LATC0 SELF_LATC1 SELF_LATC2 SELF_LATC3 SELF_LATC4 SELF_LATC5 SELF_LATC6 SELF_LATC7 ]
+"17
+[; ;appplication.c: 17: typedef union{
+[u S272 `S273 1 `uc 1 ]
+[n S272 . . SELF_LATC_REG ]
 "54 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -412,17 +420,38 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
 [v $root$_main `(v ~T0 @X0 0 e ]
-"11 appplication.c
-[; ;appplication.c: 11: int main() {
+"33 appplication.c
+[; ;appplication.c: 33: int main() {
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"13
-[; ;appplication.c: 13:     return (0);
+"34
+[; ;appplication.c: 34:     ((*((volatile uint8 *)(0xF94)))) = 0x00;
+[e = *U -> -> 3988 `i `*Vuc -> -> 0 `i `uc ]
+"35
+[; ;appplication.c: 35:     ((*((volatile uint8 *)(0xF8B)))) = 0x0F;
+[e = *U -> -> 3979 `i `*Vuc -> -> 15 `i `uc ]
+"37
+[; ;appplication.c: 37:     ((volatile SELF_LATC *)(0xF8B))->SELF_LATC7 = 1;
+[e = . . *U -> -> 3979 `i `*VS272 0 7 -> -> 1 `i `uc ]
+"41
+[; ;appplication.c: 41:     while(1)
+[e :U 276 ]
+"42
+[; ;appplication.c: 42:     {
+{
+"44
+[; ;appplication.c: 44:     }
+}
+[e :U 275 ]
+[e $U 276  ]
+[e :U 277 ]
+"45
+[; ;appplication.c: 45:     return (0);
 [e ) -> 0 `i ]
-[e $UE 272  ]
-"14
-[; ;appplication.c: 14: }
-[e :UE 272 ]
+[e $UE 274  ]
+"46
+[; ;appplication.c: 46: }
+[e :UE 274 ]
 }
