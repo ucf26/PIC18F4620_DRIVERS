@@ -8,16 +8,20 @@
 #ifndef DEVICE_CONFIG_H
 #define	DEVICE_CONFIG_H
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
+/* Section : Includes */
 
 
+/* Section : Macro Definitions */
 
+/* Section : Macro Declarations */
 
-#ifdef	__cplusplus
-}
-#endif
+/* Section : Macro Functions Declarations */
+
+/* Section : Data Type Declarations */
+
+/* Section : Macro Declarations */
+
+/* Section : Functions Declarations */
 
 #endif	/* DEVICE_CONFIG_H */
 
