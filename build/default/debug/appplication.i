@@ -4661,7 +4661,11 @@ char *ctermid(char *);
 char *tempnam(const char *, const char *);
 # 14 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h" 2
 # 13 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
-# 32 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h"
+
+
+
+
+
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned long uint32;
@@ -4674,37 +4678,123 @@ typedef uint8 Std_ReturnType;
 
 # 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../device_config.h" 1
 # 14 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+
+# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
+# 15 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 38 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
+typedef enum{
+    GPIO_LOW = 0,
+    GPIO_HIGH
+}logic_t;
+
+typedef enum{
+    GPIO_DIRECTION_OUTPUT = 0,
+    GPIO_DIRECTION_INPUT
+}deirection_t;
+
+typedef enum{
+    GPIO_PIN0 = 0,
+    GPIO_PIN1,
+    GPIO_PIN2,
+    GPIO_PIN3,
+    GPIO_PIN4,
+    GPIO_PIN5,
+    GPIO_PIN6,
+    GPIO_PIN7
+}pin_index_t;
+
+typedef enum{
+    POTRA_INDEX = 0,
+    PORTB_INDEX,
+    POTRC_INDEX,
+    PORTD_INDEX,
+    POTRE_INDEX,
+}port_index_t;
+
+typedef struct{
+    uint8 port : 3;
+    uint8 pin : 3;
+    uint8 direction : 1;
+    uint8 logic : 1;
+}pin_config_t;
+
+
+Std_ReturnType gpio_pin_direction_initialize(pin_config_t *_pin_config);
+Std_ReturnType gpio_pin_get_direction_status(pin_config_t *_pin_config, deirection_t *direction_status);
+Std_ReturnType gpio_pin_write_logic(pin_config_t *_pin_config, logic_t logic);
+Std_ReturnType gpio_pin_read_logic(pin_config_t *_pin_config, logic_t *logic);
+Std_ReturnType gpio_pin_toggle_logic(pin_config_t *_pin_config);
+Std_ReturnType gpio_pin_initialize(pin_config_t *_pin_config);
+
+Std_ReturnType gpio_port_direction_initialize(port_index_t port, uint8 direction);
+Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8 *direction_status);
+Std_ReturnType gpio_port_write_logic(port_index_t port,uint8 logic);
+Std_ReturnType gpio_port_read_logic(port_index_t port,uint8 *logic);
+Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 # 13 "./ECU_Layer/LED/ecu_led.h" 2
 # 11 "./application.h" 2
+
+
+
+
+
+void app_init();
 # 7 "appplication.c" 2
-# 17 "appplication.c"
-typedef union{
-    struct{
-        uint8 SELF_LATC0 : 1;
-        uint8 SELF_LATC1 : 1;
-        uint8 SELF_LATC2 : 1;
-        uint8 SELF_LATC3 : 1;
-        uint8 SELF_LATC4 : 1;
-        uint8 SELF_LATC5 : 1;
-        uint8 SELF_LATC6 : 1;
-        uint8 SELF_LATC7 : 1;
-    };
-    uint8 SELF_LATC_REG;
-}SELF_LATC;
 
 
+
+pin_config_t led_1 = {
+    .port = POTRC_INDEX,
+    .pin = GPIO_PIN0 ,
+    .direction = GPIO_DIRECTION_OUTPUT,
+    .logic = GPIO_LOW
+};
+
+pin_config_t led_2 = {
+    .port = POTRC_INDEX,
+    .pin = GPIO_PIN1 ,
+    .direction = GPIO_DIRECTION_OUTPUT,
+    .logic = GPIO_LOW
+};
+
+pin_config_t led_3 = {
+    .port = POTRC_INDEX,
+    .pin = GPIO_PIN2 ,
+    .direction = GPIO_DIRECTION_OUTPUT,
+    .logic = GPIO_LOW
+};
+
+pin_config_t btn_1 = {
+    .port = PORTD_INDEX,
+    .pin = GPIO_PIN0 ,
+    .direction = GPIO_DIRECTION_INPUT,
+    .logic = GPIO_LOW
+};
+
+Std_ReturnType ret = (Std_ReturnType)0x00;
+deirection_t led_1_st;
+logic_t btn_1_st;
 
 int main() {
-    ((*((volatile uint8 *)(0xF94)))) = 0x00;
-    ((*((volatile uint8 *)(0xF8B)))) = 0x0F;
 
-    ((volatile SELF_LATC *)(0xF8B))->SELF_LATC7 = 1;
+    ret = gpio_pin_initialize(&btn_1);
+    ret = gpio_pin_initialize(&led_1);
+    ret = gpio_pin_initialize(&led_2);
+    ret = gpio_pin_initialize(&led_3);
+    ret = gpio_pin_write_logic(&led_2, GPIO_HIGH);
 
 
+    while(1){
+        ret = gpio_pin_toggle_logic(&led_1);
 
-    while(1)
-    {
-
+        ret = gpio_pin_toggle_logic(&led_2);
+       _delaywdt((unsigned long)((500)*(8000000UL/4000.0)));
+# 69 "appplication.c"
     }
     return (0);
+}
+
+void app_init()
+{
+
 }

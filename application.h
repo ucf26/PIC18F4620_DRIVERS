@@ -10,5 +10,10 @@
 
 #include "ECU_Layer/LED/ecu_led.h"
 
+#define _XTAL_FREQ 8000000UL
+
+
+void app_init();
+
 #endif	/* APPLICATION_H */
 

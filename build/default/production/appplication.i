@@ -1,4 +1,4 @@
-# 1 "ECU_Layer/LED/ecu_led.c"
+# 1 "appplication.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,18 +6,19 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ECU_Layer/LED/ecu_led.c" 2
+# 1 "appplication.c" 2
 
 
 
 
 
 
-
-# 1 "ECU_Layer/LED/../LED/ecu_led.h" 1
-# 13 "ECU_Layer/LED/../LED/ecu_led.h"
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 1
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "./application.h" 1
+# 11 "./application.h"
+# 1 "./ECU_Layer/LED/ecu_led.h" 1
+# 13 "./ECU_Layer/LED/ecu_led.h"
+# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 1
+# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 1 3
 # 44 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 3
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\__at.h" 1 3
@@ -4230,12 +4231,12 @@ extern volatile __bit nWR __attribute__((address(0x7C21)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h"
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 1
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h"
+# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
+# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h"
+# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 1
+# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4501,11 +4502,11 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 2
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 2
+# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h" 1
-# 14 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h"
+# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h" 1
+# 14 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -4658,8 +4659,8 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 14 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h" 2
-# 13 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 14 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h" 2
+# 13 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
 
 
@@ -4673,14 +4674,14 @@ typedef signed short sint16;
 typedef signed long sint32;
 
 typedef uint8 Std_ReturnType;
-# 13 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 13 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../device_config.h" 1
-# 14 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../device_config.h" 1
+# 14 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
-# 15 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 38 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
+# 15 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 38 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef enum{
     GPIO_LOW = 0,
     GPIO_HIGH
@@ -4730,6 +4731,67 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8 *directio
 Std_ReturnType gpio_port_write_logic(port_index_t port,uint8 logic);
 Std_ReturnType gpio_port_read_logic(port_index_t port,uint8 *logic);
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 13 "ECU_Layer/LED/../LED/ecu_led.h" 2
-# 8 "ECU_Layer/LED/ecu_led.c" 2
+# 13 "./ECU_Layer/LED/ecu_led.h" 2
+# 11 "./application.h" 2
 
+
+
+void app_init();
+# 7 "appplication.c" 2
+
+
+
+pin_config_t led_1 = {
+    .port = POTRC_INDEX,
+    .pin = GPIO_PIN0 ,
+    .direction = GPIO_DIRECTION_OUTPUT,
+    .logic = GPIO_LOW
+};
+
+pin_config_t led_2 = {
+    .port = POTRC_INDEX,
+    .pin = GPIO_PIN1 ,
+    .direction = GPIO_DIRECTION_OUTPUT,
+    .logic = GPIO_LOW
+};
+
+pin_config_t led_3 = {
+    .port = POTRC_INDEX,
+    .pin = GPIO_PIN2 ,
+    .direction = GPIO_DIRECTION_OUTPUT,
+    .logic = GPIO_LOW
+};
+
+pin_config_t btn_1 = {
+    .port = PORTD_INDEX,
+    .pin = GPIO_PIN0 ,
+    .direction = GPIO_DIRECTION_INPUT,
+    .logic = GPIO_LOW
+};
+
+Std_ReturnType ret = (Std_ReturnType)0x00;
+deirection_t led_1_st;
+logic_t btn_1_st;
+
+int main() {
+
+    ret = gpio_pin_initialize(&btn_1);
+    ret = gpio_pin_initialize(&led_1);
+    ret = gpio_pin_initialize(&led_2);
+    ret = gpio_pin_initialize(&led_3);
+    ret = gpio_pin_write_logic(&led_2, GPIO_HIGH);
+
+
+    while(1){
+        ret = gpio_pin_toggle_logic(&led_1);
+
+        ret = gpio_pin_toggle_logic(&led_2);
+# 69 "appplication.c"
+    }
+    return (0);
+}
+
+void app_init()
+{
+
+}

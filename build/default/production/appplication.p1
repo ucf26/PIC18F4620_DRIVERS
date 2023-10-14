@@ -23,10 +23,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "79
 [; ;./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h: 79: Std_ReturnType gpio_pin_toggle_logic(pin_config_t *_pin_config);
 [v _gpio_pin_toggle_logic `(uc ~T0 @X0 0 ef1`*S272 ]
-[v F2463 `(v ~T0 @X0 1 tf1`ul ]
-"14 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\builtins.h
-[v __delaywdt `JF2463 ~T0 @X0 0 e ]
-[p i __delaywdt ]
 "54 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -534,9 +530,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "54
 [; ;appplication.c: 54:         ret = gpio_pin_toggle_logic(&led_2);
 [e = _ret ( _gpio_pin_toggle_logic (1 &U _led_2 ]
-"55
-[; ;appplication.c: 55:        _delaywdt((unsigned long)((500)*(8000000UL/4000.0)));
-[e ( __delaywdt (1 -> * -> -> 500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
 "69
 [; ;appplication.c: 69:     }
 }

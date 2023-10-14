@@ -7,41 +7,71 @@
 #include "application.h"
 
 
-#define HW8_WR(_x) (*((volatile uint8 *)(_x)))
+pin_config_t led_1 = {
+    .port = POTRC_INDEX, 
+    .pin = GPIO_PIN0 ,
+    .direction = GPIO_DIRECTION_OUTPUT, 
+    .logic = GPIO_LOW
+};
 
-#define HW_LATC (HW8_WR(0xF8B))
-#define HW_TRIC (HW8_WR(0xF94))
+pin_config_t led_2 = {
+    .port = POTRC_INDEX, 
+    .pin = GPIO_PIN1 ,
+    .direction = GPIO_DIRECTION_OUTPUT, 
+    .logic = GPIO_LOW
+};
 
+pin_config_t led_3 = {
+    .port = POTRC_INDEX, 
+    .pin = GPIO_PIN2 ,
+    .direction = GPIO_DIRECTION_OUTPUT, 
+    .logic = GPIO_LOW
+};
 
+pin_config_t btn_1 = {
+    .port = PORTD_INDEX, 
+    .pin = GPIO_PIN0 ,
+    .direction = GPIO_DIRECTION_INPUT, 
+    .logic = GPIO_LOW
+};
 
-typedef union{
-    struct{
-        uint8 SELF_LATC0 : 1;
-        uint8 SELF_LATC1 : 1;
-        uint8 SELF_LATC2 : 1;
-        uint8 SELF_LATC3 : 1;
-        uint8 SELF_LATC4 : 1;
-        uint8 SELF_LATC5 : 1;
-        uint8 SELF_LATC6 : 1;
-        uint8 SELF_LATC7 : 1;
-    };
-    uint8 SELF_LATC_REG;
-}SELF_LATC;
-
-#define LAT_REG_AC ((volatile SELF_LATC *)(0xF8B)) 
+Std_ReturnType ret = E_NOT_OK;
+deirection_t led_1_st; 
+logic_t btn_1_st;
 
 int main() {
-    HW_TRIC = 0x00; // all is output 
-    HW_LATC = 0x0F;
+
+    ret = gpio_pin_initialize(&btn_1);
+    ret = gpio_pin_initialize(&led_1);
+    ret = gpio_pin_initialize(&led_2);
+    ret = gpio_pin_initialize(&led_3);
+    ret = gpio_pin_write_logic(&led_2, GPIO_HIGH);
+    // ret = gpio_pin_direction_initialize(NULL);
     
-    LAT_REG_AC->SELF_LATC7 = 1;
-    
-    
-    
-    while(1)
-    {
+    while(1){
+        ret = gpio_pin_toggle_logic(&led_1);
         
+        ret = gpio_pin_toggle_logic(&led_2);
+       __delaywdt_ms(500);
+        
+        /*
+        // ret = gpio_pin_read_logic(&btn_1, &btn_1_st);
+        if(btn_1_st == GPIO_HIGH){
+            ret = gpio_pin_toggle_logic(&led_1);
+            ret = gpio_pin_toggle_logic(&led_2);
+            
+        }
+        else {
+            ret = gpio_pin_write_logic(&led_1, GPIO_HIGH);
+            ret = gpio_pin_write_logic(&led_2, GPIO_HIGH); 
+        }
+        */
     }
     return (EXIT_SUCCESS);
+}
+
+void app_init()
+{
+    
 }
 
