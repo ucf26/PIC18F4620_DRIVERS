@@ -12,9 +12,9 @@ volatile uint8 *lat_registers[]  = {&LATA, &LATB, &LATC, &LATD, &LATE};
 volatile uint8 *port_registers[] = {&PORTA, &PORTB, &PORTC, &PORTD, &PORTE};
 
 /**
- * 
- * @param _pin_config pointer to the configurations  @ref pin_config_t
- * @return  the status of the function :
+ * @breif  function to initilize a pin
+ * @param  _pin_config pointer to the configurations  @ref pin_config_t
+ * @return the status of the function :
  *              (E_OK)     : the function is done successfully
  *              (E_NOT_OK) : the function is not done successfully
  */
@@ -44,10 +44,10 @@ Std_ReturnType gpio_pin_direction_initialize(pin_config_t *_pin_config)
 #endif
 
 /**
- * 
- * @param _pin_config  pointer to the configurations  @ref pin_config_t
- * @param direction_status
- * @return  the status of the function :
+ * @breif  function to get the direction of a pin      @ref deirection_t
+ * @param  _pin_config  pointer to the configurations  @ref pin_config_t
+ * @param  direction_status address where the direction will be stored
+ * @return the status of the function :
  *              (E_OK)     : the function is done successfully
  *              (E_NOT_OK) : the function is not done successfully
  */
@@ -67,9 +67,9 @@ Std_ReturnType gpio_pin_get_direction_status(pin_config_t *_pin_config, deirecti
 #endif
 
 /**
- * 
- * @param _pin_config  pointer to the configurations  @ref pin_config_t
- * @param logic
+ * @breif  function to write a logic on the pin        @ref logic_t
+ * @param  _pin_config  pointer to the configurations  @ref pin_config_t
+ * @param  logic the logic to be writen on the pin
  * @return the status of the function :
  *              (E_OK)     : the function is done successfully
  *              (E_NOT_OK) : the function is not done successfully
@@ -101,9 +101,9 @@ Std_ReturnType gpio_pin_write_logic(pin_config_t *_pin_config, logic_t logic){
 #endif
 
 /**
- * 
- * @param _pin_config  pointer to the configurations  @ref pin_config_t
- * @param logic
+ * @breif  function to read the logic on a pin
+ * @param  _pin_config  pointer to the configurations  @ref pin_config_t
+ * @param  logic to return the logic on the pin        @ref logic_t
  * @return the status of the function :
  *              (E_OK)     : the function is done successfully
  *              (E_NOT_OK) : the function is not done successfully
@@ -125,8 +125,8 @@ Std_ReturnType gpio_pin_read_logic(pin_config_t *_pin_config, logic_t *logic){
 
 #if GPIO_PIN_PORT_CONFIGRATIONS==CONFIG_ENABLE
 /**
- * 
- * @param _pin_config  pointer to the configurations  @ref pin_config_t
+ * @breif  function to initialize a pin with a logic and direction 
+ * @param  _pin_config  pointer to the configurations    @ref pin_config_t
  * @return the status of the function :
  *              (E_OK)     : the function is done successfully
  *              (E_NOT_OK) : the function is not done successfully
@@ -147,8 +147,8 @@ Std_ReturnType gpio_pin_initialize(pin_config_t *_pin_config){
 #endif
 
 /**
- * 
- * @param _pin_config  pointer to the configurations  @ref pin_config_t
+ * @breif  function to toggle the logic on the pin
+ * @param  _pin_config  pointer to the configurations  @ref pin_config_t
  * @return the status of the function :
  *              (E_OK)     : the function is done successfully
  *              (E_NOT_OK) : the function is not done successfully
@@ -238,9 +238,9 @@ Std_ReturnType gpio_port_write_logic(port_index_t port,uint8 logic){
 #endif
 
 /**
- * 
- * @param port
- * @param logic
+ * @breif  function to read the logic on a port 
+ * @param  port the port index
+ * @param  logic address in which the logic will be stored 
  * @return the status of the function :
  *              (E_OK)     : the function is done successfully
  *              (E_NOT_OK) : the function is not done successfully
@@ -261,8 +261,8 @@ Std_ReturnType gpio_port_read_logic(port_index_t port,uint8 *logic){
 #endif
 
 /**
- * 
- * @param port 
+ * @breif  function to toggle all the pins of a port 
+ * @param  port 
  * @return the status of the function :
  *              (E_OK)     : the function is done successfully
  *              (E_NOT_OK) : the function is not done successfully

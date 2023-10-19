@@ -1,32 +1,33 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"67 ./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h
-[; ;./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h: 67: typedef struct{
-[s S272 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S272 . port pin direction logic ]
-"10 appplication.c
-[; ;appplication.c: 10: pin_config_t led_1 = {
+"26 ./ECU_Layer/LED/ecu_led.h
+[; ;./ECU_Layer/LED/ecu_led.h: 26: typedef struct{
+[s S273 :4 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S273 . port_name pin led_status ]
+"9 appplication.c
+[; ;appplication.c: 9: led_t led1={.port_name = PORTC_INDEX , .pin = GPIO_PIN0 , .led_status = LED_off };
 [c E2829 0 1 2 3 4 .. ]
-[n E2829 . POTRA_INDEX PORTB_INDEX POTRC_INDEX PORTD_INDEX POTRE_INDEX  ]
+[n E2829 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
 [c E2819 0 1 2 3 4 5 6 7 .. ]
 [n E2819 . GPIO_PIN0 GPIO_PIN1 GPIO_PIN2 GPIO_PIN3 GPIO_PIN4 GPIO_PIN5 GPIO_PIN6 GPIO_PIN7  ]
-[c E2815 0 1 .. ]
-[n E2815 . GPIO_DIRECTION_OUTPUT GPIO_DIRECTION_INPUT  ]
-[c E2811 0 1 .. ]
-[n E2811 . GPIO_LOW GPIO_HIGH  ]
+[c E2871 0 1 .. ]
+[n E2871 . LED_off LED_ON  ]
 [p mainexit ]
-"80 ./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h
-[; ;./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h: 80: Std_ReturnType gpio_pin_initialize(pin_config_t *_pin_config);
-[v _gpio_pin_initialize `(uc ~T0 @X0 0 ef1`*S272 ]
-"77
-[; ;./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h: 77: Std_ReturnType gpio_pin_write_logic(pin_config_t *_pin_config, logic_t logic);
-[v _gpio_pin_write_logic `(uc ~T0 @X0 0 ef2`*S272`E2811 ]
-"79
-[; ;./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h: 79: Std_ReturnType gpio_pin_toggle_logic(pin_config_t *_pin_config);
-[v _gpio_pin_toggle_logic `(uc ~T0 @X0 0 ef1`*S272 ]
-[v F2463 `(v ~T0 @X0 1 tf1`ul ]
-"14 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\builtins.h
-[v __delaywdt `JF2463 ~T0 @X0 0 e ]
-[p i __delaywdt ]
+"16 ./application.h
+[; ;./application.h: 16: void app_init(void);
+[v _app_init `(v ~T0 @X0 0 ef ]
+"36 ./ECU_Layer/LED/ecu_led.h
+[; ;./ECU_Layer/LED/ecu_led.h: 36: Std_ReturnType led_turn_on(const led_t *led);
+[v _led_turn_on `(uc ~T0 @X0 0 ef1`*CS273 ]
+[v F2460 `(v ~T0 @X0 1 tf1`ul ]
+"12 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\builtins.h
+[v __delay `JF2460 ~T0 @X0 0 e ]
+[p i __delay ]
+"37 ./ECU_Layer/LED/ecu_led.h
+[; ;./ECU_Layer/LED/ecu_led.h: 37: Std_ReturnType led_turn_off(const led_t *led);
+[v _led_turn_off `(uc ~T0 @X0 0 ef1`*CS273 ]
+"35
+[; ;./ECU_Layer/LED/ecu_led.h: 35: Std_ReturnType led_initialize(const led_t *led);
+[v _led_initialize `(uc ~T0 @X0 0 ef1`*CS273 ]
 "54 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -438,128 +439,139 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"10 appplication.c
-[; ;appplication.c: 10: pin_config_t led_1 = {
-[v _led_1 `S272 ~T0 @X0 1 e ]
-[i _led_1
+"9 appplication.c
+[; ;appplication.c: 9: led_t led1={.port_name = PORTC_INDEX , .pin = GPIO_PIN0 , .led_status = LED_off };
+[v _led1 `S273 ~T0 @X0 1 e ]
+[i _led1
 :U ..
 :U ..
 -> . `E2829 2 `uc
 -> . `E2819 0 `uc
--> . `E2815 0 `uc
--> . `E2811 0 `uc
+-> . `E2871 0 `uc
 ..
 ..
 ]
-"17
-[; ;appplication.c: 17: pin_config_t led_2 = {
-[v _led_2 `S272 ~T0 @X0 1 e ]
-[i _led_2
+"10
+[; ;appplication.c: 10: led_t led2={.port_name = PORTC_INDEX , .pin = GPIO_PIN1 , .led_status = LED_off };
+[v _led2 `S273 ~T0 @X0 1 e ]
+[i _led2
 :U ..
 :U ..
 -> . `E2829 2 `uc
 -> . `E2819 1 `uc
--> . `E2815 0 `uc
--> . `E2811 0 `uc
+-> . `E2871 0 `uc
 ..
 ..
 ]
-"24
-[; ;appplication.c: 24: pin_config_t led_3 = {
-[v _led_3 `S272 ~T0 @X0 1 e ]
-[i _led_3
+"11
+[; ;appplication.c: 11: led_t led3={.port_name = PORTC_INDEX , .pin = GPIO_PIN2 , .led_status = LED_off };
+[v _led3 `S273 ~T0 @X0 1 e ]
+[i _led3
 :U ..
 :U ..
 -> . `E2829 2 `uc
 -> . `E2819 2 `uc
--> . `E2815 0 `uc
--> . `E2811 0 `uc
+-> . `E2871 0 `uc
 ..
 ..
 ]
-"31
-[; ;appplication.c: 31: pin_config_t btn_1 = {
-[v _btn_1 `S272 ~T0 @X0 1 e ]
-[i _btn_1
+"12
+[; ;appplication.c: 12: led_t led4={.port_name = PORTC_INDEX , .pin = GPIO_PIN3 , .led_status = LED_off };
+[v _led4 `S273 ~T0 @X0 1 e ]
+[i _led4
 :U ..
 :U ..
--> . `E2829 3 `uc
--> . `E2819 0 `uc
--> . `E2815 1 `uc
--> . `E2811 0 `uc
+-> . `E2829 2 `uc
+-> . `E2819 3 `uc
+-> . `E2871 0 `uc
 ..
 ..
 ]
-"38
-[; ;appplication.c: 38: Std_ReturnType ret = (Std_ReturnType)0x00;
-[v _ret `uc ~T0 @X0 1 e ]
-[i _ret
--> -> 0 `i `uc
-]
-"39
-[; ;appplication.c: 39: deirection_t led_1_st;
-[v _led_1_st `E2815 ~T0 @X0 1 e ]
-"40
-[; ;appplication.c: 40: logic_t btn_1_st;
-[v _btn_1_st `E2811 ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"42
-[; ;appplication.c: 42: int main() {
+"14
+[; ;appplication.c: 14: int main() {
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"44
-[; ;appplication.c: 44:     ret = gpio_pin_initialize(&btn_1);
-[e = _ret ( _gpio_pin_initialize (1 &U _btn_1 ]
-"45
-[; ;appplication.c: 45:     ret = gpio_pin_initialize(&led_1);
-[e = _ret ( _gpio_pin_initialize (1 &U _led_1 ]
-"46
-[; ;appplication.c: 46:     ret = gpio_pin_initialize(&led_2);
-[e = _ret ( _gpio_pin_initialize (1 &U _led_2 ]
-"47
-[; ;appplication.c: 47:     ret = gpio_pin_initialize(&led_3);
-[e = _ret ( _gpio_pin_initialize (1 &U _led_3 ]
-"48
-[; ;appplication.c: 48:     ret = gpio_pin_write_logic(&led_2, GPIO_HIGH);
-[e = _ret ( _gpio_pin_write_logic (2 , &U _led_2 . `E2811 1 ]
-"51
-[; ;appplication.c: 51:     while(1){
-[e :U 275 ]
-{
-"52
-[; ;appplication.c: 52:         ret = gpio_pin_toggle_logic(&led_1);
-[e = _ret ( _gpio_pin_toggle_logic (1 &U _led_1 ]
-"54
-[; ;appplication.c: 54:         ret = gpio_pin_toggle_logic(&led_2);
-[e = _ret ( _gpio_pin_toggle_logic (1 &U _led_2 ]
-"55
-[; ;appplication.c: 55:        _delaywdt((unsigned long)((500)*(8000000UL/4000.0)));
-[e ( __delaywdt (1 -> * -> -> 500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
-"69
-[; ;appplication.c: 69:     }
-}
-[e :U 274 ]
-[e $U 275  ]
+"16
+[; ;appplication.c: 16:     app_init();
+[e ( _app_init ..  ]
+"18
+[; ;appplication.c: 18:     while(1)
 [e :U 276 ]
-"70
-[; ;appplication.c: 70:     return (0);
-[e ) -> 0 `i ]
-[e $UE 273  ]
-"71
-[; ;appplication.c: 71: }
-[e :UE 273 ]
+"19
+[; ;appplication.c: 19:     {
+{
+"20
+[; ;appplication.c: 20:         led_turn_on(&led1);
+[e ( _led_turn_on (1 -> &U _led1 `*CS273 ]
+"21
+[; ;appplication.c: 21:         led_turn_on(&led2);
+[e ( _led_turn_on (1 -> &U _led2 `*CS273 ]
+"22
+[; ;appplication.c: 22:         led_turn_on(&led3);
+[e ( _led_turn_on (1 -> &U _led3 `*CS273 ]
+"23
+[; ;appplication.c: 23:         led_turn_on(&led4);
+[e ( _led_turn_on (1 -> &U _led4 `*CS273 ]
+"24
+[; ;appplication.c: 24:         _delay((unsigned long)((500)*(8000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+"25
+[; ;appplication.c: 25:         led_turn_off(&led1);
+[e ( _led_turn_off (1 -> &U _led1 `*CS273 ]
+"26
+[; ;appplication.c: 26:         led_turn_off(&led2);
+[e ( _led_turn_off (1 -> &U _led2 `*CS273 ]
+"27
+[; ;appplication.c: 27:         led_turn_off(&led3);
+[e ( _led_turn_off (1 -> &U _led3 `*CS273 ]
+"28
+[; ;appplication.c: 28:         led_turn_off(&led4);
+[e ( _led_turn_off (1 -> &U _led4 `*CS273 ]
+"29
+[; ;appplication.c: 29:         _delay((unsigned long)((500)*(8000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+"30
+[; ;appplication.c: 30:     }
 }
-"73
-[; ;appplication.c: 73: void app_init()
+[e :U 275 ]
+[e $U 276  ]
+[e :U 277 ]
+"31
+[; ;appplication.c: 31:     return (0);
+[e ) -> 0 `i ]
+[e $UE 274  ]
+"32
+[; ;appplication.c: 32: }
+[e :UE 274 ]
+}
+"34
+[; ;appplication.c: 34: void app_init(void)
 [v _app_init `(v ~T0 @X0 1 ef ]
-"74
-[; ;appplication.c: 74: {
+"35
+[; ;appplication.c: 35: {
 {
 [e :U _app_init ]
 [f ]
-"76
-[; ;appplication.c: 76: }
-[e :UE 277 ]
+"36
+[; ;appplication.c: 36:     Std_ReturnType ret = (Std_ReturnType)0x00;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"37
+[; ;appplication.c: 37:     ret = led_initialize(&led1);
+[e = _ret ( _led_initialize (1 -> &U _led1 `*CS273 ]
+"38
+[; ;appplication.c: 38:     ret = led_initialize(&led2);
+[e = _ret ( _led_initialize (1 -> &U _led2 `*CS273 ]
+"39
+[; ;appplication.c: 39:     ret = led_initialize(&led3);
+[e = _ret ( _led_initialize (1 -> &U _led3 `*CS273 ]
+"40
+[; ;appplication.c: 40:     ret = led_initialize(&led4);
+[e = _ret ( _led_initialize (1 -> &U _led4 `*CS273 ]
+"41
+[; ;appplication.c: 41: }
+[e :UE 278 ]
 }

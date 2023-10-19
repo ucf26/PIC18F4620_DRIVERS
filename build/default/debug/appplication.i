@@ -4704,11 +4704,11 @@ typedef enum{
 }pin_index_t;
 
 typedef enum{
-    POTRA_INDEX = 0,
+    PORTA_INDEX = 0,
     PORTB_INDEX,
-    POTRC_INDEX,
+    PORTC_INDEX,
     PORTD_INDEX,
-    POTRE_INDEX,
+    PORTE_INDEX,
 }port_index_t;
 
 typedef struct{
@@ -4732,69 +4732,74 @@ Std_ReturnType gpio_port_write_logic(port_index_t port,uint8 logic);
 Std_ReturnType gpio_port_read_logic(port_index_t port,uint8 *logic);
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 # 13 "./ECU_Layer/LED/ecu_led.h" 2
+
+# 1 "./ECU_Layer/LED/ecu_led_cfg.h" 1
+# 14 "./ECU_Layer/LED/ecu_led.h" 2
+
+
+
+
+
+
+
+typedef enum{
+    LED_off = 0,
+    LED_ON
+}led_status_t;
+
+typedef struct{
+    uint8 port_name :4;
+    uint8 pin :3;
+    uint8 led_status :1;
+}led_t;
+
+
+
+
+Std_ReturnType led_initialize(const led_t *led);
+Std_ReturnType led_turn_on(const led_t *led);
+Std_ReturnType led_turn_off(const led_t *led);
+Std_ReturnType led_turn_toggle(const led_t *led);
 # 11 "./application.h" 2
 
 
 
 
 
-void app_init();
+void app_init(void);
 # 7 "appplication.c" 2
 
 
-
-pin_config_t led_1 = {
-    .port = POTRC_INDEX,
-    .pin = GPIO_PIN0 ,
-    .direction = GPIO_DIRECTION_OUTPUT,
-    .logic = GPIO_LOW
-};
-
-pin_config_t led_2 = {
-    .port = POTRC_INDEX,
-    .pin = GPIO_PIN1 ,
-    .direction = GPIO_DIRECTION_OUTPUT,
-    .logic = GPIO_LOW
-};
-
-pin_config_t led_3 = {
-    .port = POTRC_INDEX,
-    .pin = GPIO_PIN2 ,
-    .direction = GPIO_DIRECTION_OUTPUT,
-    .logic = GPIO_LOW
-};
-
-pin_config_t btn_1 = {
-    .port = PORTD_INDEX,
-    .pin = GPIO_PIN0 ,
-    .direction = GPIO_DIRECTION_INPUT,
-    .logic = GPIO_LOW
-};
-
-Std_ReturnType ret = (Std_ReturnType)0x00;
-deirection_t led_1_st;
-logic_t btn_1_st;
+led_t led1={.port_name = PORTC_INDEX , .pin = GPIO_PIN0 , .led_status = LED_off };
+led_t led2={.port_name = PORTC_INDEX , .pin = GPIO_PIN1 , .led_status = LED_off };
+led_t led3={.port_name = PORTC_INDEX , .pin = GPIO_PIN2 , .led_status = LED_off };
+led_t led4={.port_name = PORTC_INDEX , .pin = GPIO_PIN3 , .led_status = LED_off };
 
 int main() {
 
-    ret = gpio_pin_initialize(&btn_1);
-    ret = gpio_pin_initialize(&led_1);
-    ret = gpio_pin_initialize(&led_2);
-    ret = gpio_pin_initialize(&led_3);
-    ret = gpio_pin_write_logic(&led_2, GPIO_HIGH);
+    app_init();
 
-
-    while(1){
-        ret = gpio_pin_toggle_logic(&led_1);
-
-        ret = gpio_pin_toggle_logic(&led_2);
-       _delaywdt((unsigned long)((500)*(8000000UL/4000.0)));
-# 69 "appplication.c"
+    while(1)
+    {
+        led_turn_on(&led1);
+        led_turn_on(&led2);
+        led_turn_on(&led3);
+        led_turn_on(&led4);
+        _delay((unsigned long)((500)*(8000000UL/4000.0)));
+        led_turn_off(&led1);
+        led_turn_off(&led2);
+        led_turn_off(&led3);
+        led_turn_off(&led4);
+        _delay((unsigned long)((500)*(8000000UL/4000.0)));
     }
     return (0);
 }
 
-void app_init()
+void app_init(void)
 {
-
+    Std_ReturnType ret = (Std_ReturnType)0x00;
+    ret = led_initialize(&led1);
+    ret = led_initialize(&led2);
+    ret = led_initialize(&led3);
+    ret = led_initialize(&led4);
 }

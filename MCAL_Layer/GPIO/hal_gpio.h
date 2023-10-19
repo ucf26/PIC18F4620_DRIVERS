@@ -57,11 +57,11 @@ typedef enum{
 }pin_index_t;
 
 typedef enum{
-    POTRA_INDEX = 0, 
+    PORTA_INDEX = 0, 
     PORTB_INDEX, 
-    POTRC_INDEX,
+    PORTC_INDEX,
     PORTD_INDEX, 
-    POTRE_INDEX,
+    PORTE_INDEX,
 }port_index_t;
 
 typedef struct{

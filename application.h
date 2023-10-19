@@ -13,7 +13,7 @@
 #define _XTAL_FREQ 8000000UL
 
 
-void app_init();
+void app_init(void);
 
 #endif	/* APPLICATION_H */
 
