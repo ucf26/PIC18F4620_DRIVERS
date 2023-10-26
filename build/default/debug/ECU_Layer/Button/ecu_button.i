@@ -1,4 +1,4 @@
-# 1 "appplication.c"
+# 1 "ECU_Layer/Button/ecu_button.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,19 +6,18 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "appplication.c" 2
+# 1 "ECU_Layer/Button/ecu_button.c" 2
 
 
 
 
 
 
-# 1 "./application.h" 1
-# 11 "./application.h"
-# 1 "./ECU_Layer/LED/ecu_led.h" 1
-# 13 "./ECU_Layer/LED/ecu_led.h"
-# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 1
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
+
+# 1 "ECU_Layer/Button/ecu_button.h" 1
+# 12 "ECU_Layer/Button/ecu_button.h"
+# 1 "ECU_Layer/Button/../../MCAL_Layer/GPIO/hal_gpio.h" 1
+# 12 "ECU_Layer/Button/../../MCAL_Layer/GPIO/hal_gpio.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 1 3
 # 44 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 3
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\__at.h" 1 3
@@ -4231,12 +4230,12 @@ extern volatile __bit nWR __attribute__((address(0x7C21)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 12 "ECU_Layer/Button/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h"
-# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 1
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h"
+# 1 "ECU_Layer/Button/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
+# 12 "ECU_Layer/Button/../../MCAL_Layer/GPIO/../mcal_std_types.h"
+# 1 "ECU_Layer/Button/../../MCAL_Layer/GPIO/../compiler.h" 1
+# 12 "ECU_Layer/Button/../../MCAL_Layer/GPIO/../compiler.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4502,11 +4501,11 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 2
-# 12 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 12 "ECU_Layer/Button/../../MCAL_Layer/GPIO/../compiler.h" 2
+# 12 "ECU_Layer/Button/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
-# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h" 1
-# 14 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h"
+# 1 "ECU_Layer/Button/../../MCAL_Layer/GPIO/../std_libraries.h" 1
+# 14 "ECU_Layer/Button/../../MCAL_Layer/GPIO/../std_libraries.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -4659,8 +4658,8 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 14 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h" 2
-# 13 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 14 "ECU_Layer/Button/../../MCAL_Layer/GPIO/../std_libraries.h" 2
+# 13 "ECU_Layer/Button/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
 
 
@@ -4674,14 +4673,14 @@ typedef signed short sint16;
 typedef signed long sint32;
 
 typedef uint8 Std_ReturnType;
-# 13 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 13 "ECU_Layer/Button/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../device_config.h" 1
-# 14 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 1 "ECU_Layer/Button/../../MCAL_Layer/GPIO/../device_config.h" 1
+# 14 "ECU_Layer/Button/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
-# 15 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 38 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/Button/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
+# 15 "ECU_Layer/Button/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 38 "ECU_Layer/Button/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef enum{
     GPIO_LOW = 0,
     GPIO_HIGH
@@ -4731,44 +4730,13 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8 *directio
 Std_ReturnType gpio_port_write_logic(port_index_t port,uint8 logic);
 Std_ReturnType gpio_port_read_logic(port_index_t port,uint8 *logic);
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 13 "./ECU_Layer/LED/ecu_led.h" 2
+# 12 "ECU_Layer/Button/ecu_button.h" 2
 
-# 1 "./ECU_Layer/LED/ecu_led_cfg.h" 1
-# 14 "./ECU_Layer/LED/ecu_led.h" 2
-
-
-
-
-
-
-
-typedef enum{
-    LED_off = 0,
-    LED_ON
-}led_status_t;
-
-typedef struct{
-    uint8 port_name :4;
-    uint8 pin :3;
-    uint8 led_status :1;
-}led_t;
-
-
-
-
-Std_ReturnType led_initialize(const led_t *led);
-Std_ReturnType led_turn_on(const led_t *led);
-Std_ReturnType led_turn_off(const led_t *led);
-Std_ReturnType led_turn_toggle(const led_t *led);
-# 11 "./application.h" 2
-
-# 1 "./ECU_Layer/Button/ecu_button.h" 1
-# 13 "./ECU_Layer/Button/ecu_button.h"
-# 1 "./ECU_Layer/Button/ecu_button_cfg.h" 1
-# 11 "./ECU_Layer/Button/ecu_button_cfg.h"
-# 1 "./ECU_Layer/Button/ecu_button.h" 1
-# 11 "./ECU_Layer/Button/ecu_button_cfg.h" 2
-# 13 "./ECU_Layer/Button/ecu_button.h" 2
+# 1 "ECU_Layer/Button/ecu_button_cfg.h" 1
+# 11 "ECU_Layer/Button/ecu_button_cfg.h"
+# 1 "ECU_Layer/Button/ecu_button.h" 1
+# 11 "ECU_Layer/Button/ecu_button_cfg.h" 2
+# 13 "ECU_Layer/Button/ecu_button.h" 2
 
 
 
@@ -4790,83 +4758,60 @@ typedef struct{
     button_state_t button_state;
     button_active_t button_connection;
 }button_t;
-# 46 "./ECU_Layer/Button/ecu_button.h"
+# 46 "ECU_Layer/Button/ecu_button.h"
 Std_ReturnType button_initialize(const button_t *btn);
-# 56 "./ECU_Layer/Button/ecu_button.h"
+# 56 "ECU_Layer/Button/ecu_button.h"
 Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state);
-# 12 "./application.h" 2
+# 8 "ECU_Layer/Button/ecu_button.c" 2
 
 
 
-
-
-void app_init(void);
-# 7 "appplication.c" 2
-
-
-button_t btn_high = {
-    .buton.port = PORTC_INDEX,
-    .buton.pin = GPIO_PIN2,
-    .buton.direction = GPIO_DIRECTION_INPUT,
-    .buton.logic = GPIO_LOW,
-    .button_connection = BUTTON_ACTIVE_HIGH,
-    .button_state = BUTTON_RELEASED
-};
-
-button_t btn_low = {
-    .buton.port = PORTD_INDEX,
-    .buton.pin = GPIO_PIN0,
-    .buton.direction = GPIO_DIRECTION_INPUT,
-    .buton.logic = GPIO_HIGH,
-    .button_connection = BUTTON_ACTIVE_LOW,
-    .button_state = BUTTON_RELEASED
-};
-
-led_t led1={.port_name=PORTC_INDEX, .pin=GPIO_PIN0, .led_status=LED_off};
-led_t led2={.port_name=PORTC_INDEX, .pin=GPIO_PIN1, .led_status=LED_off};
-
-
-Std_ReturnType ret = (Std_ReturnType)0x00;
-button_state_t btn_high_status = BUTTON_RELEASED;
-button_state_t btn_low_status = BUTTON_RELEASED;
-
-
-int main() {
-    ret = led_initialize(&led1);
-    ret = led_initialize(&led2);
-    ret = button_initialize(&btn_high);
-    ret = button_initialize(&btn_low);
-
-
-    while(1)
+Std_ReturnType button_initialize(const button_t *btn){
+    Std_ReturnType ret = (Std_ReturnType)0x01 ;
+    if(((void*)0) == btn )
     {
-        ret = button_read_state(&btn_high, &btn_high_status);
-        ret = button_read_state(&btn_low, &btn_low_status);
-
-        if(BUTTON_PRESSED == btn_high_status)
-        {
-            ret = led_turn_on(&led1);
-        }
-        else
-        {
-            ret = led_turn_off(&led1);
-        }
-
-        if(BUTTON_PRESSED == btn_low_status)
-        {
-            ret = led_turn_on(&led2);
-        }
-        else
-        {
-            ret = led_turn_off(&led2);
-        }
-
+        ret = (Std_ReturnType)0x00;
     }
-    return (0);
+    else
+    {
+        ret = gpio_pin_direction_initialize(&(btn->buton));
+    }
+    return ret;
 }
 
-void app_init(void)
-{
-    Std_ReturnType ret = (Std_ReturnType)0x00;
-
+Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state){
+    Std_ReturnType ret = (Std_ReturnType)0x01 ;
+    logic_t pin_logic_status = GPIO_LOW;
+    if(((void*)0) == btn || ((void*)0) == btn_state)
+    {
+        ret = (Std_ReturnType)0x00;
+    }
+    else
+    {
+        ret = gpio_pin_read_logic(&(btn->buton), &pin_logic_status);
+        if(BUTTON_ACTIVE_HIGH == btn->button_connection)
+        {
+            if(GPIO_HIGH == pin_logic_status)
+            {
+                *btn_state = BUTTON_PRESSED;
+            }
+            else
+            {
+                *btn_state = BUTTON_RELEASED;
+            }
+        }
+        else if(BUTTON_ACTIVE_LOW == btn->button_connection)
+        {
+            if(GPIO_HIGH == pin_logic_status)
+            {
+                *btn_state = BUTTON_RELEASED;
+            }
+            else
+            {
+                *btn_state = BUTTON_PRESSED;
+            }
+        }
+        else { }
+    }
+    return ret;
 }

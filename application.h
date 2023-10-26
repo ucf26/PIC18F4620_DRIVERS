@@ -9,6 +9,7 @@
 #define	APPLICATION_H
 
 #include "ECU_Layer/LED/ecu_led.h"
+#include "ECU_Layer/Button/ecu_button.h"
 
 #define _XTAL_FREQ 8000000UL
 
