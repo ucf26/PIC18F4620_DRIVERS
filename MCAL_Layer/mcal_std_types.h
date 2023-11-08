@@ -15,11 +15,12 @@
 /* Section : Macro Functions Declarations */
 
 /* Section : Data Type Declarations */
-typedef unsigned char   uint8;
-typedef unsigned short  uint16;
-typedef unsigned long   uint32;
-typedef signed char     sint8;
-typedef signed short    sint16;
+typedef unsigned char    uint8;
+typedef unsigned short   uint16;
+typedef unsigned long    uint32;
+
+typedef signed char      sint8;
+typedef signed short     sint16;
 typedef signed long      sint32;
 
 typedef uint8 Std_ReturnType;
@@ -40,9 +41,6 @@ typedef uint8 Std_ReturnType;
 /* Section : Macro Declarations */
 
 /* Section : Functions Declarations */
-
-
-
 
 
 #endif	/* MCAL_STD_TYPES_H */

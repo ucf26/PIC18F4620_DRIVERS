@@ -10,6 +10,8 @@
 
 #include "ECU_Layer/LED/ecu_led.h"
 #include "ECU_Layer/Button/ecu_button.h"
+#include "ECU_Layer/Relay/ecu_relay.h"
+
 
 #define _XTAL_FREQ 8000000UL
 

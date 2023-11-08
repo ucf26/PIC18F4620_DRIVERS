@@ -4668,6 +4668,7 @@ char *tempnam(const char *, const char *);
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned long uint32;
+
 typedef signed char sint8;
 typedef signed short sint16;
 typedef signed long sint32;
@@ -4763,9 +4764,7 @@ Std_ReturnType button_initialize(const button_t *btn);
 # 56 "ECU_Layer/Button/ecu_button.h"
 Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state);
 # 8 "ECU_Layer/Button/ecu_button.c" 2
-
-
-
+# 17 "ECU_Layer/Button/ecu_button.c"
 Std_ReturnType button_initialize(const button_t *btn){
     Std_ReturnType ret = (Std_ReturnType)0x01 ;
     if(((void*)0) == btn )
@@ -4778,7 +4777,7 @@ Std_ReturnType button_initialize(const button_t *btn){
     }
     return ret;
 }
-
+# 38 "ECU_Layer/Button/ecu_button.c"
 Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state){
     Std_ReturnType ret = (Std_ReturnType)0x01 ;
     logic_t pin_logic_status = GPIO_LOW;

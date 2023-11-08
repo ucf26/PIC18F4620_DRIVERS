@@ -4669,6 +4669,7 @@ char *tempnam(const char *, const char *);
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned long uint32;
+
 typedef signed char sint8;
 typedef signed short sint16;
 typedef signed long sint32;
@@ -4796,6 +4797,29 @@ Std_ReturnType button_initialize(const button_t *btn);
 Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state);
 # 12 "./application.h" 2
 
+# 1 "./ECU_Layer/Relay/ecu_relay.h" 1
+# 12 "./ECU_Layer/Relay/ecu_relay.h"
+# 1 "./ECU_Layer/Relay/ecu_relay_cfg.h" 1
+# 12 "./ECU_Layer/Relay/ecu_relay_cfg.h"
+# 1 "./ECU_Layer/Relay/ecu_relay.h" 1
+# 12 "./ECU_Layer/Relay/ecu_relay_cfg.h" 2
+# 12 "./ECU_Layer/Relay/ecu_relay.h" 2
+# 22 "./ECU_Layer/Relay/ecu_relay.h"
+typedef struct{
+    uint8 relay_port :4;
+    uint8 relay_pin :3;
+    uint8 relay_status :1;
+}relay_t;
+
+
+
+
+Std_ReturnType relay_initialize(const relay_t *_relay);
+Std_ReturnType relay_turn_on(const relay_t *_relay);
+Std_ReturnType relay_turn_off(const relay_t *_relay);
+# 13 "./application.h" 2
+
+
 
 
 
@@ -4804,62 +4828,17 @@ void app_init(void);
 # 7 "appplication.c" 2
 
 
-button_t btn_high = {
-    .buton.port = PORTC_INDEX,
-    .buton.pin = GPIO_PIN2,
-    .buton.direction = GPIO_DIRECTION_INPUT,
-    .buton.logic = GPIO_LOW,
-    .button_connection = BUTTON_ACTIVE_HIGH,
-    .button_state = BUTTON_RELEASED
-};
-
-button_t btn_low = {
-    .buton.port = PORTD_INDEX,
-    .buton.pin = GPIO_PIN0,
-    .buton.direction = GPIO_DIRECTION_INPUT,
-    .buton.logic = GPIO_HIGH,
-    .button_connection = BUTTON_ACTIVE_LOW,
-    .button_state = BUTTON_RELEASED
-};
-
-led_t led1={.port_name=PORTC_INDEX, .pin=GPIO_PIN0, .led_status=LED_off};
-led_t led2={.port_name=PORTC_INDEX, .pin=GPIO_PIN1, .led_status=LED_off};
 
 
 Std_ReturnType ret = (Std_ReturnType)0x00;
-button_state_t btn_high_status = BUTTON_RELEASED;
-button_state_t btn_low_status = BUTTON_RELEASED;
 
 
 int main() {
-    ret = led_initialize(&led1);
-    ret = led_initialize(&led2);
-    ret = button_initialize(&btn_high);
-    ret = button_initialize(&btn_low);
 
 
     while(1)
     {
-        ret = button_read_state(&btn_high, &btn_high_status);
-        ret = button_read_state(&btn_low, &btn_low_status);
 
-        if(BUTTON_PRESSED == btn_high_status)
-        {
-            ret = led_turn_on(&led1);
-        }
-        else
-        {
-            ret = led_turn_off(&led1);
-        }
-
-        if(BUTTON_PRESSED == btn_low_status)
-        {
-            ret = led_turn_on(&led2);
-        }
-        else
-        {
-            ret = led_turn_off(&led2);
-        }
 
     }
     return (0);
