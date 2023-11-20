@@ -6,6 +6,13 @@
  */
 #include "ecu_relay.h"
 
+/**
+ * @dreif   initialize the relay 
+ * @param   _relay  pointer to the relay configuration  
+ * @return  the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType relay_initialize(const relay_t *_relay){
     Std_ReturnType ret = E_NOT_OK;
     if(NULL == _relay){
@@ -21,6 +28,14 @@ Std_ReturnType relay_initialize(const relay_t *_relay){
     return ret;
 }
 
+
+/**
+ * @breif   turn on the relay 
+ * @param   _relay  pointer to the relay configuration  
+ * @return  the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType relay_turn_on(const relay_t *_relay){
     Std_ReturnType ret = E_NOT_OK;
     if(NULL == _relay){
@@ -35,6 +50,14 @@ Std_ReturnType relay_turn_on(const relay_t *_relay){
     }
     return ret;
 }
+
+/**
+ * @breif   turn on the relay 
+ * @param   _relay  pointer to the relay configuration  
+ * @return  the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType relay_turn_off(const relay_t *_relay){
     Std_ReturnType ret = E_NOT_OK;
     if(NULL == _relay){
