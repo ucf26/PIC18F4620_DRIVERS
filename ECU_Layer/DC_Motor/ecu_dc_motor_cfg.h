@@ -8,16 +8,16 @@
 #ifndef ECU_DC_MOTOR_CFG_H
 #define	ECU_DC_MOTOR_CFG_H
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
+/* Section : Includes */
 
+/* Section : Macro Declarations */
 
+/* Section : Macro Functions Declarations */
 
+/* Section : Data Type Declarations */
 
-#ifdef	__cplusplus
-}
-#endif
+/* Section : Functions Declarations */
+
 
 #endif	/* ECU_DC_MOTOR_CFG_H */
 

@@ -4819,6 +4819,24 @@ Std_ReturnType relay_turn_on(const relay_t *_relay);
 Std_ReturnType relay_turn_off(const relay_t *_relay);
 # 13 "./application.h" 2
 
+# 1 "./ECU_Layer/DC_Motor/ecu_dc_motor.h" 1
+# 14 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 1 "./ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h" 1
+# 14 "./ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
+# 26 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+typedef struct{
+    pin_config_t dc_motor_pin[2];
+}dc_motor_t;
+
+
+
+
+Std_ReturnType dc_motor_initialize(const dc_motor_t *_dc_motor);
+Std_ReturnType dc_motor_move_right(const dc_motor_t *_dc_motor);
+Std_ReturnType dc_motor_move_left(const dc_motor_t *_dc_motor);
+Std_ReturnType dc_motor_stop(const dc_motor_t *_dc_motor);
+# 14 "./application.h" 2
+
 
 
 
@@ -4832,12 +4850,36 @@ void app_init(void);
 
 Std_ReturnType ret = (Std_ReturnType)0x00;
 
+dc_motor_t mot1={
+    .dc_motor_pin[0].port=PORTC_INDEX, .dc_motor_pin[0].pin=GPIO_PIN0,
+    .dc_motor_pin[0].direction=GPIO_DIRECTION_OUTPUT, .dc_motor_pin[0].logic=GPIO_HIGH,
+    .dc_motor_pin[1].port=PORTC_INDEX, .dc_motor_pin[1].pin=GPIO_PIN1 ,
+    .dc_motor_pin[1].direction=GPIO_DIRECTION_OUTPUT ,.dc_motor_pin[1].logic=GPIO_HIGH
+};
+
+dc_motor_t mot2={
+    .dc_motor_pin[0].port=PORTC_INDEX, .dc_motor_pin[0].pin=GPIO_PIN2,
+    .dc_motor_pin[0].direction=GPIO_DIRECTION_OUTPUT, .dc_motor_pin[0].logic=GPIO_HIGH,
+    .dc_motor_pin[1].port=PORTC_INDEX, .dc_motor_pin[1].pin=GPIO_PIN3 ,
+    .dc_motor_pin[1].direction=GPIO_DIRECTION_OUTPUT ,.dc_motor_pin[1].logic=GPIO_HIGH
+ };
+
 
 int main() {
 
+    app_init();
 
     while(1)
     {
+
+
+        ret = dc_motor_move_right(&mot2);
+        ret = dc_motor_move_right(&mot1);
+
+        _delay((unsigned long)((3000)*(8000000UL/4000.0)));
+        ret = dc_motor_move_left(&mot1);
+        ret = dc_motor_move_left(&mot2);
+        _delay((unsigned long)((3000)*(8000000UL/4000.0)));
 
 
     }
@@ -4848,4 +4890,6 @@ void app_init(void)
 {
     Std_ReturnType ret = (Std_ReturnType)0x00;
 
+    ret = dc_motor_initialize(&mot1);
+    ret = dc_motor_initialize(&mot2);
 }

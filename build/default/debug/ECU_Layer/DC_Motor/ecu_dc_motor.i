@@ -1,4 +1,4 @@
-# 1 "ECU_Layer/Relay/ecu_relay.c"
+# 1 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,23 +6,19 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ECU_Layer/Relay/ecu_relay.c" 2
+# 1 "ECU_Layer/DC_Motor/ecu_dc_motor.c" 2
 
 
 
 
 
 
-# 1 "ECU_Layer/Relay/ecu_relay.h" 1
-# 12 "ECU_Layer/Relay/ecu_relay.h"
-# 1 "ECU_Layer/Relay/ecu_relay_cfg.h" 1
-# 12 "ECU_Layer/Relay/ecu_relay_cfg.h"
-# 1 "ECU_Layer/Relay/ecu_relay.h" 1
-# 12 "ECU_Layer/Relay/ecu_relay_cfg.h" 2
-# 12 "ECU_Layer/Relay/ecu_relay.h" 2
 
-# 1 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h" 1
-# 12 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h"
+
+# 1 "ECU_Layer/DC_Motor/ecu_dc_motor.h" 1
+# 13 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 1 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h" 1
+# 12 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 1 3
 # 44 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 3
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\__at.h" 1 3
@@ -4235,12 +4231,12 @@ extern volatile __bit nWR __attribute__((address(0x7C21)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
-# 12 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 12 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
-# 12 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../mcal_std_types.h"
-# 1 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../compiler.h" 1
-# 12 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../compiler.h"
+# 1 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
+# 12 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../mcal_std_types.h"
+# 1 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../compiler.h" 1
+# 12 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../compiler.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4506,11 +4502,11 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
-# 12 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../compiler.h" 2
-# 12 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 12 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../compiler.h" 2
+# 12 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
-# 1 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../std_libraries.h" 1
-# 14 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../std_libraries.h"
+# 1 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../std_libraries.h" 1
+# 14 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../std_libraries.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -4663,8 +4659,8 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 14 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../std_libraries.h" 2
-# 13 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 14 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../std_libraries.h" 2
+# 13 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
 
 
@@ -4679,14 +4675,14 @@ typedef signed short sint16;
 typedef signed long sint32;
 
 typedef uint8 Std_ReturnType;
-# 13 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 13 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/../device_config.h" 1
-# 14 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 1 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/../device_config.h" 1
+# 14 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
-# 15 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 38 "ECU_Layer/Relay/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
+# 15 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 38 "ECU_Layer/DC_Motor/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef enum{
     GPIO_LOW = 0,
     GPIO_HIGH
@@ -4736,63 +4732,83 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8 *directio
 Std_ReturnType gpio_port_write_logic(port_index_t port,uint8 logic);
 Std_ReturnType gpio_port_read_logic(port_index_t port,uint8 *logic);
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 13 "ECU_Layer/Relay/ecu_relay.h" 2
-# 22 "ECU_Layer/Relay/ecu_relay.h"
+# 13 "ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
+
+# 1 "ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h" 1
+# 14 "ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
+# 26 "ECU_Layer/DC_Motor/ecu_dc_motor.h"
 typedef struct{
-    uint8 relay_port :4;
-    uint8 relay_pin :3;
-    uint8 relay_status :1;
-}relay_t;
+    pin_config_t dc_motor_pin[2];
+}dc_motor_t;
 
 
 
 
-Std_ReturnType relay_initialize(const relay_t *_relay);
-Std_ReturnType relay_turn_on(const relay_t *_relay);
-Std_ReturnType relay_turn_off(const relay_t *_relay);
-# 7 "ECU_Layer/Relay/ecu_relay.c" 2
-# 16 "ECU_Layer/Relay/ecu_relay.c"
-Std_ReturnType relay_initialize(const relay_t *_relay){
-    Std_ReturnType ret = (Std_ReturnType)0x00;
-    if(((void*)0) == _relay){
+Std_ReturnType dc_motor_initialize(const dc_motor_t *_dc_motor);
+Std_ReturnType dc_motor_move_right(const dc_motor_t *_dc_motor);
+Std_ReturnType dc_motor_move_left(const dc_motor_t *_dc_motor);
+Std_ReturnType dc_motor_stop(const dc_motor_t *_dc_motor);
+# 9 "ECU_Layer/DC_Motor/ecu_dc_motor.c" 2
+
+
+
+
+
+
+
+
+Std_ReturnType dc_motor_initialize(const dc_motor_t *_dc_motor){
+    Std_ReturnType ret = (Std_ReturnType)0x01 ;
+    if(((void*)0) == _dc_motor)
+    {
         ret = (Std_ReturnType)0x00;
     }
     else
     {
-        ret = (Std_ReturnType)0x01;
-        pin_config_t pin_obj = {.port = _relay->relay_port, .pin = _relay->relay_pin,
-                                .direction = GPIO_DIRECTION_OUTPUT, .logic = _relay->relay_status};
-        ret = gpio_pin_direction_initialize(&pin_obj);
+        ret = gpio_pin_direction_initialize(&(_dc_motor->dc_motor_pin[0x00U]));
+        ret = gpio_pin_direction_initialize(&(_dc_motor->dc_motor_pin[0x01U]));
     }
     return ret;
 }
-# 39 "ECU_Layer/Relay/ecu_relay.c"
-Std_ReturnType relay_turn_on(const relay_t *_relay){
-    Std_ReturnType ret = (Std_ReturnType)0x00;
-    if(((void*)0) == _relay){
+# 38 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
+Std_ReturnType dc_motor_move_right(const dc_motor_t *_dc_motor){
+    Std_ReturnType ret = (Std_ReturnType)0x01 ;
+    if(((void*)0) == _dc_motor)
+    {
         ret = (Std_ReturnType)0x00;
     }
     else
     {
-        ret = (Std_ReturnType)0x01;
-        pin_config_t pin_obj = {.port = _relay->relay_port, .pin = _relay->relay_pin,
-                                .direction = GPIO_DIRECTION_OUTPUT, .logic = _relay->relay_status};
-        ret = gpio_pin_write_logic(&pin_obj, GPIO_HIGH);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[0x00U]), GPIO_HIGH);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[0x01U]), GPIO_LOW);
     }
     return ret;
 }
-# 61 "ECU_Layer/Relay/ecu_relay.c"
-Std_ReturnType relay_turn_off(const relay_t *_relay){
-    Std_ReturnType ret = (Std_ReturnType)0x00;
-    if(((void*)0) == _relay){
+# 59 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
+Std_ReturnType dc_motor_move_left(const dc_motor_t *_dc_motor){
+    Std_ReturnType ret = (Std_ReturnType)0x01 ;
+    if(((void*)0) == _dc_motor)
+    {
         ret = (Std_ReturnType)0x00;
     }
     else
     {
-        ret = (Std_ReturnType)0x01;
-        pin_config_t pin_obj = {.port = _relay->relay_port, .pin = _relay->relay_pin,
-                                .direction = GPIO_DIRECTION_OUTPUT, .logic = _relay->relay_status};
-        ret = gpio_pin_write_logic(&pin_obj, GPIO_LOW);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[0x00U]), GPIO_LOW);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[0x01U]), GPIO_HIGH);
+    }
+    return ret;
+}
+# 80 "ECU_Layer/DC_Motor/ecu_dc_motor.c"
+Std_ReturnType dc_motor_stop(const dc_motor_t *_dc_motor){
+    Std_ReturnType ret = (Std_ReturnType)0x01 ;
+    if(((void*)0) == _dc_motor)
+    {
+        ret = (Std_ReturnType)0x00;
+    }
+    else
+    {
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[0x00U]), GPIO_LOW);
+        ret = gpio_pin_write_logic(&(_dc_motor->dc_motor_pin[0x01U]), GPIO_LOW);
     }
     return ret;
 }

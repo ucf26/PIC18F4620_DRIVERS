@@ -27,6 +27,16 @@ GPIO_DIRECTION_INPUT 1
 GPIO_LOW 0
 GPIO_HIGH 1
 ]
+"24 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/Relay/ecu_relay.c
+[e E2815 . `uc
+GPIO_DIRECTION_OUTPUT 0
+GPIO_DIRECTION_INPUT 1
+]
+"49
+[e E2811 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
 "40 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\MCAL_Layer/GPIO/hal_gpio.c
 [e E2815 . `uc
 GPIO_DIRECTION_OUTPUT 0
@@ -45,13 +55,41 @@ PORTC_INDEX 2
 PORTD_INDEX 3
 PORTE_INDEX 4
 ]
-"17 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/Relay/ecu_relay.c
+"13 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
+[e E2829 . `uc
+PORTA_INDEX 0
+PORTB_INDEX 1
+PORTC_INDEX 2
+PORTD_INDEX 3
+PORTE_INDEX 4
+]
+[e E2819 . `uc
+GPIO_PIN0 0
+GPIO_PIN1 1
+GPIO_PIN2 2
+GPIO_PIN3 3
+GPIO_PIN4 4
+GPIO_PIN5 5
+GPIO_PIN6 6
+GPIO_PIN7 7
+]
 [e E2815 . `uc
 GPIO_DIRECTION_OUTPUT 0
 GPIO_DIRECTION_INPUT 1
 ]
-"14 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
+[e E2811 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
+"46 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/DC_Motor/ecu_dc_motor.c
+[e E2811 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
+"28 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
 [v _main main `(i  1 e 2 0 ]
+"49
+[v _app_init app_init `(v  1 e 1 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
 "62 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\float.c
@@ -76,6 +114,12 @@ GPIO_DIRECTION_INPUT 1
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
+"17 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/DC_Motor/ecu_dc_motor.c
+[v _dc_motor_initialize dc_motor_initialize `(uc  1 e 1 0 ]
+"38
+[v _dc_motor_move_right dc_motor_move_right `(uc  1 e 1 0 ]
+"59
+[v _dc_motor_move_left dc_motor_move_left `(uc  1 e 1 0 ]
 "22 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_direction_initialize gpio_pin_direction_initialize `(uc  1 e 1 0 ]
 "78
@@ -86,6 +130,18 @@ GPIO_DIRECTION_INPUT 1
 [v _gpio_pin_initialize gpio_pin_initialize `(uc  1 e 1 0 ]
 "157
 [v _gpio_pin_toggle_logic gpio_pin_toggle_logic `(uc  1 e 1 0 ]
+"11 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
+[v _ret ret `uc  1 e 1 0 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"13
+[s S340 . 2 `[2]S24 1 dc_motor_pin 2 0 ]
+[v _mot1 mot1 `S340  1 e 2 0 ]
+"20
+[v _mot2 mot2 `S340  1 e 2 0 ]
 "52 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "189
@@ -122,8 +178,87 @@ GPIO_DIRECTION_INPUT 1
 [v _lat_registers lat_registers `[5]*.39VEuc  1 e 10 0 ]
 "12
 [v _port_registers port_registers `[5]*.39VEuc  1 e 10 0 ]
-"14 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
+"28 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
 [v _main main `(i  1 e 2 0 ]
 {
-"23
+"47
+} 0
+"38 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/DC_Motor/ecu_dc_motor.c
+[v _dc_motor_move_right dc_motor_move_right `(uc  1 e 1 0 ]
+{
+"39
+[v dc_motor_move_right@ret ret `uc  1 a 1 9 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"38
+[s S340 . 2 `[2]S24 1 dc_motor_pin 2 0 ]
+[v dc_motor_move_right@_dc_motor _dc_motor `*.30CS340  1 p 1 8 ]
+"50
+} 0
+"59
+[v _dc_motor_move_left dc_motor_move_left `(uc  1 e 1 0 ]
+{
+"60
+[v dc_motor_move_left@ret ret `uc  1 a 1 9 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"59
+[s S340 . 2 `[2]S24 1 dc_motor_pin 2 0 ]
+[v dc_motor_move_left@_dc_motor _dc_motor `*.30CS340  1 p 1 8 ]
+"71
+} 0
+"78 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\MCAL_Layer/GPIO/hal_gpio.c
+[v _gpio_pin_write_logic gpio_pin_write_logic `(uc  1 e 1 0 ]
+{
+"79
+[v gpio_pin_write_logic@ret ret `uc  1 a 1 7 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"78
+[v gpio_pin_write_logic@_pin_config _pin_config `*.30S24  1 p 1 0 ]
+[v gpio_pin_write_logic@logic logic `E2811  1 p 1 1 ]
+"100
+} 0
+"49 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
+[v _app_init app_init `(v  1 e 1 0 ]
+{
+"55
+} 0
+"17 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/DC_Motor/ecu_dc_motor.c
+[v _dc_motor_initialize dc_motor_initialize `(uc  1 e 1 0 ]
+{
+"18
+[v dc_motor_initialize@ret ret `uc  1 a 1 8 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"17
+[s S340 . 2 `[2]S24 1 dc_motor_pin 2 0 ]
+[v dc_motor_initialize@_dc_motor _dc_motor `*.30CS340  1 p 1 7 ]
+"29
+} 0
+"22 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\MCAL_Layer/GPIO/hal_gpio.c
+[v _gpio_pin_direction_initialize gpio_pin_direction_initialize `(uc  1 e 1 0 ]
+{
+"24
+[v gpio_pin_direction_initialize@ret ret `uc  1 a 1 6 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"22
+[v gpio_pin_direction_initialize@_pin_config _pin_config `*.30S24  1 p 1 0 ]
+"43
 } 0
