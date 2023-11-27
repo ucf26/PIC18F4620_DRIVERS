@@ -26,7 +26,9 @@ typedef struct{
 /* Section : Data Type Declarations */
 
 /* Section : Functions Declarations */
+
 Std_ReturnType keypad_initialize(const keypad_t *kaypad_obj);
 Std_ReturnType keypad_get_value(const keypad_t *kaypad_obj, uint8 *value);
+
 #endif	/* ECU_KEYPAD_H */
 

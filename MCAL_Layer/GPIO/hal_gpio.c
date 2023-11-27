@@ -12,7 +12,7 @@ volatile uint8 *lat_registers[]  = {&LATA, &LATB, &LATC, &LATD, &LATE};
 volatile uint8 *port_registers[] = {&PORTA, &PORTB, &PORTC, &PORTD, &PORTE};
 
 /**
- * @breif  function to initilize a pin
+ * @breif  function to initilize a pin 
  * @param  _pin_config pointer to the configurations  @ref pin_config_t
  * @return the status of the function :
  *              (E_OK)     : the function is done successfully
@@ -125,7 +125,7 @@ Std_ReturnType gpio_pin_read_logic(pin_config_t *_pin_config, logic_t *logic){
 
 #if GPIO_PIN_PORT_CONFIGRATIONS==CONFIG_ENABLE
 /**
- * @breif  function to initialize a pin with a logic and direction 
+ * @breif  function to initialize a pin with a logic LOW 
  * @param  _pin_config  pointer to the configurations    @ref pin_config_t
  * @return the status of the function :
  *              (E_OK)     : the function is done successfully
