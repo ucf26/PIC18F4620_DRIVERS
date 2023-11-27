@@ -1,18 +1,16 @@
 /* 
- * File:   application.h
+ * File:   ecu_keypad_cfg.h
  * Author: Yousef Mahmoud
  *
- * Created on October 4, 2023, 6:21 AM
+ * Created on November 27, 2023, 11:34 AM
  */
 
-#ifndef APPLICATION_H
-#define	APPLICATION_H
+#ifndef ECU_KEYPAD_CFG_H
+#define	ECU_KEYPAD_CFG_H
 
 /* Section : Includes */
-#include "ECU_Layer/ecu_layer_init.h"
 
 /* Section : Macro Declarations */
-
 
 /* Section : Macro Functions Declarations */
 
@@ -20,6 +18,5 @@
 
 /* Section : Functions Declarations */
 
-
-#endif	/* APPLICATION_H */
+#endif	/* ECU_KEYPAD_CFG_H */
 
