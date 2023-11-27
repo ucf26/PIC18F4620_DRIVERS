@@ -3,6 +3,45 @@
 [d edition pro ]
 [d chip 18F4620 ]
 [d frameptr 4065 ]
+"17 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/Button/ecu_button.c
+[e E2871 . `uc
+BUTTON_PRESSED 0
+BUTTON_RELEASED 1
+]
+[e E2875 . `uc
+BUTTON_ACTIVE_HIGH 0
+BUTTON_ACTIVE_LOW 1
+]
+"40
+[e E2811 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
+"46 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/DC_Motor/ecu_dc_motor.c
+[e E2811 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
+"25 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/LED/ecu_led.c
+[e E2815 . `uc
+GPIO_DIRECTION_OUTPUT 0
+GPIO_DIRECTION_INPUT 1
+]
+"51
+[e E2811 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
+"24 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/Relay/ecu_relay.c
+[e E2815 . `uc
+GPIO_DIRECTION_OUTPUT 0
+GPIO_DIRECTION_INPUT 1
+]
+"49
+[e E2811 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
 "40 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\MCAL_Layer/GPIO/hal_gpio.c
 [e E2815 . `uc
 GPIO_DIRECTION_OUTPUT 0
@@ -15,19 +54,23 @@ GPIO_HIGH 1
 ]
 "180
 [e E2829 . `uc
-POTRA_INDEX 0
+PORTA_INDEX 0
 PORTB_INDEX 1
-POTRC_INDEX 2
+PORTC_INDEX 2
 PORTD_INDEX 3
-POTRE_INDEX 4
+PORTE_INDEX 4
 ]
-"10 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
+"11 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
+[e E2928 . `uc
+SEGMENT_COMMON_ANODE 0
+SEGMENT_COMMON_CATHODE 1
+]
 [e E2829 . `uc
-POTRA_INDEX 0
+PORTA_INDEX 0
 PORTB_INDEX 1
-POTRC_INDEX 2
+PORTC_INDEX 2
 PORTD_INDEX 3
-POTRE_INDEX 4
+PORTE_INDEX 4
 ]
 [e E2819 . `uc
 GPIO_PIN0 0
@@ -47,8 +90,20 @@ GPIO_DIRECTION_INPUT 1
 GPIO_LOW 0
 GPIO_HIGH 1
 ]
-"42
+"10 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/7_Segment/ecu_seven_segment.c
+[e E2871 . `uc
+SEGMENT_COMMON_ANODE 0
+SEGMENT_COMMON_CATHODE 1
+]
+"34
+[e E2811 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
+"29 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
 [v _main main `(i  1 e 2 0 ]
+"42
+[v _app_init app_init `(v  1 e 1 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
 "62 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\float.c
@@ -73,29 +128,30 @@ GPIO_HIGH 1
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
+"10 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/7_Segment/ecu_seven_segment.c
+[v _seven_segment_initialize seven_segment_initialize `(uc  1 e 1 0 ]
+"26
+[v _seven_segment_write_number seven_segment_write_number `(uc  1 e 1 0 ]
 "22 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_direction_initialize gpio_pin_direction_initialize `(uc  1 e 1 0 ]
 "78
 [v _gpio_pin_write_logic gpio_pin_write_logic `(uc  1 e 1 0 ]
+"112
+[v _gpio_pin_read_logic gpio_pin_read_logic `(uc  1 e 1 0 ]
 "134
 [v _gpio_pin_initialize gpio_pin_initialize `(uc  1 e 1 0 ]
 "157
 [v _gpio_pin_toggle_logic gpio_pin_toggle_logic `(uc  1 e 1 0 ]
-[s S39 . 1 `uc 1 port 1 0 :3:0 
+"9 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
+[v _ret ret `uc  1 e 1 0 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
-"10 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
-[v _led_1 led_1 `S39  1 e 1 0 ]
-"17
-[v _led_2 led_2 `S39  1 e 1 0 ]
-"24
-[v _led_3 led_3 `S39  1 e 1 0 ]
-"31
-[v _btn_1 btn_1 `S39  1 e 1 0 ]
-"38
-[v _ret ret `uc  1 e 1 0 ]
+"11
+[s S371 . 5 `[4]S24 1 segment_pins 4 0 `E2928 1 segment_type 1 4 ]
+[v _seg1 seg1 `S371  1 e 5 0 ]
 "52 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "189
@@ -132,65 +188,75 @@ GPIO_HIGH 1
 [v _lat_registers lat_registers `[5]*.39VEuc  1 e 10 0 ]
 "12
 [v _port_registers port_registers `[5]*.39VEuc  1 e 10 0 ]
-"42 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
+"29 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
 [v _main main `(i  1 e 2 0 ]
 {
-"71
+"31
+[v main@num num `i  1 a 2 12 ]
+"41
 } 0
-"157 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\MCAL_Layer/GPIO/hal_gpio.c
-[v _gpio_pin_toggle_logic gpio_pin_toggle_logic `(uc  1 e 1 0 ]
+"26 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/7_Segment/ecu_seven_segment.c
+[v _seven_segment_write_number seven_segment_write_number `(uc  1 e 1 0 ]
 {
-"158
-[v gpio_pin_toggle_logic@ret ret `uc  1 a 1 5 ]
-[s S39 . 1 `uc 1 port 1 0 :3:0 
+"27
+[v seven_segment_write_number@ret ret `uc  1 a 1 10 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
-"157
-[v gpio_pin_toggle_logic@_pin_config _pin_config `*.30S39  1 p 1 0 ]
-"168
+"26
+[s S371 . 5 `[4]S24 1 segment_pins 4 0 `E2928 1 segment_type 1 4 ]
+[v seven_segment_write_number@seg seg `*.30CS371  1 p 1 8 ]
+[v seven_segment_write_number@number number `uc  1 p 1 9 ]
+"40
 } 0
-"134
-[v _gpio_pin_initialize gpio_pin_initialize `(uc  1 e 1 0 ]
-{
-"135
-[v gpio_pin_initialize@ret ret `uc  1 a 1 10 ]
-[s S39 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"134
-[v gpio_pin_initialize@_pin_config _pin_config `*.30S39  1 p 1 8 ]
-"146
-} 0
-"78
+"78 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_write_logic gpio_pin_write_logic `(uc  1 e 1 0 ]
 {
 "79
 [v gpio_pin_write_logic@ret ret `uc  1 a 1 7 ]
-[s S39 . 1 `uc 1 port 1 0 :3:0 
+[s S24 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
 "78
-[v gpio_pin_write_logic@_pin_config _pin_config `*.30S39  1 p 1 0 ]
+[v gpio_pin_write_logic@_pin_config _pin_config `*.30S24  1 p 1 0 ]
 [v gpio_pin_write_logic@logic logic `E2811  1 p 1 1 ]
 "100
 } 0
-"22
+"42 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
+[v _app_init app_init `(v  1 e 1 0 ]
+{
+"47
+} 0
+"10 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/7_Segment/ecu_seven_segment.c
+[v _seven_segment_initialize seven_segment_initialize `(uc  1 e 1 0 ]
+{
+"11
+[v seven_segment_initialize@ret ret `uc  1 a 1 8 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"10
+[s S371 . 5 `[4]S24 1 segment_pins 4 0 `E2928 1 segment_type 1 4 ]
+[v seven_segment_initialize@seg seg `*.30CS371  1 p 1 7 ]
+"24
+} 0
+"22 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_direction_initialize gpio_pin_direction_initialize `(uc  1 e 1 0 ]
 {
 "24
 [v gpio_pin_direction_initialize@ret ret `uc  1 a 1 6 ]
-[s S39 . 1 `uc 1 port 1 0 :3:0 
+[s S24 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
 "22
-[v gpio_pin_direction_initialize@_pin_config _pin_config `*.30S39  1 p 1 0 ]
+[v gpio_pin_direction_initialize@_pin_config _pin_config `*.30S24  1 p 1 0 ]
 "43
 } 0

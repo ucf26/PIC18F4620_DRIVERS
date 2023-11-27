@@ -1,12 +1,19 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"67 ./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h
-[; ;./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h: 67: typedef struct{
+"67 ./ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/hal_gpio.h
 [s S272 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S272 . port pin direction logic ]
-"10 appplication.c
-[; ;appplication.c: 10: pin_config_t led_1 = {
+"11 appplication.c
+[; ;appplication.c: 11: segment_t seg1={
+[c E2928 0 1 .. ]
+[n E2928 . SEGMENT_COMMON_ANODE SEGMENT_COMMON_CATHODE  ]
+"29 ./ECU_Layer/7_Segment/ecu_seven_segment.h
+[; ;./ECU_Layer/7_Segment/ecu_seven_segment.h: 29: typedef struct{
+[s S277 `S272 -> 4 `i `E2928 1 ]
+[n S277 . segment_pins segment_type ]
+"11 appplication.c
+[; ;appplication.c: 11: segment_t seg1={
 [c E2829 0 1 2 3 4 .. ]
-[n E2829 . POTRA_INDEX PORTB_INDEX POTRC_INDEX PORTD_INDEX POTRE_INDEX  ]
+[n E2829 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
 [c E2819 0 1 2 3 4 5 6 7 .. ]
 [n E2819 . GPIO_PIN0 GPIO_PIN1 GPIO_PIN2 GPIO_PIN3 GPIO_PIN4 GPIO_PIN5 GPIO_PIN6 GPIO_PIN7  ]
 [c E2815 0 1 .. ]
@@ -14,15 +21,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 [c E2811 0 1 .. ]
 [n E2811 . GPIO_LOW GPIO_HIGH  ]
 [p mainexit ]
-"80 ./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h
-[; ;./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h: 80: Std_ReturnType gpio_pin_initialize(pin_config_t *_pin_config);
-[v _gpio_pin_initialize `(uc ~T0 @X0 0 ef1`*S272 ]
-"77
-[; ;./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h: 77: Std_ReturnType gpio_pin_write_logic(pin_config_t *_pin_config, logic_t logic);
-[v _gpio_pin_write_logic `(uc ~T0 @X0 0 ef2`*S272`E2811 ]
-"79
-[; ;./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h: 79: Std_ReturnType gpio_pin_toggle_logic(pin_config_t *_pin_config);
-[v _gpio_pin_toggle_logic `(uc ~T0 @X0 0 ef1`*S272 ]
+"21 ./application.h
+[; ;./application.h: 21: void app_init(void);
+[v _app_init `(v ~T0 @X0 0 ef ]
+"36 ./ECU_Layer/7_Segment/ecu_seven_segment.h
+[; ;./ECU_Layer/7_Segment/ecu_seven_segment.h: 36: Std_ReturnType seven_segment_write_number(const segment_t * seg, uint8 number);
+[v _seven_segment_write_number `(uc ~T0 @X0 0 ef2`*CS277`uc ]
+[v F2460 `(v ~T0 @X0 1 tf1`ul ]
+"12 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\builtins.h
+[v __delay `JF2460 ~T0 @X0 0 e ]
+[p i __delay ]
+"35 ./ECU_Layer/7_Segment/ecu_seven_segment.h
+[; ;./ECU_Layer/7_Segment/ecu_seven_segment.h: 35: Std_ReturnType seven_segment_initialize(const segment_t * seg);
+[v _seven_segment_initialize `(uc ~T0 @X0 0 ef1`*CS277 ]
 "54 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -434,10 +445,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"10 appplication.c
-[; ;appplication.c: 10: pin_config_t led_1 = {
-[v _led_1 `S272 ~T0 @X0 1 e ]
-[i _led_1
+"9 appplication.c
+[; ;appplication.c: 9: Std_ReturnType ret = (Std_ReturnType)0x00;
+[v _ret `uc ~T0 @X0 1 e ]
+[i _ret
+-> -> 0 `i `uc
+]
+"11
+[; ;appplication.c: 11: segment_t seg1={
+[v _seg1 `S277 ~T0 @X0 1 e ]
+[i _seg1
+:U ..
+:U ..
 :U ..
 :U ..
 -> . `E2829 2 `uc
@@ -445,114 +464,92 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> . `E2815 0 `uc
 -> . `E2811 0 `uc
 ..
-..
-]
-"17
-[; ;appplication.c: 17: pin_config_t led_2 = {
-[v _led_2 `S272 ~T0 @X0 1 e ]
-[i _led_2
-:U ..
 :U ..
 -> . `E2829 2 `uc
 -> . `E2819 1 `uc
 -> . `E2815 0 `uc
 -> . `E2811 0 `uc
 ..
-..
-]
-"24
-[; ;appplication.c: 24: pin_config_t led_3 = {
-[v _led_3 `S272 ~T0 @X0 1 e ]
-[i _led_3
-:U ..
 :U ..
 -> . `E2829 2 `uc
 -> . `E2819 2 `uc
 -> . `E2815 0 `uc
 -> . `E2811 0 `uc
 ..
-..
-]
-"31
-[; ;appplication.c: 31: pin_config_t btn_1 = {
-[v _btn_1 `S272 ~T0 @X0 1 e ]
-[i _btn_1
 :U ..
-:U ..
--> . `E2829 3 `uc
--> . `E2819 0 `uc
--> . `E2815 1 `uc
+-> . `E2829 2 `uc
+-> . `E2819 3 `uc
+-> . `E2815 0 `uc
 -> . `E2811 0 `uc
 ..
 ..
+..
+..
 ]
-"38
-[; ;appplication.c: 38: Std_ReturnType ret = (Std_ReturnType)0x00;
-[v _ret `uc ~T0 @X0 1 e ]
-[i _ret
--> -> 0 `i `uc
-]
-"39
-[; ;appplication.c: 39: deirection_t led_1_st;
-[v _led_1_st `E2815 ~T0 @X0 1 e ]
-"40
-[; ;appplication.c: 40: logic_t btn_1_st;
-[v _btn_1_st `E2811 ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"42
-[; ;appplication.c: 42: int main() {
+"29
+[; ;appplication.c: 29: int main() {
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"44
-[; ;appplication.c: 44:     ret = gpio_pin_initialize(&btn_1);
-[e = _ret ( _gpio_pin_initialize (1 &U _btn_1 ]
-"45
-[; ;appplication.c: 45:     ret = gpio_pin_initialize(&led_1);
-[e = _ret ( _gpio_pin_initialize (1 &U _led_1 ]
-"46
-[; ;appplication.c: 46:     ret = gpio_pin_initialize(&led_2);
-[e = _ret ( _gpio_pin_initialize (1 &U _led_2 ]
-"47
-[; ;appplication.c: 47:     ret = gpio_pin_initialize(&led_3);
-[e = _ret ( _gpio_pin_initialize (1 &U _led_3 ]
-"48
-[; ;appplication.c: 48:     ret = gpio_pin_write_logic(&led_2, GPIO_HIGH);
-[e = _ret ( _gpio_pin_write_logic (2 , &U _led_2 . `E2811 1 ]
-"51
-[; ;appplication.c: 51:     while(1){
-[e :U 275 ]
+"30
+[; ;appplication.c: 30:     app_init();
+[e ( _app_init ..  ]
+"31
+[; ;appplication.c: 31:     int num=1;
+[v _num `i ~T0 @X0 1 a ]
+[e = _num -> 1 `i ]
+"32
+[; ;appplication.c: 32:     while(1)
+[e :U 280 ]
+"33
+[; ;appplication.c: 33:     {
 {
-"52
-[; ;appplication.c: 52:         ret = gpio_pin_toggle_logic(&led_1);
-[e = _ret ( _gpio_pin_toggle_logic (1 &U _led_1 ]
-"54
-[; ;appplication.c: 54:         ret = gpio_pin_toggle_logic(&led_2);
-[e = _ret ( _gpio_pin_toggle_logic (1 &U _led_2 ]
-"69
-[; ;appplication.c: 69:     }
+"34
+[; ;appplication.c: 34:         ret = seven_segment_write_number(&seg1, num);
+[e = _ret ( _seven_segment_write_number (2 , -> &U _seg1 `*CS277 -> _num `uc ]
+"35
+[; ;appplication.c: 35:         _delay((unsigned long)((50)*(8000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `ul `d .4000.0 `ul ]
+"36
+[; ;appplication.c: 36:         num++;
+[e ++ _num -> 1 `i ]
+"38
+[; ;appplication.c: 38:         if(num==10)num=0;
+[e $ ! == _num -> 10 `i 282  ]
+[e = _num -> 0 `i ]
+[e :U 282 ]
+"39
+[; ;appplication.c: 39:     }
 }
-[e :U 274 ]
-[e $U 275  ]
-[e :U 276 ]
-"70
-[; ;appplication.c: 70:     return (0);
+[e :U 279 ]
+[e $U 280  ]
+[e :U 281 ]
+"40
+[; ;appplication.c: 40:     return (0);
 [e ) -> 0 `i ]
-[e $UE 273  ]
-"71
-[; ;appplication.c: 71: }
-[e :UE 273 ]
+[e $UE 278  ]
+"41
+[; ;appplication.c: 41: }
+[e :UE 278 ]
 }
-"73
-[; ;appplication.c: 73: void app_init()
+"42
+[; ;appplication.c: 42: void app_init(void)
 [v _app_init `(v ~T0 @X0 1 ef ]
-"74
-[; ;appplication.c: 74: {
+"43
+[; ;appplication.c: 43: {
 {
 [e :U _app_init ]
 [f ]
-"76
-[; ;appplication.c: 76: }
-[e :UE 277 ]
+"44
+[; ;appplication.c: 44:     Std_ReturnType ret = (Std_ReturnType)0x00;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"45
+[; ;appplication.c: 45:     ret = seven_segment_initialize(&seg1);
+[e = _ret ( _seven_segment_initialize (1 -> &U _seg1 `*CS277 ]
+"47
+[; ;appplication.c: 47: }
+[e :UE 283 ]
 }

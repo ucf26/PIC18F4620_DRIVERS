@@ -4666,6 +4666,7 @@ char *tempnam(const char *, const char *);
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned long uint32;
+
 typedef signed char sint8;
 typedef signed short sint16;
 typedef signed long sint32;
@@ -4701,11 +4702,11 @@ typedef enum{
 }pin_index_t;
 
 typedef enum{
-    POTRA_INDEX = 0,
+    PORTA_INDEX = 0,
     PORTB_INDEX,
-    POTRC_INDEX,
+    PORTC_INDEX,
     PORTD_INDEX,
-    POTRE_INDEX,
+    PORTE_INDEX,
 }port_index_t;
 
 typedef struct{
@@ -4895,7 +4896,7 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port){
     }
     else
     {
-        *lat_registers[port] = 0xFF ;
+        *lat_registers[port] ^= 0xFF ;
     }
     return ret;
 }

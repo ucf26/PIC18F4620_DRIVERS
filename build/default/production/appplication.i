@@ -4669,6 +4669,7 @@ char *tempnam(const char *, const char *);
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned long uint32;
+
 typedef signed char sint8;
 typedef signed short sint16;
 typedef signed long sint32;
@@ -4704,11 +4705,11 @@ typedef enum{
 }pin_index_t;
 
 typedef enum{
-    POTRA_INDEX = 0,
+    PORTA_INDEX = 0,
     PORTB_INDEX,
-    POTRC_INDEX,
+    PORTC_INDEX,
     PORTD_INDEX,
-    POTRE_INDEX,
+    PORTE_INDEX,
 }port_index_t;
 
 typedef struct{
@@ -4732,66 +4733,175 @@ Std_ReturnType gpio_port_write_logic(port_index_t port,uint8 logic);
 Std_ReturnType gpio_port_read_logic(port_index_t port,uint8 *logic);
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 # 13 "./ECU_Layer/LED/ecu_led.h" 2
+
+# 1 "./ECU_Layer/LED/ecu_led_cfg.h" 1
+# 14 "./ECU_Layer/LED/ecu_led.h" 2
+
+
+
+
+
+
+
+typedef enum{
+    LED_off = 0,
+    LED_ON
+}led_status_t;
+
+typedef struct{
+    uint8 port_name :4;
+    uint8 pin :3;
+    uint8 led_status :1;
+}led_t;
+
+
+
+
+Std_ReturnType led_initialize(const led_t *led);
+Std_ReturnType led_turn_on(const led_t *led);
+Std_ReturnType led_turn_off(const led_t *led);
+Std_ReturnType led_turn_toggle(const led_t *led);
 # 11 "./application.h" 2
 
+# 1 "./ECU_Layer/Button/ecu_button.h" 1
+# 13 "./ECU_Layer/Button/ecu_button.h"
+# 1 "./ECU_Layer/Button/ecu_button_cfg.h" 1
+# 11 "./ECU_Layer/Button/ecu_button_cfg.h"
+# 1 "./ECU_Layer/Button/ecu_button.h" 1
+# 11 "./ECU_Layer/Button/ecu_button_cfg.h" 2
+# 13 "./ECU_Layer/Button/ecu_button.h" 2
 
 
-void app_init();
+
+
+
+
+typedef enum{
+    BUTTON_PRESSED = 0,
+    BUTTON_RELEASED
+}button_state_t;
+
+typedef enum{
+    BUTTON_ACTIVE_HIGH = 0,
+    BUTTON_ACTIVE_LOW
+}button_active_t;
+
+typedef struct{
+    pin_config_t buton;
+    button_state_t button_state;
+    button_active_t button_connection;
+}button_t;
+# 46 "./ECU_Layer/Button/ecu_button.h"
+Std_ReturnType button_initialize(const button_t *btn);
+# 56 "./ECU_Layer/Button/ecu_button.h"
+Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state);
+# 12 "./application.h" 2
+
+# 1 "./ECU_Layer/Relay/ecu_relay.h" 1
+# 12 "./ECU_Layer/Relay/ecu_relay.h"
+# 1 "./ECU_Layer/Relay/ecu_relay_cfg.h" 1
+# 12 "./ECU_Layer/Relay/ecu_relay_cfg.h"
+# 1 "./ECU_Layer/Relay/ecu_relay.h" 1
+# 12 "./ECU_Layer/Relay/ecu_relay_cfg.h" 2
+# 12 "./ECU_Layer/Relay/ecu_relay.h" 2
+# 22 "./ECU_Layer/Relay/ecu_relay.h"
+typedef struct{
+    uint8 relay_port :4;
+    uint8 relay_pin :3;
+    uint8 relay_status :1;
+}relay_t;
+
+
+
+
+Std_ReturnType relay_initialize(const relay_t *_relay);
+Std_ReturnType relay_turn_on(const relay_t *_relay);
+Std_ReturnType relay_turn_off(const relay_t *_relay);
+# 13 "./application.h" 2
+
+# 1 "./ECU_Layer/DC_Motor/ecu_dc_motor.h" 1
+# 14 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+# 1 "./ECU_Layer/DC_Motor/ecu_dc_motor_cfg.h" 1
+# 14 "./ECU_Layer/DC_Motor/ecu_dc_motor.h" 2
+# 26 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
+typedef struct{
+    pin_config_t dc_motor_pin[2];
+}dc_motor_t;
+
+
+
+
+Std_ReturnType dc_motor_initialize(const dc_motor_t *_dc_motor);
+Std_ReturnType dc_motor_move_right(const dc_motor_t *_dc_motor);
+Std_ReturnType dc_motor_move_left(const dc_motor_t *_dc_motor);
+Std_ReturnType dc_motor_stop(const dc_motor_t *_dc_motor);
+# 14 "./application.h" 2
+
+# 1 "./ECU_Layer/7_Segment/ecu_seven_segment.h" 1
+# 13 "./ECU_Layer/7_Segment/ecu_seven_segment.h"
+# 1 "./ECU_Layer/7_Segment/ecu_seven_segment_cfg.h" 1
+# 13 "./ECU_Layer/7_Segment/ecu_seven_segment.h" 2
+# 24 "./ECU_Layer/7_Segment/ecu_seven_segment.h"
+typedef enum{
+    SEGMENT_COMMON_ANODE = 0,
+    SEGMENT_COMMON_CATHODE
+}segment_type_t;
+
+typedef struct{
+    pin_config_t segment_pins[4];
+    segment_type_t segment_type;
+}segment_t;
+
+
+Std_ReturnType seven_segment_initialize(const segment_t * seg);
+Std_ReturnType seven_segment_write_number(const segment_t * seg, uint8 number);
+# 15 "./application.h" 2
+
+
+
+
+
+
+void app_init(void);
 # 7 "appplication.c" 2
 
 
-
-pin_config_t led_1 = {
-    .port = POTRC_INDEX,
-    .pin = GPIO_PIN0 ,
-    .direction = GPIO_DIRECTION_OUTPUT,
-    .logic = GPIO_LOW
-};
-
-pin_config_t led_2 = {
-    .port = POTRC_INDEX,
-    .pin = GPIO_PIN1 ,
-    .direction = GPIO_DIRECTION_OUTPUT,
-    .logic = GPIO_LOW
-};
-
-pin_config_t led_3 = {
-    .port = POTRC_INDEX,
-    .pin = GPIO_PIN2 ,
-    .direction = GPIO_DIRECTION_OUTPUT,
-    .logic = GPIO_LOW
-};
-
-pin_config_t btn_1 = {
-    .port = PORTD_INDEX,
-    .pin = GPIO_PIN0 ,
-    .direction = GPIO_DIRECTION_INPUT,
-    .logic = GPIO_LOW
-};
-
 Std_ReturnType ret = (Std_ReturnType)0x00;
-deirection_t led_1_st;
-logic_t btn_1_st;
 
+segment_t seg1={
+    .segment_pins[0].port = PORTC_INDEX,
+    .segment_pins[0].pin = GPIO_PIN0,
+    .segment_pins[0].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[0].logic = GPIO_LOW,
+    .segment_pins[1].port = PORTC_INDEX,
+    .segment_pins[1].pin = GPIO_PIN1,
+    .segment_pins[1].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[1].logic = GPIO_LOW,
+    .segment_pins[2].port = PORTC_INDEX,
+    .segment_pins[2].pin = GPIO_PIN2,
+    .segment_pins[2].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[2].logic = GPIO_LOW,
+    .segment_pins[3].port = PORTC_INDEX,
+    .segment_pins[3].pin = GPIO_PIN3,
+    .segment_pins[3].direction = GPIO_DIRECTION_OUTPUT,
+    .segment_pins[3].logic = GPIO_LOW,
+};
 int main() {
+    app_init();
+    int num=1;
+    while(1)
+    {
+        ret = seven_segment_write_number(&seg1, num);
+        _delay((unsigned long)((50)*(8000000UL/4000.0)));
+        num++;
 
-    ret = gpio_pin_initialize(&btn_1);
-    ret = gpio_pin_initialize(&led_1);
-    ret = gpio_pin_initialize(&led_2);
-    ret = gpio_pin_initialize(&led_3);
-    ret = gpio_pin_write_logic(&led_2, GPIO_HIGH);
-
-
-    while(1){
-        ret = gpio_pin_toggle_logic(&led_1);
-
-        ret = gpio_pin_toggle_logic(&led_2);
-# 69 "appplication.c"
+        if(num==10)num=0;
     }
     return (0);
 }
-
-void app_init()
+void app_init(void)
 {
+    Std_ReturnType ret = (Std_ReturnType)0x00;
+    ret = seven_segment_initialize(&seg1);
 
 }

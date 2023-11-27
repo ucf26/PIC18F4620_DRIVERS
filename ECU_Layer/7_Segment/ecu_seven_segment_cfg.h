@@ -1,12 +1,12 @@
 /* 
- * File:   ecu_dc_motor_cfg.h
+ * File:   ecu_seven_segment_cfg.h
  * Author: Yousef Mahmoud
  *
- * Created on November 20, 2023, 3:42 PM
+ * Created on November 27, 2023, 8:22 AM
  */
 
-#ifndef ECU_DC_MOTOR_CFG_H
-#define	ECU_DC_MOTOR_CFG_H
+#ifndef ECU_SEVEN_SEGMENT_CFG_H
+#define	ECU_SEVEN_SEGMENT_CFG_H
 
 /* Section : Includes */
 
@@ -18,6 +18,5 @@
 
 /* Section : Functions Declarations */
 
-
-#endif	/* ECU_DC_MOTOR_CFG_H */
+#endif	/* ECU_SEVEN_SEGMENT_CFG_H */
 

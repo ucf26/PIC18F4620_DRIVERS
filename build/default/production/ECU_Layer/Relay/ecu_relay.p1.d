@@ -1,4 +1,4 @@
-build/default/debug/ECU_Layer/Relay/ecu_relay.p1:  \
+build/default/production/ECU_Layer/Relay/ecu_relay.p1:  \
 ECU_Layer/Relay/ecu_relay.c  \
 ECU_Layer/Relay/ecu_relay.h  \
 ECU_Layer/Relay/ecu_relay_cfg.h  \

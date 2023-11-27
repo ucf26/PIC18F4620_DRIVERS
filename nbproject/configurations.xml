@@ -5,6 +5,10 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="ECU_Layer" displayName="ECU_Layer" projectFiles="true">
+        <logicalFolder name="7_Segment" displayName="7_Segment" projectFiles="true">
+          <itemPath>ECU_Layer/7_Segment/ecu_seven_segment.h</itemPath>
+          <itemPath>ECU_Layer/7_Segment/ecu_seven_segment_cfg.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="Button" displayName="Button" projectFiles="true">
           <itemPath>ECU_Layer/Button/ecu_button.h</itemPath>
           <itemPath>ECU_Layer/Button/ecu_button_cfg.h</itemPath>
@@ -42,6 +46,9 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="ECU_Layer" displayName="ECU_Layer" projectFiles="true">
+        <logicalFolder name="7_Segment" displayName="7_Segment" projectFiles="true">
+          <itemPath>ECU_Layer/7_Segment/ecu_seven_segment.c</itemPath>
+        </logicalFolder>
         <logicalFolder name="Button" displayName="Button" projectFiles="true">
           <itemPath>ECU_Layer/Button/ecu_button.c</itemPath>
         </logicalFolder>

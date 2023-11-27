@@ -1,4 +1,4 @@
-# 1 "ECU_Layer/LED/ecu_led.c"
+# 1 "ECU_Layer/7_Segment/ecu_seven_segment.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,18 +6,17 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ECU_Layer/LED/ecu_led.c" 2
+# 1 "ECU_Layer/7_Segment/ecu_seven_segment.c" 2
 
 
 
 
 
 
-
-# 1 "ECU_Layer/LED/../LED/ecu_led.h" 1
-# 13 "ECU_Layer/LED/../LED/ecu_led.h"
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 1
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/7_Segment/ecu_seven_segment.h" 1
+# 12 "ECU_Layer/7_Segment/ecu_seven_segment.h"
+# 1 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/hal_gpio.h" 1
+# 12 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/hal_gpio.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 1 3
 # 44 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 3
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\__at.h" 1 3
@@ -4230,12 +4229,12 @@ extern volatile __bit nWR __attribute__((address(0x7C21)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 12 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h"
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 1
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h"
+# 1 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
+# 12 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/../mcal_std_types.h"
+# 1 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/../compiler.h" 1
+# 12 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/../compiler.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4501,11 +4500,11 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 2
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 12 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/../compiler.h" 2
+# 12 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h" 1
-# 14 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h"
+# 1 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/../std_libraries.h" 1
+# 14 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/../std_libraries.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -4658,8 +4657,8 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 14 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h" 2
-# 13 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 14 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/../std_libraries.h" 2
+# 13 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
 
 
@@ -4674,14 +4673,14 @@ typedef signed short sint16;
 typedef signed long sint32;
 
 typedef uint8 Std_ReturnType;
-# 13 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 13 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../device_config.h" 1
-# 14 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 1 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/../device_config.h" 1
+# 14 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
-# 15 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 38 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
+# 15 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 38 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef enum{
     GPIO_LOW = 0,
     GPIO_HIGH
@@ -4731,97 +4730,56 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8 *directio
 Std_ReturnType gpio_port_write_logic(port_index_t port,uint8 logic);
 Std_ReturnType gpio_port_read_logic(port_index_t port,uint8 *logic);
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 13 "ECU_Layer/LED/../LED/ecu_led.h" 2
+# 12 "ECU_Layer/7_Segment/ecu_seven_segment.h" 2
 
-# 1 "ECU_Layer/LED/ecu_led_cfg.h" 1
-# 14 "ECU_Layer/LED/../LED/ecu_led.h" 2
-
-
-
-
-
-
-
+# 1 "ECU_Layer/7_Segment/ecu_seven_segment_cfg.h" 1
+# 13 "ECU_Layer/7_Segment/ecu_seven_segment.h" 2
+# 24 "ECU_Layer/7_Segment/ecu_seven_segment.h"
 typedef enum{
-    LED_off = 0,
-    LED_ON
-}led_status_t;
+    SEGMENT_COMMON_ANODE = 0,
+    SEGMENT_COMMON_CATHODE
+}segment_type_t;
 
 typedef struct{
-    uint8 port_name :4;
-    uint8 pin :3;
-    uint8 led_status :1;
-}led_t;
+    pin_config_t segment_pins[4];
+    segment_type_t segment_type;
+}segment_t;
+
+
+Std_ReturnType seven_segment_initialize(const segment_t * seg);
+Std_ReturnType seven_segment_write_number(const segment_t * seg, uint8 number);
+# 7 "ECU_Layer/7_Segment/ecu_seven_segment.c" 2
 
 
 
-
-Std_ReturnType led_initialize(const led_t *led);
-Std_ReturnType led_turn_on(const led_t *led);
-Std_ReturnType led_turn_off(const led_t *led);
-Std_ReturnType led_turn_toggle(const led_t *led);
-# 8 "ECU_Layer/LED/ecu_led.c" 2
-# 17 "ECU_Layer/LED/ecu_led.c"
-Std_ReturnType led_initialize(const led_t *led){
+Std_ReturnType seven_segment_initialize(const segment_t * seg){
     Std_ReturnType ret = (Std_ReturnType)0x01 ;
-    if(((void*)0) == led)
+    if(((void*)0) == seg)
     {
         ret = (Std_ReturnType)0x00;
     }
     else
     {
-        pin_config_t pin_obj = { .port = led->port_name, .pin = led->pin ,
-                                 .direction = GPIO_DIRECTION_OUTPUT , .logic = led->led_status};
-
-        gpio_pin_initialize(&pin_obj);
+        ret = gpio_pin_direction_initialize(&(seg->segment_pins[0]));
+        ret = gpio_pin_direction_initialize(&(seg->segment_pins[1]));
+        ret = gpio_pin_direction_initialize(&(seg->segment_pins[2]));
+        ret = gpio_pin_direction_initialize(&(seg->segment_pins[3]));
     }
     return ret;
 }
-# 40 "ECU_Layer/LED/ecu_led.c"
-Std_ReturnType led_turn_on(const led_t *led){
+
+Std_ReturnType seven_segment_write_number(const segment_t * seg, uint8 number){
     Std_ReturnType ret = (Std_ReturnType)0x01 ;
-    if(((void*)0) == led)
+    if((((void*)0) == seg) || (number > 9) || (number < 0))
     {
         ret = (Std_ReturnType)0x00;
     }
     else
     {
-        pin_config_t pin_obj = { .port = led->port_name, .pin = led->pin ,
-                                 .direction = GPIO_DIRECTION_OUTPUT , .logic = led->led_status};
-
-        gpio_pin_write_logic(&pin_obj, GPIO_HIGH);
-    }
-    return ret;
-}
-# 63 "ECU_Layer/LED/ecu_led.c"
-Std_ReturnType led_turn_off(const led_t *led){
-    Std_ReturnType ret = (Std_ReturnType)0x01 ;
-    if(((void*)0) == led)
-    {
-        ret = (Std_ReturnType)0x00;
-    }
-    else
-    {
-        pin_config_t pin_obj = { .port = led->port_name, .pin = led->pin ,
-                                 .direction = GPIO_DIRECTION_OUTPUT , .logic = led->led_status};
-
-        gpio_pin_write_logic(&pin_obj, GPIO_LOW);
-    }
-    return ret;
-}
-# 86 "ECU_Layer/LED/ecu_led.c"
-Std_ReturnType led_turn_toggle(const led_t *led){
-    Std_ReturnType ret = (Std_ReturnType)0x01 ;
-    if(((void*)0) == led)
-    {
-        ret = (Std_ReturnType)0x00;
-    }
-    else
-    {
-        pin_config_t pin_obj = { .port = led->port_name, .pin = led->pin ,
-                                 .direction = GPIO_DIRECTION_OUTPUT , .logic = led->led_status};
-
-        gpio_pin_toggle_logic(&pin_obj);
+        ret = gpio_pin_write_logic(&(seg->segment_pins[0]), (number) & 1);
+        ret = gpio_pin_write_logic(&(seg->segment_pins[1]), (number>>1) & 1);
+        ret = gpio_pin_write_logic(&(seg->segment_pins[2]), (number>>2) & 1);
+        ret = gpio_pin_write_logic(&(seg->segment_pins[3]), (number>>3) & 1);
     }
     return ret;
 }
