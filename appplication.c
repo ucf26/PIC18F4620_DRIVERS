@@ -10,12 +10,16 @@
 Std_ReturnType ret = E_NOT_OK;
 
 
-int main() {
-    app_init();
 
+
+uint8 val;
+
+int main() {
+    ecu_layer_initialize();
+    
     while(1)
     {
-        
+        ret = keypad_get_value(&keypad1, &val);
     }
     return (EXIT_SUCCESS);
 }

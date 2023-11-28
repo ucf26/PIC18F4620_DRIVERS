@@ -7,11 +7,11 @@
 
 #include "ecu_keypad.h"
 
-static const btn_values [KEYPAD_ROWS][KEYPAD_COLS] ={
+static const uint8 btn_values[KEYPAD_ROWS][KEYPAD_COLS] ={
                                                         {'7', '8', '9', '/'},
                                                         {'4', '5', '6', '*'},
                                                         {'1', '2', '3', '-'},
-                                                        {'#', '8', '=', '+'},
+                                                        {'#', '8', '=', '+'}
                                                     };
 
 
@@ -53,5 +53,33 @@ Std_ReturnType keypad_initialize(const keypad_t *kaypad_obj){
  *              (E_NOT_OK) : the function is not done successfully
  */
 Std_ReturnType keypad_get_value(const keypad_t *kaypad_obj, uint8 *value){
-    
+    Std_ReturnType ret = E_OK ;
+    if(NULL == kaypad_obj || NULL == value)
+    {
+        ret = E_NOT_OK;
+    }
+    else 
+    {
+        uint8 current_colmn = ZERO_INIT, current_row = ZERO_INIT;
+        uint8 l_row_cnt = ZERO_INIT, current_col_logic = ZERO_INIT;
+        
+        for(current_row = ZERO_INIT; current_row < KEYPAD_ROWS; current_row++) 
+        {
+            for(l_row_cnt = ZERO_INIT; l_row_cnt < KEYPAD_ROWS; l_row_cnt++) // off all the rows
+            {
+                ret = gpio_pin_write_logic(&(kaypad_obj->keypad_row_pins[l_row_cnt]), GPIO_LOW);
+            }
+            ret = gpio_pin_write_logic(&(kaypad_obj->keypad_row_pins[current_row]), GPIO_HIGH); // activate the current row
+            for(current_colmn = ZERO_INIT; current_colmn < KEYPAD_COLS; current_colmn++) // check the columns
+            {
+                ret = gpio_pin_read_logic(&(kaypad_obj->keypad_column_pins[current_colmn]), &current_col_logic);
+                if(GPIO_HIGH == current_col_logic)
+                {
+                    *value = btn_values[current_row][current_colmn];
+                }
+            }
+        }
+    }
+    return ret;
 }
+

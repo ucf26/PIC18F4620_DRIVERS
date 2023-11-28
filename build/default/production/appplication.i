@@ -14,7 +14,9 @@
 
 
 # 1 "./application.h" 1
-# 11 "./application.h"
+# 14 "./application.h"
+# 1 "./ECU_Layer/ecu_layer_init.h" 1
+# 14 "./ECU_Layer/ecu_layer_init.h"
 # 1 "./ECU_Layer/LED/ecu_led.h" 1
 # 13 "./ECU_Layer/LED/ecu_led.h"
 # 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 1
@@ -4761,7 +4763,7 @@ Std_ReturnType led_initialize(const led_t *led);
 Std_ReturnType led_turn_on(const led_t *led);
 Std_ReturnType led_turn_off(const led_t *led);
 Std_ReturnType led_turn_toggle(const led_t *led);
-# 11 "./application.h" 2
+# 14 "./ECU_Layer/ecu_layer_init.h" 2
 
 # 1 "./ECU_Layer/Button/ecu_button.h" 1
 # 13 "./ECU_Layer/Button/ecu_button.h"
@@ -4795,7 +4797,7 @@ typedef struct{
 Std_ReturnType button_initialize(const button_t *btn);
 # 56 "./ECU_Layer/Button/ecu_button.h"
 Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state);
-# 12 "./application.h" 2
+# 15 "./ECU_Layer/ecu_layer_init.h" 2
 
 # 1 "./ECU_Layer/Relay/ecu_relay.h" 1
 # 12 "./ECU_Layer/Relay/ecu_relay.h"
@@ -4817,7 +4819,7 @@ typedef struct{
 Std_ReturnType relay_initialize(const relay_t *_relay);
 Std_ReturnType relay_turn_on(const relay_t *_relay);
 Std_ReturnType relay_turn_off(const relay_t *_relay);
-# 13 "./application.h" 2
+# 16 "./ECU_Layer/ecu_layer_init.h" 2
 
 # 1 "./ECU_Layer/DC_Motor/ecu_dc_motor.h" 1
 # 14 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
@@ -4835,12 +4837,12 @@ Std_ReturnType dc_motor_initialize(const dc_motor_t *_dc_motor);
 Std_ReturnType dc_motor_move_right(const dc_motor_t *_dc_motor);
 Std_ReturnType dc_motor_move_left(const dc_motor_t *_dc_motor);
 Std_ReturnType dc_motor_stop(const dc_motor_t *_dc_motor);
-# 14 "./application.h" 2
+# 17 "./ECU_Layer/ecu_layer_init.h" 2
 
 # 1 "./ECU_Layer/7_Segment/ecu_seven_segment.h" 1
-# 13 "./ECU_Layer/7_Segment/ecu_seven_segment.h"
+# 12 "./ECU_Layer/7_Segment/ecu_seven_segment.h"
 # 1 "./ECU_Layer/7_Segment/ecu_seven_segment_cfg.h" 1
-# 13 "./ECU_Layer/7_Segment/ecu_seven_segment.h" 2
+# 12 "./ECU_Layer/7_Segment/ecu_seven_segment.h" 2
 # 24 "./ECU_Layer/7_Segment/ecu_seven_segment.h"
 typedef enum{
     SEGMENT_COMMON_ANODE = 0,
@@ -4851,57 +4853,52 @@ typedef struct{
     pin_config_t segment_pins[4];
     segment_type_t segment_type;
 }segment_t;
-
-
+# 43 "./ECU_Layer/7_Segment/ecu_seven_segment.h"
 Std_ReturnType seven_segment_initialize(const segment_t * seg);
+# 53 "./ECU_Layer/7_Segment/ecu_seven_segment.h"
 Std_ReturnType seven_segment_write_number(const segment_t * seg, uint8 number);
-# 15 "./application.h" 2
+# 18 "./ECU_Layer/ecu_layer_init.h" 2
+
+# 1 "./ECU_Layer/Keypad/ecu_keypad.h" 1
+# 12 "./ECU_Layer/Keypad/ecu_keypad.h"
+# 1 "./ECU_Layer/Keypad/ecu_keypad_cfg.h" 1
+# 12 "./ECU_Layer/Keypad/ecu_keypad.h" 2
+# 21 "./ECU_Layer/Keypad/ecu_keypad.h"
+typedef struct{
+    pin_config_t keypad_row_pins[4];
+    pin_config_t keypad_column_pins[4];
+}keypad_t;
 
 
 
 
 
+Std_ReturnType keypad_initialize(const keypad_t *kaypad_obj);
+Std_ReturnType keypad_get_value(const keypad_t *kaypad_obj, uint8 *value);
+# 19 "./ECU_Layer/ecu_layer_init.h" 2
+# 31 "./ECU_Layer/ecu_layer_init.h"
+void ecu_layer_initialize(void);
+# 14 "./application.h" 2
 
-void app_init(void);
+
+extern keypad_t keypad1;
 # 7 "appplication.c" 2
+
 
 
 Std_ReturnType ret = (Std_ReturnType)0x00;
 
-segment_t seg1={
-    .segment_pins[0].port = PORTC_INDEX,
-    .segment_pins[0].pin = GPIO_PIN0,
-    .segment_pins[0].direction = GPIO_DIRECTION_OUTPUT,
-    .segment_pins[0].logic = GPIO_LOW,
-    .segment_pins[1].port = PORTC_INDEX,
-    .segment_pins[1].pin = GPIO_PIN1,
-    .segment_pins[1].direction = GPIO_DIRECTION_OUTPUT,
-    .segment_pins[1].logic = GPIO_LOW,
-    .segment_pins[2].port = PORTC_INDEX,
-    .segment_pins[2].pin = GPIO_PIN2,
-    .segment_pins[2].direction = GPIO_DIRECTION_OUTPUT,
-    .segment_pins[2].logic = GPIO_LOW,
-    .segment_pins[3].port = PORTC_INDEX,
-    .segment_pins[3].pin = GPIO_PIN3,
-    .segment_pins[3].direction = GPIO_DIRECTION_OUTPUT,
-    .segment_pins[3].logic = GPIO_LOW,
-};
+
+
+
+uint8 val;
+
 int main() {
-    app_init();
-    int num=1;
+    ecu_layer_initialize();
+
     while(1)
     {
-        ret = seven_segment_write_number(&seg1, num);
-        _delay((unsigned long)((50)*(8000000UL/4000.0)));
-        num++;
-
-        if(num==10)num=0;
+        ret = keypad_get_value(&keypad1, &val);
     }
     return (0);
-}
-void app_init(void)
-{
-    Std_ReturnType ret = (Std_ReturnType)0x00;
-    ret = seven_segment_initialize(&seg1);
-
 }

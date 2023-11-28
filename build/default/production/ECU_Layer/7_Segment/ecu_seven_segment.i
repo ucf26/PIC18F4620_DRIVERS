@@ -15,6 +15,9 @@
 
 # 1 "ECU_Layer/7_Segment/ecu_seven_segment.h" 1
 # 12 "ECU_Layer/7_Segment/ecu_seven_segment.h"
+# 1 "ECU_Layer/7_Segment/ecu_seven_segment_cfg.h" 1
+# 12 "ECU_Layer/7_Segment/ecu_seven_segment.h" 2
+
 # 1 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/hal_gpio.h" 1
 # 12 "ECU_Layer/7_Segment/../../MCAL_Layer/GPIO/hal_gpio.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 1 3
@@ -4730,9 +4733,6 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8 *directio
 Std_ReturnType gpio_port_write_logic(port_index_t port,uint8 logic);
 Std_ReturnType gpio_port_read_logic(port_index_t port,uint8 *logic);
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 12 "ECU_Layer/7_Segment/ecu_seven_segment.h" 2
-
-# 1 "ECU_Layer/7_Segment/ecu_seven_segment_cfg.h" 1
 # 13 "ECU_Layer/7_Segment/ecu_seven_segment.h" 2
 # 24 "ECU_Layer/7_Segment/ecu_seven_segment.h"
 typedef enum{
@@ -4744,9 +4744,9 @@ typedef struct{
     pin_config_t segment_pins[4];
     segment_type_t segment_type;
 }segment_t;
-
-
+# 43 "ECU_Layer/7_Segment/ecu_seven_segment.h"
 Std_ReturnType seven_segment_initialize(const segment_t * seg);
+# 53 "ECU_Layer/7_Segment/ecu_seven_segment.h"
 Std_ReturnType seven_segment_write_number(const segment_t * seg, uint8 number);
 # 7 "ECU_Layer/7_Segment/ecu_seven_segment.c" 2
 
