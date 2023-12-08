@@ -4876,12 +4876,49 @@ Std_ReturnType keypad_initialize(const keypad_t *kaypad_obj);
 Std_ReturnType keypad_get_value(const keypad_t *kaypad_obj, uint8 *value);
 # 19 "ECU_Layer/ecu_layer_init.h" 2
 # 31 "ECU_Layer/ecu_layer_init.h"
-void app_init(void);
+void ecu_layer_initialize(void);
 # 8 "ECU_Layer/ecu_layer_init.c" 2
 
 
 
-void app_init(void)
+keypad_t keypad1 ={
+    .keypad_row_pins[0].port = PORTC_INDEX,
+    .keypad_row_pins[0].pin = GPIO_PIN0,
+    .keypad_row_pins[0].direction = GPIO_DIRECTION_OUTPUT,
+    .keypad_row_pins[0].logic = GPIO_LOW,
+    .keypad_row_pins[1].port = PORTC_INDEX,
+    .keypad_row_pins[1].pin = GPIO_PIN1,
+    .keypad_row_pins[1].direction = GPIO_DIRECTION_OUTPUT,
+    .keypad_row_pins[1].logic = GPIO_LOW,
+    .keypad_row_pins[2].port = PORTC_INDEX,
+    .keypad_row_pins[2].pin = GPIO_PIN2,
+    .keypad_row_pins[2].direction = GPIO_DIRECTION_OUTPUT,
+    .keypad_row_pins[2].logic = GPIO_LOW,
+    .keypad_row_pins[3].port = PORTC_INDEX,
+    .keypad_row_pins[3].pin = GPIO_PIN3,
+    .keypad_row_pins[3].direction = GPIO_DIRECTION_OUTPUT,
+    .keypad_row_pins[3].logic = GPIO_LOW,
+    .keypad_column_pins[0].port = PORTC_INDEX,
+    .keypad_column_pins[0].pin = GPIO_PIN4,
+    .keypad_column_pins[0].direction = GPIO_DIRECTION_INPUT,
+    .keypad_column_pins[0].logic = GPIO_LOW,
+    .keypad_column_pins[1].port = PORTC_INDEX,
+    .keypad_column_pins[1].pin = GPIO_PIN5,
+    .keypad_column_pins[1].direction = GPIO_DIRECTION_INPUT,
+    .keypad_column_pins[1].logic = GPIO_LOW,
+    .keypad_column_pins[2].port = PORTC_INDEX,
+    .keypad_column_pins[2].pin = GPIO_PIN6,
+    .keypad_column_pins[2].direction = GPIO_DIRECTION_INPUT,
+    .keypad_column_pins[2].logic = GPIO_LOW,
+    .keypad_column_pins[3].port = PORTC_INDEX,
+    .keypad_column_pins[3].pin = GPIO_PIN7,
+    .keypad_column_pins[3].direction = GPIO_DIRECTION_INPUT,
+    .keypad_column_pins[3].logic = GPIO_LOW,
+};
+
+
+void ecu_layer_initialize(void)
 {
     Std_ReturnType ret = (Std_ReturnType)0x00;
+    ret = keypad_initialize(&keypad1);
 }
