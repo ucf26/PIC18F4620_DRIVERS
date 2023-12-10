@@ -23,11 +23,15 @@
 #define _LCD_CURSOR_ON_BLINK_OFF        0X0E
 #define _LCD_DIPLAY_SHIFT_RIGHT         0X1C
 #define _LCD_DIPLAY_SHIFT_LEFT          0X18
-#define _LCD_4BIR_MODE_2_LINE           0X28
-#define _LCD_8BIR_MODE_2_LINE           0X38
+#define _LCD_4BIT_MODE_2_LINE           0X28
+#define _LCD_8BIT_MODE_2_LINE           0X38 
 #define _LCD_CGRAM_START                0X40
 #define _LCD_DDRAM_START                0X80
 
+#define ROW1    1
+#define ROW2    2
+#define ROW3    3
+#define ROW4    4
 
 /* Section : Macro Functions Declarations */
 typedef struct{

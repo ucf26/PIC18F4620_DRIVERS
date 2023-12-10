@@ -1,8 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <WORKSPACE>
- <FRAME activewindow="0">
-  <PLACEMENT>2c0000000200000003000000ffffffffffffffffffffffffffffffff48000000ca0000000c050000fc030000</PLACEMENT>
+ <FRAME activewindow="1">
+  <PLACEMENT>2c00000002000000030000000083ffff0083ffffffffffffffffffff48000000ca0000000c050000fc030000</PLACEMENT>
   <WINDOW type="default" module="ISIS"/>
+  <WINDOW type="default" module="VSMDEBUG"/>
  </FRAME>
  <MODULE name="VSMDEBUG">
   <PWI>
@@ -15,7 +16,7 @@
      <ITEM name="Version">100</ITEM>
     </PROPERTIES>
    </POPUP>
-   <POPUP w="938" x="418" flags="00000032" y="478" h="542" pid="1" iid="-1">
+   <POPUP w="938" x="300" flags="00000032" y="478" h="542" pid="1" iid="-1">
     <PROPERTIES>
      <ITEM name="Address Column Width">225</ITEM>
      <ITEM name="AutoResize">No</ITEM>
@@ -26,6 +27,7 @@
      <ITEM name="Item 3">"LATC","0x0F8B",00000001,0000000C,3979,1,0,00000002,0,00000000,00000000</ITEM>
      <ITEM name="Item 4">"LATD","0x0F8C",00000001,0000000C,3980,1,0,00000002,0,00000000,00000000</ITEM>
      <ITEM name="Item 5">"TRISC","0x0F94",00000001,0000000C,3988,1,0,00000002,0,00000000,00000000</ITEM>
+     <ITEM name="Item 6">"TRISB","0x0F93",00000001,0000000C,3987,1,0,00000002,0,00000000,00000000</ITEM>
      <ITEM name="Name Column Width">176</ITEM>
      <ITEM name="ShowAddresses">Yes</ITEM>
      <ITEM name="ShowPreviousValues">No</ITEM>
@@ -35,7 +37,7 @@
      <ITEM name="Value Column Width">189</ITEM>
      <ITEM name="Version">100</ITEM>
      <ITEM name="Watch Expression Column Width">85</ITEM>
-     <ITEM name="nItems">6</ITEM>
+     <ITEM name="nItems">7</ITEM>
     </PROPERTIES>
    </POPUP>
    <POPUP w="600" x="88" flags="0000002a" y="195" h="400" pid="1" iid="1">

@@ -13,6 +13,9 @@ Std_ReturnType ret = E_NOT_OK;
 int main() {
     
     app_init();
+    ret = lcd_8bit_send_char_data(&lcd_2, 'Z');
+    ret = lcd_8bit_send_char_data(&lcd_2, 'Z');
+    ret = lcd_8bit_send_char_data(&lcd_2, 'Z');
     while(1)
     {
         

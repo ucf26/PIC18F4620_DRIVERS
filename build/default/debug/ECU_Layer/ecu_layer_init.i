@@ -4880,7 +4880,7 @@ Std_ReturnType keypad_get_value(const keypad_t *kaypad_obj, uint8 *value);
 # 12 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 # 1 "ECU_Layer/Chr_LCD/ecu_chr_lcd_cfg.h" 1
 # 12 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h" 2
-# 33 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 37 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 typedef struct{
     pin_config_t lcd_rs;
     pin_config_t lcd_en;
@@ -4916,7 +4916,16 @@ Std_ReturnType lcd_8bit_send_string_pos(const lcd_8bit_t *lcd, uint8 row, uint8 
 Std_ReturnType lcd_8bit_send_custom_char(const lcd_8bit_t *lcd, const uint8 _chr[]
                                         , uint8 row, uint8 column, uint8 mem_pos);
 # 20 "ECU_Layer/ecu_layer_init.h" 2
-# 29 "ECU_Layer/ecu_layer_init.h"
+
+
+
+
+
+
+
+extern lcd_4bit_t lcd_1;
+extern lcd_8bit_t lcd_2;
+
 void ecu_layer_initialize(void);
 # 8 "ECU_Layer/ecu_layer_init.c" 2
 
