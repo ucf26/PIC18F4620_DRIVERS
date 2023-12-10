@@ -1,4 +1,4 @@
-# 1 "ECU_Layer/LED/ecu_led.c"
+# 1 "ECU_Layer/Chr_LCD/ecu_chr_lcd.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ECU_Layer/LED/ecu_led.c" 2
+# 1 "ECU_Layer/Chr_LCD/ecu_chr_lcd.c" 2
 
 
 
@@ -14,10 +14,13 @@
 
 
 
-# 1 "ECU_Layer/LED/../LED/ecu_led.h" 1
-# 13 "ECU_Layer/LED/../LED/ecu_led.h"
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 1
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h" 1
+# 12 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 1 "ECU_Layer/Chr_LCD/ecu_chr_lcd_cfg.h" 1
+# 12 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h" 2
+
+# 1 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h" 1
+# 12 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 1 3
 # 44 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\proc\\pic18f4620.h" 3
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\__at.h" 1 3
@@ -4230,12 +4233,12 @@ extern volatile __bit nWR __attribute__((address(0x7C21)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 12 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h"
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 1
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h"
+# 1 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
+# 12 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../mcal_std_types.h"
+# 1 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../compiler.h" 1
+# 12 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../compiler.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4501,11 +4504,11 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../compiler.h" 2
-# 12 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 12 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../compiler.h" 2
+# 12 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h" 1
-# 14 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h"
+# 1 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../std_libraries.h" 1
+# 14 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../std_libraries.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\stdio.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -4658,8 +4661,8 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 14 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h" 2
-# 13 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 14 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../std_libraries.h" 2
+# 13 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
 
 
@@ -4674,14 +4677,14 @@ typedef signed short sint16;
 typedef signed long sint32;
 
 typedef uint8 Std_ReturnType;
-# 13 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 13 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/../device_config.h" 1
-# 14 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 1 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/../device_config.h" 1
+# 14 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h" 2
 
-# 1 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
-# 15 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 38 "ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
+# 15 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 38 "ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h"
 typedef enum{
     GPIO_LOW = 0,
     GPIO_HIGH
@@ -4731,97 +4734,177 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8 *directio
 Std_ReturnType gpio_port_write_logic(port_index_t port,uint8 logic);
 Std_ReturnType gpio_port_read_logic(port_index_t port,uint8 *logic);
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 13 "ECU_Layer/LED/../LED/ecu_led.h" 2
-
-# 1 "ECU_Layer/LED/ecu_led_cfg.h" 1
-# 14 "ECU_Layer/LED/../LED/ecu_led.h" 2
-
-
-
-
-
-
-
-typedef enum{
-    LED_off = 0,
-    LED_ON
-}led_status_t;
+# 13 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h" 2
+# 33 "ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+typedef struct{
+    pin_config_t lcd_rs;
+    pin_config_t lcd_en;
+    pin_config_t lcd_data[4];
+}lcd_4bit_t;
 
 typedef struct{
-    uint8 port_name :4;
-    uint8 pin :3;
-    uint8 led_status :1;
-}led_t;
+    pin_config_t lcd_rs;
+    pin_config_t lcd_en;
+    pin_config_t lcd_data[8];
+}lcd_8bit_t;
 
 
 
 
-Std_ReturnType led_initialize(const led_t *led);
-Std_ReturnType led_turn_on(const led_t *led);
-Std_ReturnType led_turn_off(const led_t *led);
-Std_ReturnType led_turn_toggle(const led_t *led);
-# 8 "ECU_Layer/LED/ecu_led.c" 2
-# 17 "ECU_Layer/LED/ecu_led.c"
-Std_ReturnType led_initialize(const led_t *led){
-    Std_ReturnType ret = (Std_ReturnType)0x01 ;
-    if(((void*)0) == led)
-    {
+
+Std_ReturnType lcd_4bit_initialize(const lcd_4bit_t *lcd);
+Std_ReturnType lcd_4bit_send_command(const lcd_4bit_t *lcd, uint8 command);
+Std_ReturnType lcd_4bit_send_char_data(const lcd_4bit_t *lcd, uint8 data);
+Std_ReturnType lcd_4bit_send_char_data_pos(const lcd_4bit_t *lcd, uint8 row, uint8 column, uint8 data);
+Std_ReturnType lcd_4bit_send_string(const lcd_4bit_t *lcd, uint8 *str);
+Std_ReturnType lcd_4bit_send_string_pos(const lcd_4bit_t *lcd, uint8 row, uint8 column, uint8 *str);
+Std_ReturnType lcd_4bit_send_custom_char(const lcd_4bit_t *lcd, const uint8 _chr[]
+                                        , uint8 row, uint8 column, uint8 mem_pos);
+
+
+Std_ReturnType lcd_8bit_initialize(const lcd_8bit_t *lcd);
+Std_ReturnType lcd_8bit_send_command(const lcd_8bit_t *lcd, uint8 command);
+Std_ReturnType lcd_8bit_send_char_data(const lcd_8bit_t *lcd, uint8 data);
+Std_ReturnType lcd_8bit_send_char_data_pos(const lcd_8bit_t *lcd, uint8 row, uint8 column, uint8 data);
+Std_ReturnType lcd_8bit_send_string(const lcd_8bit_t *lcd, uint8 *str);
+Std_ReturnType lcd_8bit_send_string_pos(const lcd_8bit_t *lcd, uint8 row, uint8 column, uint8 *str);
+Std_ReturnType lcd_8bit_send_custom_char(const lcd_8bit_t *lcd, const uint8 _chr[]
+                                        , uint8 row, uint8 column, uint8 mem_pos);
+# 8 "ECU_Layer/Chr_LCD/ecu_chr_lcd.c" 2
+
+
+
+static Std_ReturnType lcd_send_4bits(const lcd_4bit_t *lcd,uint8 _data_command);
+static Std_ReturnType lcd_4bit_send_enable_signal(const lcd_4bit_t *lcd);
+
+Std_ReturnType lcd_4bit_initialize(const lcd_4bit_t *lcd){
+    Std_ReturnType ret = (Std_ReturnType)0x01;
+    uint8 l_data_pins_counter = 0;
+    if(((void*)0) == lcd){
         ret = (Std_ReturnType)0x00;
     }
-    else
-    {
-        pin_config_t pin_obj = { .port = led->port_name, .pin = led->pin ,
-                                 .direction = GPIO_DIRECTION_OUTPUT , .logic = led->led_status};
-
-        gpio_pin_initialize(&pin_obj);
+    else{
+        ret = gpio_pin_initialize(&(lcd->lcd_rs));
+        ret = gpio_pin_initialize(&(lcd->lcd_en));
+        for(l_data_pins_counter = 0; l_data_pins_counter<4; l_data_pins_counter++){
+            ret = gpio_pin_initialize(&(lcd->lcd_data[l_data_pins_counter]));
+        }
     }
     return ret;
 }
-# 40 "ECU_Layer/LED/ecu_led.c"
-Std_ReturnType led_turn_on(const led_t *led){
-    Std_ReturnType ret = (Std_ReturnType)0x01 ;
-    if(((void*)0) == led)
-    {
+
+Std_ReturnType lcd_4bit_send_command(const lcd_4bit_t *lcd, uint8 command){
+    Std_ReturnType ret = (Std_ReturnType)0x01;
+    if(((void*)0) == lcd){
         ret = (Std_ReturnType)0x00;
     }
-    else
-    {
-        pin_config_t pin_obj = { .port = led->port_name, .pin = led->pin ,
-                                 .direction = GPIO_DIRECTION_OUTPUT , .logic = led->led_status};
-
-        gpio_pin_write_logic(&pin_obj, GPIO_HIGH);
+    else{
+        ret = gpio_pin_write_logic(&(lcd->lcd_rs), GPIO_LOW);
+        ret = lcd_send_4bits(lcd, (command >> 4));
+        ret = lcd_4bit_send_enable_signal(lcd);
+        ret = lcd_send_4bits(lcd, command);
+        ret = lcd_4bit_send_enable_signal(lcd);
     }
     return ret;
 }
-# 63 "ECU_Layer/LED/ecu_led.c"
-Std_ReturnType led_turn_off(const led_t *led){
-    Std_ReturnType ret = (Std_ReturnType)0x01 ;
-    if(((void*)0) == led)
-    {
+
+Std_ReturnType lcd_4bit_send_char_data(const lcd_4bit_t *lcd, uint8 data){
+    Std_ReturnType ret = (Std_ReturnType)0x01;
+    if(((void*)0) == lcd){
         ret = (Std_ReturnType)0x00;
     }
-    else
-    {
-        pin_config_t pin_obj = { .port = led->port_name, .pin = led->pin ,
-                                 .direction = GPIO_DIRECTION_OUTPUT , .logic = led->led_status};
-
-        gpio_pin_write_logic(&pin_obj, GPIO_LOW);
+    else{
+        ret = gpio_pin_write_logic(&(lcd->lcd_rs), GPIO_HIGH);
+        ret = lcd_send_4bits(lcd, (data >> 4));
+        ret = lcd_4bit_send_enable_signal(lcd);
+        ret = lcd_send_4bits(lcd, data);
+        ret = lcd_4bit_send_enable_signal(lcd);
     }
     return ret;
 }
-# 86 "ECU_Layer/LED/ecu_led.c"
-Std_ReturnType led_turn_toggle(const led_t *led){
-    Std_ReturnType ret = (Std_ReturnType)0x01 ;
-    if(((void*)0) == led)
-    {
+
+Std_ReturnType lcd_4bit_send_char_data_pos(const lcd_4bit_t *lcd, uint8 row, uint8 column, uint8 data){
+
+}
+
+Std_ReturnType lcd_4bit_send_string(const lcd_4bit_t *lcd, uint8 *str){
+
+}
+
+Std_ReturnType lcd_4bit_send_string_pos(const lcd_4bit_t *lcd, uint8 row, uint8 column, uint8 *str){
+
+}
+
+Std_ReturnType lcd_4bit_send_custom_char(const lcd_4bit_t *lcd, const uint8 _chr[], uint8 row, uint8 column, uint8 mem_pos){
+
+}
+
+
+
+Std_ReturnType lcd_8bit_initialize(const lcd_8bit_t *lcd){
+    Std_ReturnType ret = (Std_ReturnType)0x01;
+    uint8 l_data_pins_counter = 0;
+    if(((void*)0) == lcd){
         ret = (Std_ReturnType)0x00;
     }
-    else
-    {
-        pin_config_t pin_obj = { .port = led->port_name, .pin = led->pin ,
-                                 .direction = GPIO_DIRECTION_OUTPUT , .logic = led->led_status};
+    else{
+        ret = gpio_pin_initialize(&(lcd->lcd_rs));
+        ret = gpio_pin_initialize(&(lcd->lcd_en));
+        for(l_data_pins_counter = 0; l_data_pins_counter<8; l_data_pins_counter++){
+            ret = gpio_pin_initialize(&(lcd->lcd_data[l_data_pins_counter]));
+        }
+    }
+    return ret;
+}
 
-        gpio_pin_toggle_logic(&pin_obj);
+Std_ReturnType lcd_8bit_send_command(const lcd_8bit_t *lcd, uint8 command){
+
+}
+
+Std_ReturnType lcd_8bit_send_char_data(const lcd_8bit_t *lcd, uint8 data){
+
+}
+
+Std_ReturnType lcd_8bit_send_char_data_pos(const lcd_8bit_t *lcd, uint8 row, uint8 column, uint8 data){
+
+}
+
+Std_ReturnType lcd_8bit_send_string(const lcd_8bit_t *lcd, uint8 *str){
+
+}
+
+Std_ReturnType lcd_8bit_send_string_pos(const lcd_8bit_t *lcd, uint8 row, uint8 column, uint8 *str){
+
+}
+
+Std_ReturnType lcd_8bit_send_custom_char(const lcd_8bit_t *lcd, const uint8 _chr[], uint8 row, uint8 column, uint8 mem_pos){
+
+}
+
+
+static Std_ReturnType lcd_send_4bits(const lcd_4bit_t *lcd,uint8 _data_command){
+    Std_ReturnType ret = (Std_ReturnType)0x01;
+    if(((void*)0) == lcd){
+        ret = (Std_ReturnType)0x00;
+    }
+    else{
+        ret = gpio_pin_write_logic(&(lcd->lcd_data[0]), (_data_command >> 0) & (uint8)0x01);
+        ret &= gpio_pin_write_logic(&(lcd->lcd_data[1]), (_data_command >> 1) & (uint8)0x01);
+        ret &= gpio_pin_write_logic(&(lcd->lcd_data[2]), (_data_command >> 2) & (uint8)0x01);
+        ret &= gpio_pin_write_logic(&(lcd->lcd_data[3]), (_data_command >> 3) & (uint8)0x01);
+    }
+    return ret;
+}
+
+static Std_ReturnType lcd_4bit_send_enable_signal(const lcd_4bit_t *lcd){
+    Std_ReturnType ret = (Std_ReturnType)0x01;
+    if(((void*)0) == lcd){
+        ret = (Std_ReturnType)0x00;
+    }
+    else{
+        ret = gpio_pin_write_logic(&(lcd->lcd_rs), GPIO_HIGH);
+        _delay((unsigned long)((5)*(4000000UL/4000000.0)));
+        ret = gpio_pin_write_logic(&(lcd->lcd_rs), GPIO_LOW);
     }
     return ret;
 }

@@ -9,20 +9,17 @@
 #define	APPLICATION_H
 
 
-
 /* Section : Includes */
 #include "ECU_Layer/ecu_layer_init.h"
 
-extern keypad_t keypad1;
-
 /* Section : Macro Declarations */
-
 
 /* Section : Macro Functions Declarations */
 
 /* Section : Data Type Declarations */
 
 /* Section : Functions Declarations */
+void app_init(void);
 
 
 #endif	/* APPLICATION_H */
