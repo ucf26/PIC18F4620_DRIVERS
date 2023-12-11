@@ -14,19 +14,20 @@
 
 /* Section : Macro Declarations */
 
-#define _LCD_CLEAR                      0x01
-#define _LCD_RETURN_HOME                0x02
-#define _LCD_ENTRY_MODE                 0x06
-#define _LCD_CURSOR_OFF_DISPLAY_ON      0X0C
-#define _LCD_CURSOR_OFF_DISPLAY_OFF     0X08
-#define _LCD_CURSOR_ON_BLINK_ON         0X0F
-#define _LCD_CURSOR_ON_BLINK_OFF        0X0E
-#define _LCD_DIPLAY_SHIFT_RIGHT         0X1C
-#define _LCD_DIPLAY_SHIFT_LEFT          0X18
-#define _LCD_4BIT_MODE_2_LINE           0X28
-#define _LCD_8BIT_MODE_2_LINE           0X38 
-#define _LCD_CGRAM_START                0X40
-#define _LCD_DDRAM_START                0X80
+#define _LCD_CLEAR                                  0x01        // clear diplay   0000 0001
+#define _LCD_RETURN_HOME                            0x02        // cursor home    0000 001x
+#define _LCD_ENTRY_MODE                             0x06        // entry mode during writing (inc and shift off) 0000 0110
+                                                                // inc or dec the cursor ot shift the display
+#define _LCD_DISPLAY_ON_CURSOR_OFF_BLINK_OFF        0X0C        // display on/off 0000 1100 
+#define _LCD_DISPLAY_OFF_CURSOR_OFF                 0X08        // display on/of  0000 1000
+#define _LCD_DISPLAY_ON_CURSOR_ON_BLINK_ON          0X0F        // display on/of  0000 1111
+#define _LCD_DISPLAY_ON_CURSOR_ON_BLINK_OFF         0X0E        // diplay on/off  0000 1110
+#define _LCD_DIPLAY_SHIFT_RIGHT                     0X1C
+#define _LCD_DIPLAY_SHIFT_LEFT                      0X18
+#define _LCD_4BIT_MODE_2_LINE                       0X28        // function set 0010 1000
+#define _LCD_8BIT_MODE_2_LINE                       0X38        // function set 0011 1000
+#define _LCD_CGRAM_START                            0X40
+#define _LCD_DDRAM_START                            0X80
 
 #define ROW1    1
 #define ROW2    2

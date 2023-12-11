@@ -4881,7 +4881,7 @@ Std_ReturnType keypad_get_value(const keypad_t *kaypad_obj, uint8 *value);
 # 12 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 # 1 "./ECU_Layer/Chr_LCD/ecu_chr_lcd_cfg.h" 1
 # 12 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h" 2
-# 37 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
+# 38 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
 typedef struct{
     pin_config_t lcd_rs;
     pin_config_t lcd_en;
@@ -4941,11 +4941,18 @@ Std_ReturnType ret = (Std_ReturnType)0x00;
 int main() {
 
     app_init();
-    ret = lcd_8bit_send_char_data(&lcd_2, 'Z');
-    ret = lcd_8bit_send_char_data(&lcd_2, 'Z');
-    ret = lcd_8bit_send_char_data(&lcd_2, 'Z');
+
     while(1)
     {
+
+        ret = lcd_8bit_send_string_pos(&lcd_2, 1, 1, "fuck");
+        ret = lcd_8bit_send_string_pos(&lcd_2, 2, 2, "fuck");
+        ret = lcd_8bit_send_string_pos(&lcd_2, 3, 3, "a7a");
+        ret = lcd_8bit_send_string_pos(&lcd_2, 4, 4, "a7a");
+        ret = lcd_4bit_send_string_pos(&lcd_1, 1, 1, "fuck");
+        ret = lcd_4bit_send_string_pos(&lcd_1, 2, 2, "fuck");
+        ret = lcd_4bit_send_string_pos(&lcd_1, 3, 3, "a7a");
+        ret = lcd_4bit_send_string_pos(&lcd_1, 4, 4, "a7a");
 
     }
     return (0);
