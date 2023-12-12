@@ -14,6 +14,13 @@ static Std_ReturnType lcd_4bit_set_cursor(const lcd_8bit_t *lcd, uint8 row, uint
 static Std_ReturnType lcd_8bit_send_enable_signal(const lcd_8bit_t *lcd);
 static Std_ReturnType lcd_8bit_set_cursor(const lcd_8bit_t *lcd, uint8 row, uint8 column);
 
+/**
+ * 
+ * @param lcd
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType lcd_4bit_initialize(const lcd_4bit_t *lcd){
     Std_ReturnType ret = E_OK;
     uint8 l_data_pins_counter = ZERO_INIT;
@@ -43,6 +50,14 @@ Std_ReturnType lcd_4bit_initialize(const lcd_4bit_t *lcd){
     return ret;
 }
 
+/**
+ * 
+ * @param lcd
+ * @param command
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType lcd_4bit_send_command(const lcd_4bit_t *lcd, uint8 command){
     Std_ReturnType ret = E_OK;
     if(NULL == lcd){
@@ -58,6 +73,14 @@ Std_ReturnType lcd_4bit_send_command(const lcd_4bit_t *lcd, uint8 command){
     return ret;
 }
 
+/**
+ * 
+ * @param lcd
+ * @param data
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType lcd_4bit_send_char_data(const lcd_4bit_t *lcd, uint8 data){
     Std_ReturnType ret = E_OK;
     if(NULL == lcd){
@@ -73,6 +96,16 @@ Std_ReturnType lcd_4bit_send_char_data(const lcd_4bit_t *lcd, uint8 data){
     return ret;
 }
 
+/**
+ * 
+ * @param lcd
+ * @param row
+ * @param column
+ * @param data
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType lcd_4bit_send_char_data_pos(const lcd_4bit_t *lcd, uint8 row, uint8 column, uint8 data){
     Std_ReturnType ret = E_OK;
     if(NULL == lcd){
@@ -85,6 +118,14 @@ Std_ReturnType lcd_4bit_send_char_data_pos(const lcd_4bit_t *lcd, uint8 row, uin
     return ret;
 }
 
+/**
+ * 
+ * @param lcd
+ * @param str
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType lcd_4bit_send_string(const lcd_4bit_t *lcd, uint8 *str){
     Std_ReturnType ret = E_OK;
     if(NULL == lcd){
@@ -100,6 +141,16 @@ Std_ReturnType lcd_4bit_send_string(const lcd_4bit_t *lcd, uint8 *str){
     return ret;
 }
 
+/**
+ * 
+ * @param lcd
+ * @param row
+ * @param column
+ * @param str
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType lcd_4bit_send_string_pos(const lcd_4bit_t *lcd, uint8 row, uint8 column, uint8 *str){
     Std_ReturnType ret = E_OK;
     if(NULL == lcd){
@@ -116,12 +167,41 @@ Std_ReturnType lcd_4bit_send_string_pos(const lcd_4bit_t *lcd, uint8 row, uint8 
     return ret;
 }
 
+/**
+ * 
+ * @param lcd
+ * @param _chr
+ * @param row
+ * @param column
+ * @param mem_pos
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType lcd_4bit_send_custom_char(const lcd_4bit_t *lcd, const uint8 _chr[], uint8 row, uint8 column, uint8 mem_pos){
-    
+    Std_ReturnType ret = E_OK;
+    uint8 lcd_counter = ZERO_INIT;
+    if(NULL == lcd){
+        ret = E_NOT_OK;
+    }
+    else{    
+        ret = lcd_4bit_send_command(lcd, (_LCD_CGRAM_START+(mem_pos*8)));
+        for(lcd_counter=0; lcd_counter<=7; ++lcd_counter){
+            ret = lcd_4bit_send_char_data(lcd, _chr[lcd_counter]);
+        }
+        ret = lcd_4bit_send_char_data_pos(lcd, row, column, mem_pos);
+    }
+    return ret;
 }
 
 
-
+/**
+ * 
+ * @param lcd
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType lcd_8bit_initialize(const lcd_8bit_t *lcd){
     Std_ReturnType ret = E_OK;
     uint8 l_data_pins_counter = ZERO_INIT;
@@ -151,6 +231,14 @@ Std_ReturnType lcd_8bit_initialize(const lcd_8bit_t *lcd){
     return ret;
 }
 
+/**
+ * 
+ * @param lcd
+ * @param command
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType lcd_8bit_send_command(const lcd_8bit_t *lcd, uint8 command){
     Std_ReturnType ret = E_OK;
     uint8 cnt = ZERO_INIT;
@@ -168,6 +256,14 @@ Std_ReturnType lcd_8bit_send_command(const lcd_8bit_t *lcd, uint8 command){
     return ret;
 }
 
+/**
+ * 
+ * @param lcd
+ * @param data
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType lcd_8bit_send_char_data(const lcd_8bit_t *lcd, uint8 data){
     Std_ReturnType ret = E_OK;
     uint8 cnt = ZERO_INIT;
@@ -185,18 +281,36 @@ Std_ReturnType lcd_8bit_send_char_data(const lcd_8bit_t *lcd, uint8 data){
     return ret;
 }
 
+/**
+ * 
+ * @param lcd
+ * @param data
+ * @param row
+ * @param column
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType lcd_8bit_send_char_data_pos(const lcd_8bit_t *lcd, uint8 data, uint8 row, uint8 column){
     Std_ReturnType ret = E_OK;
     if(NULL == lcd){
         ret = E_NOT_OK;
     }
     else{    
-        // ret = lcd_8bit_set_cursor(lcd, row, column);
+        ret = lcd_8bit_set_cursor(lcd, row, column);
         ret = lcd_8bit_send_char_data(lcd, data);
     }
     return ret;
 }
 
+/**
+ * 
+ * @param lcd
+ * @param str
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType lcd_8bit_send_string(const lcd_8bit_t *lcd, uint8 *str){
     Std_ReturnType ret = E_OK;
     if(NULL == lcd){
@@ -212,6 +326,16 @@ Std_ReturnType lcd_8bit_send_string(const lcd_8bit_t *lcd, uint8 *str){
     return ret;
 }
 
+/**
+ * 
+ * @param lcd
+ * @param row
+ * @param column
+ * @param str
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 Std_ReturnType lcd_8bit_send_string_pos(const lcd_8bit_t *lcd, uint8 row, uint8 column, uint8 *str){
     Std_ReturnType ret = E_OK;
     if(NULL == lcd){
@@ -228,11 +352,43 @@ Std_ReturnType lcd_8bit_send_string_pos(const lcd_8bit_t *lcd, uint8 row, uint8 
     return ret;
 }
 
-Std_ReturnType lcd_8bit_send_custom_char(const lcd_8bit_t *lcd, const uint8 _chr[], uint8 row, uint8 column, uint8 mem_pos){
-    
+/**
+ * 
+ * @param lcd
+ * @param row
+ * @param column
+ * @param _chr
+ * @param mem_pos
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
+Std_ReturnType lcd_8bit_send_custom_char(const lcd_8bit_t *lcd, uint8 row, uint8 column, 
+                                         const uint8 _chr[], uint8 mem_pos){
+    Std_ReturnType ret = E_OK;
+    uint8 lcd_counter = ZERO_INIT;
+    if(NULL == lcd){
+        ret = E_NOT_OK;
+    }
+    else{    
+        ret = lcd_8bit_send_command(lcd, (_LCD_CGRAM_START+(mem_pos*8)));
+        for(lcd_counter=0; lcd_counter<=7; ++lcd_counter){
+            ret = lcd_8bit_send_char_data(lcd, _chr[lcd_counter]);
+        }
+        ret = lcd_8bit_send_char_data_pos(lcd, row, column, mem_pos);
+    }
+    return ret;
 }
 
 
+/**
+ * 
+ * @param lcd
+ * @param _data_command
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 static Std_ReturnType lcd_send_4bits(const lcd_4bit_t *lcd,uint8 _data_command){
     Std_ReturnType ret = E_OK;
     if(NULL == lcd){
@@ -247,6 +403,13 @@ static Std_ReturnType lcd_send_4bits(const lcd_4bit_t *lcd,uint8 _data_command){
     return ret;
 }
 
+/**
+ * 
+ * @param lcd
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 static Std_ReturnType lcd_4bit_send_enable_signal(const lcd_4bit_t *lcd){
     Std_ReturnType ret = E_OK;
     if(NULL == lcd){
@@ -259,7 +422,15 @@ static Std_ReturnType lcd_4bit_send_enable_signal(const lcd_4bit_t *lcd){
     }
     return ret;
 }
-
+/**
+ * 
+ * @param lcd
+ * @param row
+ * @param column
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 static Std_ReturnType lcd_4bit_set_cursor(const lcd_8bit_t *lcd, uint8 row, uint8 column){
     Std_ReturnType ret = E_OK;
     column--;
@@ -274,6 +445,13 @@ static Std_ReturnType lcd_4bit_set_cursor(const lcd_8bit_t *lcd, uint8 row, uint
     return ret;
 }
 
+/**
+ * 
+ * @param lcd
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 static Std_ReturnType lcd_8bit_send_enable_signal(const lcd_8bit_t *lcd){
     Std_ReturnType ret = E_OK;
     if(NULL == lcd){
@@ -287,6 +465,15 @@ static Std_ReturnType lcd_8bit_send_enable_signal(const lcd_8bit_t *lcd){
     return ret;
 }
 
+/**
+ * 
+ * @param lcd
+ * @param row
+ * @param column
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
 static Std_ReturnType lcd_8bit_set_cursor(const lcd_8bit_t *lcd, uint8 row, uint8 column){
     Std_ReturnType ret = E_OK;
     column--;
@@ -297,6 +484,64 @@ static Std_ReturnType lcd_8bit_set_cursor(const lcd_8bit_t *lcd, uint8 row, uint
         case ROW3: ret = lcd_8bit_send_command(lcd, (0x94 + column)); break;
         case ROW4: ret = lcd_8bit_send_command(lcd, (0xD4 + column)); break;
         default : ;
+    }
+    return ret;
+}
+
+/**
+ * 
+ * @param value
+ * @param str
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
+Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str){
+    Std_ReturnType ret = E_OK;
+    if(NULL == str){
+        ret = E_NOT_OK;
+    }
+    else{    
+        memset(str, '\0', 4);
+        sprintf(str, "%i", value);
+    }
+    return ret;
+}
+/**
+ * 
+ * @param value
+ * @param str
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
+Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str){
+    Std_ReturnType ret = E_OK;
+    if(NULL == str){
+        ret = E_NOT_OK;
+    }
+    else{    
+        memset(str, '\0', 6);
+        sprintf(str, "%i", value);
+    }
+    return ret;
+}
+/**
+ * 
+ * @param value
+ * @param str
+ * @return the status of the function :
+ *              (E_OK)     : the function is done successfully
+ *              (E_NOT_OK) : the function is not done successfully
+ */
+Std_ReturnType convert_uint32_to_string(uint32 value, uint8 *str){
+    Std_ReturnType ret = E_OK;
+    if(NULL == str){
+        ret = E_NOT_OK;
+    }
+    else{    
+        memset(str, '\0', 11);
+        sprintf(str, "%i", value);
     }
     return ret;
 }

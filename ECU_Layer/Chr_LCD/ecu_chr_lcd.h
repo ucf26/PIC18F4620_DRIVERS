@@ -67,8 +67,13 @@ Std_ReturnType lcd_8bit_send_char_data(const lcd_8bit_t *lcd, uint8 data);
 Std_ReturnType lcd_8bit_send_char_data_pos(const lcd_8bit_t *lcd, uint8 row, uint8 column, uint8 data);
 Std_ReturnType lcd_8bit_send_string(const lcd_8bit_t *lcd, uint8 *str);
 Std_ReturnType lcd_8bit_send_string_pos(const lcd_8bit_t *lcd, uint8 row, uint8 column, uint8 *str);
-Std_ReturnType lcd_8bit_send_custom_char(const lcd_8bit_t *lcd, const uint8 _chr[]
-                                        , uint8 row, uint8 column, uint8 mem_pos);
+Std_ReturnType lcd_8bit_send_custom_char(const lcd_8bit_t *lcd, uint8 row, uint8 column, 
+                                         const uint8 _chr[], uint8 mem_pos);
+
+
+Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str);
+Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str);
+Std_ReturnType convert_uint32_to_string(uint32 value, uint8 *str);
 
 #endif	/* ECU_CHR_LCD_H */
 

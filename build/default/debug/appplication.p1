@@ -3,30 +3,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "22 ./application.h
 [; ;./application.h: 22: void app_init(void);
 [v _app_init `(v ~T0 @X0 0 ef ]
-"67 ./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h
-[s S272 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S272 . port pin direction logic ]
-"44 ./ECU_Layer/Chr_LCD/ecu_chr_lcd.h
-[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 44: typedef struct{
-[s S280 `S272 1 `S272 1 `S272 -> 8 `i ]
-[n S280 . lcd_rs lcd_en lcd_data ]
-"69
-[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 69: Std_ReturnType lcd_8bit_send_string_pos(const lcd_8bit_t *lcd, uint8 row, uint8 column, uint8 *str);
-[v _lcd_8bit_send_string_pos `(uc ~T0 @X0 0 ef4`*CS280`uc`uc`*uc ]
-"28 ./ECU_Layer/ecu_layer_init.h
-[; ;./ECU_Layer/ecu_layer_init.h: 28: extern lcd_8bit_t lcd_2;
-[v _lcd_2 `S280 ~T0 @X0 0 e ]
-"38 ./ECU_Layer/Chr_LCD/ecu_chr_lcd.h
-[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 38: typedef struct{
-[s S279 `S272 1 `S272 1 `S272 -> 4 `i ]
-[n S279 . lcd_rs lcd_en lcd_data ]
-"59
-[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 59: Std_ReturnType lcd_4bit_send_string_pos(const lcd_4bit_t *lcd, uint8 row, uint8 column, uint8 *str);
-[v _lcd_4bit_send_string_pos `(uc ~T0 @X0 0 ef4`*CS279`uc`uc`*uc ]
-"27 ./ECU_Layer/ecu_layer_init.h
-[; ;./ECU_Layer/ecu_layer_init.h: 27: extern lcd_4bit_t lcd_1;
-[v _lcd_1 `S279 ~T0 @X0 0 e ]
-"30
+"30 ./ECU_Layer/ecu_layer_init.h
 [; ;./ECU_Layer/ecu_layer_init.h: 30: void ecu_layer_initialize(void);
 [v _ecu_layer_initialize `(v ~T0 @X0 0 ef ]
 "54 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
@@ -447,79 +424,47 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `uc
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"13
-[; ;appplication.c: 13: int main() {
+"12
+[; ;appplication.c: 12: int main() {
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"15
-[; ;appplication.c: 15:     app_init();
+"14
+[; ;appplication.c: 14:     app_init();
 [e ( _app_init ..  ]
-"17
-[; ;appplication.c: 17:     while(1)
-[e :U 283 ]
-"18
-[; ;appplication.c: 18:     {
-{
-"20
-[; ;appplication.c: 20:         ret = lcd_8bit_send_string_pos(&lcd_2, 1, 1, "fuck");
-[e = _ret ( _lcd_8bit_send_string_pos (4 , , , -> &U _lcd_2 `*CS280 -> -> 1 `i `uc -> -> 1 `i `uc :s 1C ]
-"21
-[; ;appplication.c: 21:         ret = lcd_8bit_send_string_pos(&lcd_2, 2, 2, "fuck");
-[e = _ret ( _lcd_8bit_send_string_pos (4 , , , -> &U _lcd_2 `*CS280 -> -> 2 `i `uc -> -> 2 `i `uc :s 2C ]
-"22
-[; ;appplication.c: 22:         ret = lcd_8bit_send_string_pos(&lcd_2, 3, 3, "a7a");
-[e = _ret ( _lcd_8bit_send_string_pos (4 , , , -> &U _lcd_2 `*CS280 -> -> 3 `i `uc -> -> 3 `i `uc :s 3C ]
-"23
-[; ;appplication.c: 23:         ret = lcd_8bit_send_string_pos(&lcd_2, 4, 4, "a7a");
-[e = _ret ( _lcd_8bit_send_string_pos (4 , , , -> &U _lcd_2 `*CS280 -> -> 4 `i `uc -> -> 4 `i `uc :s 4C ]
-"24
-[; ;appplication.c: 24:         ret = lcd_4bit_send_string_pos(&lcd_1, 1, 1, "fuck");
-[e = _ret ( _lcd_4bit_send_string_pos (4 , , , -> &U _lcd_1 `*CS279 -> -> 1 `i `uc -> -> 1 `i `uc :s 5C ]
-"25
-[; ;appplication.c: 25:         ret = lcd_4bit_send_string_pos(&lcd_1, 2, 2, "fuck");
-[e = _ret ( _lcd_4bit_send_string_pos (4 , , , -> &U _lcd_1 `*CS279 -> -> 2 `i `uc -> -> 2 `i `uc :s 6C ]
-"26
-[; ;appplication.c: 26:         ret = lcd_4bit_send_string_pos(&lcd_1, 3, 3, "a7a");
-[e = _ret ( _lcd_4bit_send_string_pos (4 , , , -> &U _lcd_1 `*CS279 -> -> 3 `i `uc -> -> 3 `i `uc :s 7C ]
-"27
-[; ;appplication.c: 27:         ret = lcd_4bit_send_string_pos(&lcd_1, 4, 4, "a7a");
-[e = _ret ( _lcd_4bit_send_string_pos (4 , , , -> &U _lcd_1 `*CS279 -> -> 4 `i `uc -> -> 4 `i `uc :s 8C ]
-"29
-[; ;appplication.c: 29:     }
-}
-[e :U 282 ]
-[e $U 283  ]
+"16
+[; ;appplication.c: 16:     while(1)
 [e :U 284 ]
-"30
-[; ;appplication.c: 30:     return (0);
-[e ) -> 0 `i ]
-[e $UE 281  ]
-"31
-[; ;appplication.c: 31: }
-[e :UE 281 ]
+"17
+[; ;appplication.c: 17:     {
+{
+"19
+[; ;appplication.c: 19:     }
 }
-"34
-[; ;appplication.c: 34: void app_init(void)
+[e :U 283 ]
+[e $U 284  ]
+[e :U 285 ]
+"20
+[; ;appplication.c: 20:     return (0);
+[e ) -> 0 `i ]
+[e $UE 282  ]
+"21
+[; ;appplication.c: 21: }
+[e :UE 282 ]
+}
+"24
+[; ;appplication.c: 24: void app_init(void)
 [v _app_init `(v ~T0 @X0 1 ef ]
-"35
-[; ;appplication.c: 35: {
+"25
+[; ;appplication.c: 25: {
 {
 [e :U _app_init ]
 [f ]
-"36
-[; ;appplication.c: 36:     ecu_layer_initialize();
+"26
+[; ;appplication.c: 26:     ecu_layer_initialize();
 [e ( _ecu_layer_initialize ..  ]
-"37
-[; ;appplication.c: 37: }
-[e :UE 285 ]
+"27
+[; ;appplication.c: 27: }
+[e :UE 286 ]
 }
-[a 1C 102 117 99 107 0 ]
-[a 2C 102 117 99 107 0 ]
-[a 5C 102 117 99 107 0 ]
-[a 6C 102 117 99 107 0 ]
-[a 3C 97 55 97 0 ]
-[a 4C 97 55 97 0 ]
-[a 7C 97 55 97 0 ]
-[a 8C 97 55 97 0 ]

@@ -4662,6 +4662,66 @@ char *ctermid(char *);
 
 char *tempnam(const char *, const char *);
 # 14 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h" 2
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\string.h" 1 3
+# 25 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\string.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 1 3
+# 421 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct __locale_struct * locale_t;
+# 26 "C:\\Program Files\\Microchip\\xc8\\v2.45\\pic\\include\\c99\\string.h" 2 3
+
+void *memcpy (void *restrict, const void *restrict, size_t);
+void *memmove (void *, const void *, size_t);
+void *memset (void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void *memchr (const void *, int, size_t);
+
+char *strcpy (char *restrict, const char *restrict);
+char *strncpy (char *restrict, const char *restrict, size_t);
+
+char *strcat (char *restrict, const char *restrict);
+char *strncat (char *restrict, const char *restrict, size_t);
+
+int strcmp (const char *, const char *);
+int strncmp (const char *, const char *, size_t);
+
+int strcoll (const char *, const char *);
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+
+char *strchr (const char *, int);
+char *strrchr (const char *, int);
+
+size_t strcspn (const char *, const char *);
+size_t strspn (const char *, const char *);
+char *strpbrk (const char *, const char *);
+char *strstr (const char *, const char *);
+char *strtok (char *restrict, const char *restrict);
+
+size_t strlen (const char *);
+
+char *strerror (int);
+
+
+
+
+char *strtok_r (char *restrict, const char *restrict, char **restrict);
+int strerror_r (int, char *, size_t);
+char *stpcpy(char *restrict, const char *restrict);
+char *stpncpy(char *restrict, const char *restrict, size_t);
+size_t strnlen (const char *, size_t);
+char *strdup (const char *);
+char *strndup (const char *, size_t);
+char *strsignal(int);
+char *strerror_l (int, locale_t);
+int strcoll_l (const char *, const char *, locale_t);
+size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
+
+
+
+
+void *memccpy (void *restrict, const void *restrict, int, size_t);
+# 16 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../std_libraries.h" 2
 # 13 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
 
 
@@ -4914,8 +4974,13 @@ Std_ReturnType lcd_8bit_send_char_data(const lcd_8bit_t *lcd, uint8 data);
 Std_ReturnType lcd_8bit_send_char_data_pos(const lcd_8bit_t *lcd, uint8 row, uint8 column, uint8 data);
 Std_ReturnType lcd_8bit_send_string(const lcd_8bit_t *lcd, uint8 *str);
 Std_ReturnType lcd_8bit_send_string_pos(const lcd_8bit_t *lcd, uint8 row, uint8 column, uint8 *str);
-Std_ReturnType lcd_8bit_send_custom_char(const lcd_8bit_t *lcd, const uint8 _chr[]
-                                        , uint8 row, uint8 column, uint8 mem_pos);
+Std_ReturnType lcd_8bit_send_custom_char(const lcd_8bit_t *lcd, uint8 row, uint8 column,
+                                         const uint8 _chr[], uint8 mem_pos);
+
+
+Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str);
+Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str);
+Std_ReturnType convert_uint32_to_string(uint32 value, uint8 *str);
 # 20 "./ECU_Layer/ecu_layer_init.h" 2
 
 
@@ -4937,22 +5002,12 @@ void app_init(void);
 Std_ReturnType ret = (Std_ReturnType)0x00;
 
 
-
 int main() {
 
     app_init();
 
     while(1)
     {
-
-        ret = lcd_8bit_send_string_pos(&lcd_2, 1, 1, "fuck");
-        ret = lcd_8bit_send_string_pos(&lcd_2, 2, 2, "fuck");
-        ret = lcd_8bit_send_string_pos(&lcd_2, 3, 3, "a7a");
-        ret = lcd_8bit_send_string_pos(&lcd_2, 4, 4, "a7a");
-        ret = lcd_4bit_send_string_pos(&lcd_1, 1, 1, "fuck");
-        ret = lcd_4bit_send_string_pos(&lcd_1, 2, 2, "fuck");
-        ret = lcd_4bit_send_string_pos(&lcd_1, 3, 3, "a7a");
-        ret = lcd_4bit_send_string_pos(&lcd_1, 4, 4, "a7a");
 
     }
     return (0);
