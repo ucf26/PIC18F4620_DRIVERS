@@ -27,6 +27,11 @@ BUTTON_ACTIVE_LOW 1
 GPIO_LOW 0
 GPIO_HIGH 1
 ]
+"67 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/Chr_LCD/ecu_chr_lcd.c
+[e E2978 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
 "46 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/DC_Motor/ecu_dc_motor.c
 [e E2978 . `uc
 GPIO_LOW 0
@@ -101,14 +106,9 @@ PORTC_INDEX 2
 PORTD_INDEX 3
 PORTE_INDEX 4
 ]
-"67 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/Chr_LCD/ecu_chr_lcd.c
-[e E2978 . `uc
-GPIO_LOW 0
-GPIO_HIGH 1
-]
-"12 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
+"22 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
 [v _main main `(i  1 e 2 0 ]
-"24
+"34
 [v _app_init app_init `(v  1 e 1 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.45\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
@@ -146,6 +146,8 @@ GPIO_HIGH 1
 [v _lcd_4bit_send_char_data lcd_4bit_send_char_data `(uc  1 e 1 0 ]
 "109
 [v _lcd_4bit_send_char_data_pos lcd_4bit_send_char_data_pos `(uc  1 e 1 0 ]
+"181
+[v _lcd_4bit_send_custom_char lcd_4bit_send_custom_char `(uc  1 e 1 0 ]
 "205
 [v _lcd_8bit_initialize lcd_8bit_initialize `(uc  1 e 1 0 ]
 "242
@@ -154,6 +156,8 @@ GPIO_HIGH 1
 [v _lcd_8bit_send_char_data lcd_8bit_send_char_data `(uc  1 e 1 0 ]
 "294
 [v _lcd_8bit_send_char_data_pos lcd_8bit_send_char_data_pos `(uc  1 e 1 0 ]
+"339
+[v _lcd_8bit_send_string_pos lcd_8bit_send_string_pos `(uc  1 e 1 0 ]
 "392
 [v _lcd_send_4bits lcd_send_4bits `(uc  1 s 1 lcd_send_4bits ]
 "413
@@ -176,6 +180,10 @@ GPIO_HIGH 1
 [v _gpio_pin_initialize gpio_pin_initialize `(uc  1 e 1 0 ]
 "157
 [v _gpio_pin_toggle_logic gpio_pin_toggle_logic `(uc  1 e 1 0 ]
+"9 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
+[v _ret ret `uc  1 e 1 0 ]
+"11
+[v _customChar customChar `C[8]uc  1 e 8 0 ]
 "52 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "189
@@ -212,11 +220,11 @@ GPIO_HIGH 1
 `uc 1 logic 1 0 :1:7 
 ]
 "11 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/ecu_layer_init.c
-[s S330 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
-[v _lcd_1 lcd_1 `S330  1 e 6 0 ]
+[s S113 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v _lcd_1 lcd_1 `S113  1 e 6 0 ]
 "40
-[s S355 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
-[v _lcd_2 lcd_2 `S355  1 e 10 0 ]
+[s S149 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
+[v _lcd_2 lcd_2 `S149  1 e 10 0 ]
 "10 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/Keypad/ecu_keypad.c
 [v _btn_values btn_values `C[4][4]uc  1 s 16 btn_values ]
 "10 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\MCAL_Layer/GPIO/hal_gpio.c
@@ -225,15 +233,140 @@ GPIO_HIGH 1
 [v _lat_registers lat_registers `[5]*.39VEuc  1 e 10 0 ]
 "12
 [v _port_registers port_registers `[5]*.39VEuc  1 e 10 0 ]
-"12 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
+"22 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
 [v _main main `(i  1 e 2 0 ]
 {
-"21
+"31
 } 0
-"24
+"339 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/Chr_LCD/ecu_chr_lcd.c
+[v _lcd_8bit_send_string_pos lcd_8bit_send_string_pos `(uc  1 e 1 0 ]
+{
+"340
+[v lcd_8bit_send_string_pos@ret ret `uc  1 a 1 26 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"339
+[s S149 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
+[v lcd_8bit_send_string_pos@lcd lcd `*.30CS149  1 p 1 22 ]
+[v lcd_8bit_send_string_pos@row row `uc  1 p 1 23 ]
+[v lcd_8bit_send_string_pos@column column `uc  1 p 1 24 ]
+[v lcd_8bit_send_string_pos@str str `*.31uc  1 p 1 25 ]
+"353
+} 0
+"477
+[v _lcd_8bit_set_cursor lcd_8bit_set_cursor `(uc  1 s 1 lcd_8bit_set_cursor ]
+{
+"478
+[v lcd_8bit_set_cursor@ret ret `uc  1 a 1 21 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"477
+[s S149 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
+[v lcd_8bit_set_cursor@lcd lcd `*.30CS149  1 p 1 16 ]
+[v lcd_8bit_set_cursor@row row `uc  1 p 1 17 ]
+[v lcd_8bit_set_cursor@column column `uc  1 p 1 18 ]
+"489
+} 0
+"267
+[v _lcd_8bit_send_char_data lcd_8bit_send_char_data `(uc  1 e 1 0 ]
+{
+"269
+[v lcd_8bit_send_char_data@cnt cnt `uc  1 a 1 15 ]
+"268
+[v lcd_8bit_send_char_data@ret ret `uc  1 a 1 14 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"267
+[s S149 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
+[v lcd_8bit_send_char_data@lcd lcd `*.30CS149  1 p 1 10 ]
+[v lcd_8bit_send_char_data@data data `uc  1 p 1 11 ]
+"282
+} 0
+"181
+[v _lcd_4bit_send_custom_char lcd_4bit_send_custom_char `(uc  1 e 1 0 ]
+{
+"183
+[v lcd_4bit_send_custom_char@lcd_counter lcd_counter `uc  1 a 1 38 ]
+"182
+[v lcd_4bit_send_custom_char@ret ret `uc  1 a 1 37 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"181
+[s S113 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_4bit_send_custom_char@lcd lcd `*.30CS113  1 p 1 25 ]
+[v lcd_4bit_send_custom_char@_chr _chr `*.33Cuc  1 p 3 26 ]
+[v lcd_4bit_send_custom_char@row row `uc  1 p 1 29 ]
+[v lcd_4bit_send_custom_char@column column `uc  1 p 1 30 ]
+[v lcd_4bit_send_custom_char@mem_pos mem_pos `uc  1 p 1 31 ]
+"195
+} 0
+"109
+[v _lcd_4bit_send_char_data_pos lcd_4bit_send_char_data_pos `(uc  1 e 1 0 ]
+{
+"110
+[v lcd_4bit_send_char_data_pos@ret ret `uc  1 a 1 24 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"109
+[s S113 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_4bit_send_char_data_pos@lcd lcd `*.30CS113  1 p 1 20 ]
+[v lcd_4bit_send_char_data_pos@row row `uc  1 p 1 21 ]
+[v lcd_4bit_send_char_data_pos@column column `uc  1 p 1 22 ]
+[v lcd_4bit_send_char_data_pos@data data `uc  1 p 1 23 ]
+"119
+} 0
+"434
+[v _lcd_4bit_set_cursor lcd_4bit_set_cursor `(uc  1 s 1 lcd_4bit_set_cursor ]
+{
+"435
+[v lcd_4bit_set_cursor@ret ret `uc  1 a 1 19 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"434
+[s S149 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
+[v lcd_4bit_set_cursor@lcd lcd `*.30CS149  1 p 1 14 ]
+[v lcd_4bit_set_cursor@row row `uc  1 p 1 15 ]
+[v lcd_4bit_set_cursor@column column `uc  1 p 1 16 ]
+"446
+} 0
+"84
+[v _lcd_4bit_send_char_data lcd_4bit_send_char_data `(uc  1 e 1 0 ]
+{
+"85
+[v lcd_4bit_send_char_data@ret ret `uc  1 a 1 13 ]
+[s S24 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"84
+[s S113 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_4bit_send_char_data@lcd lcd `*.30CS113  1 p 1 11 ]
+[v lcd_4bit_send_char_data@data data `uc  1 p 1 12 ]
+"97
+} 0
+"34 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\appplication.c
 [v _app_init app_init `(v  1 e 1 0 ]
 {
-"27
+"37
 } 0
 "84 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\ECU_Layer/ecu_layer_init.c
 [v _ecu_layer_initialize ecu_layer_initialize `(v  1 e 1 0 ]
@@ -253,8 +386,8 @@ GPIO_HIGH 1
 `uc 1 logic 1 0 :1:7 
 ]
 "205
-[s S355 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
-[v lcd_8bit_initialize@lcd lcd `*.30CS355  1 p 1 16 ]
+[s S149 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
+[v lcd_8bit_initialize@lcd lcd `*.30CS149  1 p 1 16 ]
 "232
 } 0
 "242
@@ -270,8 +403,8 @@ GPIO_HIGH 1
 `uc 1 logic 1 0 :1:7 
 ]
 "242
-[s S355 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
-[v lcd_8bit_send_command@lcd lcd `*.30CS355  1 p 1 10 ]
+[s S149 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
+[v lcd_8bit_send_command@lcd lcd `*.30CS149  1 p 1 10 ]
 [v lcd_8bit_send_command@command command `uc  1 p 1 11 ]
 "257
 } 0
@@ -286,8 +419,8 @@ GPIO_HIGH 1
 `uc 1 logic 1 0 :1:7 
 ]
 "455
-[s S355 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
-[v lcd_8bit_send_enable_signal@lcd lcd `*.30CS355  1 p 1 8 ]
+[s S149 . 10 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[8]S24 1 lcd_data 8 2 ]
+[v lcd_8bit_send_enable_signal@lcd lcd `*.30CS149  1 p 1 8 ]
 "466
 } 0
 "24
@@ -303,8 +436,8 @@ GPIO_HIGH 1
 `uc 1 logic 1 0 :1:7 
 ]
 "24
-[s S330 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
-[v lcd_4bit_initialize@lcd lcd `*.30CS330  1 p 1 14 ]
+[s S113 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_4bit_initialize@lcd lcd `*.30CS113  1 p 1 14 ]
 "51
 } 0
 "61
@@ -318,8 +451,8 @@ GPIO_HIGH 1
 `uc 1 logic 1 0 :1:7 
 ]
 "61
-[s S330 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
-[v lcd_4bit_send_command@lcd lcd `*.30CS330  1 p 1 11 ]
+[s S113 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_4bit_send_command@lcd lcd `*.30CS113  1 p 1 11 ]
 [v lcd_4bit_send_command@command command `uc  1 p 1 12 ]
 "74
 } 0
@@ -334,8 +467,8 @@ GPIO_HIGH 1
 `uc 1 logic 1 0 :1:7 
 ]
 "392
-[s S330 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
-[v lcd_send_4bits@lcd lcd `*.30CS330  1 p 1 8 ]
+[s S113 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_send_4bits@lcd lcd `*.30CS113  1 p 1 8 ]
 [v lcd_send_4bits@_data_command _data_command `uc  1 p 1 9 ]
 "404
 } 0
@@ -350,8 +483,8 @@ GPIO_HIGH 1
 `uc 1 logic 1 0 :1:7 
 ]
 "413
-[s S330 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
-[v lcd_4bit_send_enable_signal@lcd lcd `*.30CS330  1 p 1 8 ]
+[s S113 . 6 `S24 1 lcd_rs 1 0 `S24 1 lcd_en 1 1 `[4]S24 1 lcd_data 4 2 ]
+[v lcd_4bit_send_enable_signal@lcd lcd `*.30CS113  1 p 1 8 ]
 "424
 } 0
 "134 C:\Users\Yousef Mahmoud\MPLABXProjects\PIC18F4620_DRIVERS\MCAL_Layer/GPIO/hal_gpio.c
