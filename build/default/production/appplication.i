@@ -5016,10 +5016,9 @@ int main() {
 
     app_init();
     ret = lcd_8bit_send_string_pos(&lcd_2, 1, 1, "Broken..");
-    ret = lcd_4bit_send_custom_char(&lcd_1, 1, 5, customChar, 0);
     while(1)
     {
-
+        ret = lcd_4bit_send_custom_char(&lcd_1, 1, 5, customChar, 0);
     }
     return (0);
 }
