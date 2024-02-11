@@ -7,6 +7,17 @@
 
 #include "mcal_external_interrup.h"
 
+static void (*INT0_InterruptHandler)(void) = NULL;
+static void (*INT1_InterruptHandler)(void) = NULL;
+static void (*INT2_InterruptHandler)(void) = NULL;
+
+
+static Std_ReturnType INT0_SetInterruptHandler(void (*InterruptHandler)(void));
+static Std_ReturnType INT1_SetInterruptHandler(void (*InterruptHandler)(void));
+static Std_ReturnType INT2_SetInterruptHandler(void (*InterruptHandler)(void));
+static Std_ReturnType Interrupt_INTx_SetInterruptHandler(const interrupt_INx_t *int_obj);
+
+
 static Std_ReturnType Interrupt_INTx_Enable(const interrupt_INx_t *int_obj);
 static Std_ReturnType Interrupt_INTx_Disable(const interrupt_INx_t *int_obj);
 static Std_ReturnType Interrupt_INTx_Priority_Init(const interrupt_INx_t *int_obj);
@@ -40,6 +51,7 @@ Std_ReturnType Interrupt_INTx_Init(const interrupt_INx_t *int_obj){
         /* Configure The Interrupt I/O Pin. */
         ret = Interrupt_INTx_Pin_Init(int_obj);
         /* Configure The Interrupt Callback. */
+        ret = Interrupt_INTx_SetInterruptHandler(int_obj);
         /* Enable The External Interrupt. */
         ret = Interrupt_INTx_Enable(int_obj);
     }
@@ -160,6 +172,7 @@ static Std_ReturnType Interrupt_INTx_Disable(const interrupt_INx_t *int_obj){
  * @param int_obj
  * @return 
  */
+#if EXTERNAL_INTERRUPT_INTx_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
 static Std_ReturnType Interrupt_INTx_Priority_Init(const interrupt_INx_t *int_obj){
     Std_ReturnType ret = E_NOT_OK;
     if(NULL == int_obj){
@@ -185,6 +198,7 @@ static Std_ReturnType Interrupt_INTx_Priority_Init(const interrupt_INx_t *int_ob
     }
     return ret;
 }
+#endif
 
 /**
  * 
@@ -269,3 +283,61 @@ static Std_ReturnType Interrupt_INTx_Clear_Flag(const interrupt_INx_t *int_obj){
     }
     return ret;
 }
+
+
+static Std_ReturnType INT0_SetInterruptHandler(void (*InterruptHandler)(void)){
+    Std_ReturnType ret = E_NOT_OK;
+    if(NULL == InterruptHandler){
+        ret = E_NOT_OK;
+    }
+    else {
+        INT0_InterruptHandler = InterruptHandler;
+    }
+    return ret;
+}
+
+static Std_ReturnType INT1_SetInterruptHandler(void (*InterruptHandler)(void)){
+    Std_ReturnType ret = E_NOT_OK;
+    if(NULL == InterruptHandler){
+        ret = E_NOT_OK;
+    }
+    else {
+        INT1_InterruptHandler = InterruptHandler;
+    }
+    return ret;
+}
+
+static Std_ReturnType INT2_SetInterruptHandler(void (*InterruptHandler)(void)){
+    Std_ReturnType ret = E_NOT_OK;
+    if(NULL == InterruptHandler){
+        ret = E_NOT_OK;
+    }
+    else {
+        INT2_InterruptHandler = InterruptHandler;
+    }
+    return ret;
+}
+
+static Std_ReturnType Interrupt_INTx_SetInterruptHandler(const interrupt_INx_t *int_obj){
+    Std_ReturnType ret = E_NOT_OK;
+    if(NULL == int_obj){
+        ret = E_NOT_OK;
+    }
+    else {
+        switch(int_obj->source)
+        {
+            case INTERRUBT_EXTERNAL_INT0:
+                ret = INT0_SetInterruptHandler(int_obj->EXT_InterruptHandler);
+                break;
+            case INTERRUBT_EXTERNAL_INT1: 
+                ret = INT1_SetInterruptHandler(int_obj->EXT_InterruptHandler);
+                break;
+            case INTERRUBT_EXTERNAL_INT2: 
+                ret = INT2_SetInterruptHandler(int_obj->EXT_InterruptHandler);
+                break;
+            default : ret = E_NOT_OK;
+        }
+    }
+    return ret;
+}
+
