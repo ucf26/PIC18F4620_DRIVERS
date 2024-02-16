@@ -1,33 +1,44 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[p mainexit ]
-"22 ./application.h
-[; ;./application.h: 22: void app_init(void);
-[v _app_init `(v ~T0 @X0 0 ef ]
-"67 ./ECU_Layer/Chr_LCD/../../MCAL_Layer/GPIO/hal_gpio.h
+"26 ./ECU_Layer/LED/ecu_led.h
+[; ;./ECU_Layer/LED/ecu_led.h: 26: typedef struct{
+[s S274 :4 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S274 . port_name pin led_status ]
+"10 appplication.c
+[; ;appplication.c: 10: led_t ld1={ .pin = GPIO_PIN0, .port_name = PORTC_INDEX, .led_status = GPIO_LOW };
+[c E2996 0 1 2 3 4 .. ]
+[n E2996 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
+[c E2986 0 1 2 3 4 5 6 7 .. ]
+[n E2986 . GPIO_PIN0 GPIO_PIN1 GPIO_PIN2 GPIO_PIN3 GPIO_PIN4 GPIO_PIN5 GPIO_PIN6 GPIO_PIN7  ]
+[c E2978 0 1 .. ]
+[n E2978 . GPIO_LOW GPIO_HIGH  ]
+"38 ./ECU_Layer/LED/ecu_led.h
+[; ;./ECU_Layer/LED/ecu_led.h: 38: Std_ReturnType led_turn_toggle(const led_t *led);
+[v _led_turn_toggle `(uc ~T0 @X0 0 ef1`*CS274 ]
+[v F3214 `(v ~T0 @X0 0 tf ]
+"67 ./MCAL_Layer/Interrupt/../../MCAL_Layer/GPIO/hal_gpio.h
 [s S273 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S273 . port pin direction logic ]
-"44 ./ECU_Layer/Chr_LCD/ecu_chr_lcd.h
-[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 44: typedef struct{
-[s S281 `S273 1 `S273 1 `S273 -> 8 `i ]
-[n S281 . lcd_rs lcd_en lcd_data ]
-"69
-[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 69: Std_ReturnType lcd_8bit_send_string_pos(const lcd_8bit_t *lcd, uint8 row, uint8 column, uint8 *str);
-[v _lcd_8bit_send_string_pos `(uc ~T0 @X0 0 ef4`*CS281`uc`uc`*uc ]
-"28 ./ECU_Layer/ecu_layer_init.h
-[; ;./ECU_Layer/ecu_layer_init.h: 28: extern lcd_8bit_t lcd_2;
-[v _lcd_2 `S281 ~T0 @X0 0 e ]
-"38 ./ECU_Layer/Chr_LCD/ecu_chr_lcd.h
-[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 38: typedef struct{
-[s S280 `S273 1 `S273 1 `S273 -> 4 `i ]
-[n S280 . lcd_rs lcd_en lcd_data ]
-"60
-[; ;./ECU_Layer/Chr_LCD/ecu_chr_lcd.h: 60: Std_ReturnType lcd_4bit_send_custom_char(const lcd_4bit_t *lcd, const uint8 _chr[]
-[v _lcd_4bit_send_custom_char `(uc ~T0 @X0 0 ef5`*CS280`*Cuc`uc`uc`uc ]
+"20 appplication.c
+[; ;appplication.c: 20: interrupt_RBx_t rb4_ob = {
+[c E3191 0 1 .. ]
+[n E3191 . INTERRUPT_LOW_PRIORITY INTERRUPT_HIGH_PRIORITY  ]
+"103 ./MCAL_Layer/Interrupt/mcal_external_interrup.h
+[; ;./MCAL_Layer/Interrupt/mcal_external_interrup.h: 103: typedef struct{
+[s S283 `*F3214 1 `S273 1 `E3191 1 ]
+[n S283 . EXT_InterruptHandler mcu_pin priority ]
+"20 appplication.c
+[; ;appplication.c: 20: interrupt_RBx_t rb4_ob = {
+[c E2982 0 1 .. ]
+[n E2982 . GPIO_DIRECTION_OUTPUT GPIO_DIRECTION_INPUT  ]
+[p mainexit ]
+"23 ./application.h
+[; ;./application.h: 23: void app_init(void);
+[v _app_init `(v ~T0 @X0 0 ef ]
+"41 ./MCAL_Layer/EEPROM/eeprom.h
+[; ;./MCAL_Layer/EEPROM/eeprom.h: 41: Std_ReturnType Data_EEPROM_WriteByte(uint16 address, uint8 byte_of_data);
+[v _Data_EEPROM_WriteByte `(uc ~T0 @X0 0 ef2`us`uc ]
 "27 ./ECU_Layer/ecu_layer_init.h
-[; ;./ECU_Layer/ecu_layer_init.h: 27: extern lcd_4bit_t lcd_1;
-[v _lcd_1 `S280 ~T0 @X0 0 e ]
-"30
-[; ;./ECU_Layer/ecu_layer_init.h: 30: void ecu_layer_initialize(void);
+[; ;./ECU_Layer/ecu_layer_init.h: 27: void ecu_layer_initialize(void);
 [v _ecu_layer_initialize `(v ~T0 @X0 0 ef ]
 "54 C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 54: __asm("PORTA equ 0F80h");
@@ -440,76 +451,160 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"9 appplication.c
-[; ;appplication.c: 9: Std_ReturnType ret = (Std_ReturnType)0x00;
-[v _ret `uc ~T0 @X0 1 e ]
-[i _ret
--> -> 0 `i `uc
+"10 appplication.c
+[; ;appplication.c: 10: led_t ld1={ .pin = GPIO_PIN0, .port_name = PORTC_INDEX, .led_status = GPIO_LOW };
+[v _ld1 `S274 ~T0 @X0 1 e ]
+[i _ld1
+:U ..
+:U ..
+-> . `E2996 2 `uc
+-> . `E2986 0 `uc
+-> . `E2978 0 `uc
+..
+..
 ]
 "11
-[; ;appplication.c: 11: const uint8 customChar[] = {
-[v _customChar `Cuc ~T0 @X0 -> 8 `i e ]
-[i _customChar
+[; ;appplication.c: 11: led_t ld2={ .pin = GPIO_PIN1, .port_name = PORTC_INDEX, .led_status = GPIO_LOW };
+[v _ld2 `S274 ~T0 @X0 1 e ]
+[i _ld2
 :U ..
--> -> 10 `i `uc
--> -> 31 `i `uc
--> -> 31 `i `uc
--> -> 14 `i `uc
--> -> 4 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
--> -> 0 `i `uc
+:U ..
+-> . `E2996 2 `uc
+-> . `E2986 1 `uc
+-> . `E2978 0 `uc
+..
+..
+]
+"12
+[; ;appplication.c: 12: led_t ld3={ .pin = GPIO_PIN2, .port_name = PORTC_INDEX, .led_status = GPIO_LOW };
+[v _ld3 `S274 ~T0 @X0 1 e ]
+[i _ld3
+:U ..
+:U ..
+-> . `E2996 2 `uc
+-> . `E2986 2 `uc
+-> . `E2978 0 `uc
+..
+..
+]
+"13
+[; ;appplication.c: 13: led_t ld4={ .pin = GPIO_PIN3, .port_name = PORTC_INDEX, .led_status = GPIO_LOW };
+[v _ld4 `S274 ~T0 @X0 1 e ]
+[i _ld4
+:U ..
+:U ..
+-> . `E2996 2 `uc
+-> . `E2986 3 `uc
+-> . `E2978 0 `uc
+..
+..
+]
+"15
+[; ;appplication.c: 15: void rb4_app_high_interrupt(void){ led_turn_toggle(&ld1); }
+[v _rb4_app_high_interrupt `(v ~T0 @X0 1 ef ]
+{
+[e :U _rb4_app_high_interrupt ]
+[f ]
+[e ( _led_turn_toggle (1 -> &U _ld1 `*CS274 ]
+[e :UE 284 ]
+}
+"16
+[; ;appplication.c: 16: void rb5_app_low_interrupt(void){ led_turn_toggle(&ld2); }
+[v _rb5_app_low_interrupt `(v ~T0 @X0 1 ef ]
+{
+[e :U _rb5_app_low_interrupt ]
+[f ]
+[e ( _led_turn_toggle (1 -> &U _ld2 `*CS274 ]
+[e :UE 285 ]
+}
+"17
+[; ;appplication.c: 17: void rb6_app_interrupt(void){ led_turn_toggle(&ld3); }
+[v _rb6_app_interrupt `(v ~T0 @X0 1 ef ]
+{
+[e :U _rb6_app_interrupt ]
+[f ]
+[e ( _led_turn_toggle (1 -> &U _ld3 `*CS274 ]
+[e :UE 286 ]
+}
+"18
+[; ;appplication.c: 18: void rb7_app_interrupt(void){ led_turn_toggle(&ld4); }
+[v _rb7_app_interrupt `(v ~T0 @X0 1 ef ]
+{
+[e :U _rb7_app_interrupt ]
+[f ]
+[e ( _led_turn_toggle (1 -> &U _ld4 `*CS274 ]
+[e :UE 287 ]
+}
+"20
+[; ;appplication.c: 20: interrupt_RBx_t rb4_ob = {
+[v _rb4_ob `S283 ~T0 @X0 1 e ]
+[i _rb4_ob
+:U ..
+:U ..
+&U _rb4_app_high_interrupt
+:U ..
+:U ..
+-> . `E2996 1 `uc
+-> . `E2986 4 `uc
+-> . `E2982 1 `uc
+..
+..
+. `E3191 1
+..
 ..
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"22
-[; ;appplication.c: 22: int main() {
+"30
+[; ;appplication.c: 30: int main() {
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"24
-[; ;appplication.c: 24:     app_init();
-[e ( _app_init ..  ]
-"25
-[; ;appplication.c: 25:     ret = lcd_8bit_send_string_pos(&lcd_2, 1, 1, "Broken..");
-[e = _ret ( _lcd_8bit_send_string_pos (4 , , , -> &U _lcd_2 `*CS281 -> -> 1 `i `uc -> -> 1 `i `uc :s 1C ]
-"26
-[; ;appplication.c: 26:     while(1)
-[e :U 284 ]
-"27
-[; ;appplication.c: 27:     {
-{
-"28
-[; ;appplication.c: 28:         ret = lcd_4bit_send_custom_char(&lcd_1, 1, 5, customChar, 0);
-[e = _ret ( _lcd_4bit_send_custom_char (4 , , , , -> &U _lcd_1 `*CS280 -> -> 1 `i `*Cuc -> -> 5 `i `uc -> &U _customChar `uc -> -> 0 `i `uc ]
-"29
-[; ;appplication.c: 29:     }
-}
-[e :U 283 ]
-[e $U 284  ]
-[e :U 285 ]
-"30
-[; ;appplication.c: 30:     return (0);
-[e ) -> 0 `i ]
-[e $UE 282  ]
 "31
-[; ;appplication.c: 31: }
-[e :UE 282 ]
+[; ;appplication.c: 31:     Std_ReturnType ret = (Std_ReturnType)0x00;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"33
+[; ;appplication.c: 33:     app_init();
+[e ( _app_init ..  ]
+"41
+[; ;appplication.c: 41:     ret= Data_EEPROM_WriteByte(0X3FF ,6);
+[e = _ret ( _Data_EEPROM_WriteByte (2 , -> -> 1023 `i `us -> -> 6 `i `uc ]
+"42
+[; ;appplication.c: 42:     ret= Data_EEPROM_WriteByte(0 ,6);
+[e = _ret ( _Data_EEPROM_WriteByte (2 , -> -> 0 `i `us -> -> 6 `i `uc ]
+"43
+[; ;appplication.c: 43:     while(1)
+[e :U 290 ]
+"44
+[; ;appplication.c: 44:     {
+{
+"45
+[; ;appplication.c: 45:     }
 }
-"34
-[; ;appplication.c: 34: void app_init(void)
+[e :U 289 ]
+[e $U 290  ]
+[e :U 291 ]
+"46
+[; ;appplication.c: 46:     return (0);
+[e ) -> 0 `i ]
+[e $UE 288  ]
+"47
+[; ;appplication.c: 47: }
+[e :UE 288 ]
+}
+"49
+[; ;appplication.c: 49: void app_init(void)
 [v _app_init `(v ~T0 @X0 1 ef ]
-"35
-[; ;appplication.c: 35: {
+"50
+[; ;appplication.c: 50: {
 {
 [e :U _app_init ]
 [f ]
-"36
-[; ;appplication.c: 36:     ecu_layer_initialize();
+"51
+[; ;appplication.c: 51:     ecu_layer_initialize();
 [e ( _ecu_layer_initialize ..  ]
-"37
-[; ;appplication.c: 37: }
-[e :UE 286 ]
+"52
+[; ;appplication.c: 52: }
+[e :UE 292 ]
 }
-[a 1C 66 114 111 107 101 110 46 46 0 ]

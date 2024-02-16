@@ -16,7 +16,7 @@
 # 1 "./application.h" 1
 # 13 "./application.h"
 # 1 "./ECU_Layer/ecu_layer_init.h" 1
-# 14 "./ECU_Layer/ecu_layer_init.h"
+# 12 "./ECU_Layer/ecu_layer_init.h"
 # 1 "./ECU_Layer/LED/ecu_led.h" 1
 # 13 "./ECU_Layer/LED/ecu_led.h"
 # 1 "./ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h" 1
@@ -4823,7 +4823,7 @@ Std_ReturnType led_initialize(const led_t *led);
 Std_ReturnType led_turn_on(const led_t *led);
 Std_ReturnType led_turn_off(const led_t *led);
 Std_ReturnType led_turn_toggle(const led_t *led);
-# 14 "./ECU_Layer/ecu_layer_init.h" 2
+# 12 "./ECU_Layer/ecu_layer_init.h" 2
 
 # 1 "./ECU_Layer/Button/ecu_button.h" 1
 # 13 "./ECU_Layer/Button/ecu_button.h"
@@ -4857,7 +4857,7 @@ typedef struct{
 Std_ReturnType button_initialize(const button_t *btn);
 # 56 "./ECU_Layer/Button/ecu_button.h"
 Std_ReturnType button_read_state(const button_t *btn, button_state_t *btn_state);
-# 15 "./ECU_Layer/ecu_layer_init.h" 2
+# 13 "./ECU_Layer/ecu_layer_init.h" 2
 
 # 1 "./ECU_Layer/Relay/ecu_relay.h" 1
 # 12 "./ECU_Layer/Relay/ecu_relay.h"
@@ -4879,7 +4879,7 @@ typedef struct{
 Std_ReturnType relay_initialize(const relay_t *_relay);
 Std_ReturnType relay_turn_on(const relay_t *_relay);
 Std_ReturnType relay_turn_off(const relay_t *_relay);
-# 16 "./ECU_Layer/ecu_layer_init.h" 2
+# 14 "./ECU_Layer/ecu_layer_init.h" 2
 
 # 1 "./ECU_Layer/DC_Motor/ecu_dc_motor.h" 1
 # 14 "./ECU_Layer/DC_Motor/ecu_dc_motor.h"
@@ -4897,7 +4897,7 @@ Std_ReturnType dc_motor_initialize(const dc_motor_t *_dc_motor);
 Std_ReturnType dc_motor_move_right(const dc_motor_t *_dc_motor);
 Std_ReturnType dc_motor_move_left(const dc_motor_t *_dc_motor);
 Std_ReturnType dc_motor_stop(const dc_motor_t *_dc_motor);
-# 17 "./ECU_Layer/ecu_layer_init.h" 2
+# 15 "./ECU_Layer/ecu_layer_init.h" 2
 
 # 1 "./ECU_Layer/7_Segment/ecu_seven_segment.h" 1
 # 12 "./ECU_Layer/7_Segment/ecu_seven_segment.h"
@@ -4917,7 +4917,7 @@ typedef struct{
 Std_ReturnType seven_segment_initialize(const segment_t * seg);
 # 53 "./ECU_Layer/7_Segment/ecu_seven_segment.h"
 Std_ReturnType seven_segment_write_number(const segment_t * seg, uint8 number);
-# 18 "./ECU_Layer/ecu_layer_init.h" 2
+# 16 "./ECU_Layer/ecu_layer_init.h" 2
 
 # 1 "./ECU_Layer/Keypad/ecu_keypad.h" 1
 # 12 "./ECU_Layer/Keypad/ecu_keypad.h"
@@ -4935,7 +4935,7 @@ typedef struct{
 
 Std_ReturnType keypad_initialize(const keypad_t *kaypad_obj);
 Std_ReturnType keypad_get_value(const keypad_t *kaypad_obj, uint8 *value);
-# 19 "./ECU_Layer/ecu_layer_init.h" 2
+# 17 "./ECU_Layer/ecu_layer_init.h" 2
 
 # 1 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h" 1
 # 12 "./ECU_Layer/Chr_LCD/ecu_chr_lcd.h"
@@ -4981,48 +4981,121 @@ Std_ReturnType lcd_8bit_send_custom_char(const lcd_8bit_t *lcd, uint8 row, uint8
 Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str);
 Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str);
 Std_ReturnType convert_uint32_to_string(uint32 value, uint8 *str);
-# 20 "./ECU_Layer/ecu_layer_init.h" 2
-
-
-
-
-
-
-
-extern lcd_4bit_t lcd_1;
-extern lcd_8bit_t lcd_2;
-
+# 18 "./ECU_Layer/ecu_layer_init.h" 2
+# 27 "./ECU_Layer/ecu_layer_init.h"
 void ecu_layer_initialize(void);
 # 13 "./application.h" 2
-# 22 "./application.h"
+
+# 1 "./MCAL_Layer/Interrupt/mcal_external_interrup.h" 1
+# 12 "./MCAL_Layer/Interrupt/mcal_external_interrup.h"
+# 1 "./MCAL_Layer/Interrupt/mcal_interrupt_config.h" 1
+# 15 "./MCAL_Layer/Interrupt/mcal_interrupt_config.h"
+# 1 "./MCAL_Layer/Interrupt/mcal_interrupt_gen_cfg.h" 1
+# 15 "./MCAL_Layer/Interrupt/mcal_interrupt_config.h" 2
+# 54 "./MCAL_Layer/Interrupt/mcal_interrupt_config.h"
+typedef enum{
+    INTERRUPT_LOW_PRIORITY = 0,
+    INTERRUPT_HIGH_PRIORITY
+}interrupt_priority_cfg;
+# 12 "./MCAL_Layer/Interrupt/mcal_external_interrup.h" 2
+# 84 "./MCAL_Layer/Interrupt/mcal_external_interrup.h"
+typedef enum{
+    INTERRUPT_FALLING_EDGE = 0,
+    INTERRUPT_RISING_EDGE
+}interrupt_INTx_edge;
+
+typedef enum{
+    INTERRUPT_EXTERNAL_INT0 = 0,
+    INTERRUPT_EXTERNAL_INT1,
+    INTERRUPT_EXTERNAL_INT2
+}interrupt_INTx_src;
+
+typedef struct{
+    void (* EXT_InterruptHandler)(void);
+    pin_config_t mcu_pin;
+    interrupt_INTx_edge edge;
+    interrupt_INTx_src source;
+    interrupt_priority_cfg priority;
+}interrupt_INTx_t;
+
+typedef struct{
+    void (* EXT_InterruptHandler)(void);
+    pin_config_t mcu_pin;
+    interrupt_priority_cfg priority;
+}interrupt_RBx_t;
+
+
+
+
+
+
+
+Std_ReturnType Interrupt_INTx_Init(const interrupt_INTx_t *int_obj);
+
+
+
+
+
+
+Std_ReturnType Interrupt_INTx_DeInit(const interrupt_INTx_t *int_obj);
+
+
+
+
+
+
+Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *int_obj);
+
+
+
+
+
+
+Std_ReturnType Interrupt_RBx_DeInit(const interrupt_RBx_t *int_obj);
+# 14 "./application.h" 2
+# 23 "./application.h"
 void app_init(void);
 # 7 "appplication.c" 2
 
 
-Std_ReturnType ret = (Std_ReturnType)0x00;
+led_t ld1={ .pin = GPIO_PIN0, .port_name = PORTC_INDEX, .led_status = GPIO_LOW };
+led_t ld2={ .pin = GPIO_PIN1, .port_name = PORTC_INDEX, .led_status = GPIO_LOW };
+led_t ld3={ .pin = GPIO_PIN2, .port_name = PORTC_INDEX, .led_status = GPIO_LOW };
+led_t ld4={ .pin = GPIO_PIN3, .port_name = PORTC_INDEX, .led_status = GPIO_LOW };
 
-const uint8 customChar[] = {
-  0x0A,
-  0x1F,
-  0x1F,
-  0x0E,
-  0x04,
-  0x00,
-  0x00,
-  0x00
+void rb4_app_high_interrupt(void){ led_turn_toggle(&ld1); }
+void rb5_app_low_interrupt(void){ led_turn_toggle(&ld2); }
+void rb6_app_interrupt(void){ led_turn_toggle(&ld3); }
+void rb7_app_interrupt(void){ led_turn_toggle(&ld4); }
+
+interrupt_RBx_t rb4_ob = {
+    .EXT_InterruptHandler = rb4_app_high_interrupt,
+    .priority = INTERRUPT_HIGH_PRIORITY,
+    .mcu_pin.direction = GPIO_DIRECTION_INPUT,
+    .mcu_pin.pin = GPIO_PIN4,
+    .mcu_pin.port = PORTB_INDEX
 };
 
+
+
 int main() {
+    Std_ReturnType ret = (Std_ReturnType)0x00;
 
     app_init();
-    ret = lcd_8bit_send_string_pos(&lcd_2, 1, 1, "Broken..");
+
+
+
+
+
+
+
+    ret= Data_EEPROM_WriteByte(0 ,6);
+
     while(1)
     {
-        ret = lcd_4bit_send_custom_char(&lcd_1, 1, 5, customChar, 0);
     }
     return (0);
 }
-
 
 void app_init(void)
 {

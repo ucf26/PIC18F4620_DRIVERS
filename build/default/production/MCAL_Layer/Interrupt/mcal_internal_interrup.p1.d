@@ -1,4 +1,4 @@
-build/default/debug/MCAL_Layer/Interrupt/mcal_internal_interrup.p1:  \
+build/default/production/MCAL_Layer/Interrupt/mcal_internal_interrup.p1:  \
 MCAL_Layer/Interrupt/mcal_internal_interrup.c  \
 MCAL_Layer/Interrupt/mcal_internal_interrup.h  \
 MCAL_Layer/Interrupt/mcal_interrupt_config.h  \

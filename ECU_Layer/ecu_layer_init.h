@@ -8,8 +8,6 @@
 #ifndef ECU_LAYER_INIT_H
 #define	ECU_LAYER_INIT_H
 
-
-
 /* Section : Includes */
 #include "LED/ecu_led.h"
 #include "Button/ecu_button.h"
@@ -24,8 +22,7 @@
 /* Section : Macro Functions Declarations */
 
 /* Section : Data Type Declarations */
-extern lcd_4bit_t lcd_1;
-extern lcd_8bit_t lcd_2;
+
 /* Section : Functions Declarations */
 void ecu_layer_initialize(void);
 

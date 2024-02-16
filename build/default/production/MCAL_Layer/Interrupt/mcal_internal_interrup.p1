@@ -410,19 +410,3 @@ Version 4.0 HI-TECH Software Intermediate Code
 "6715
 [; ;C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\pic18f4620.h: 6715: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"11 ECU_Layer/ecu_layer_init.c
-[; ;ECU_Layer/ecu_layer_init.c: 11: void ecu_layer_initialize(void)
-[v _ecu_layer_initialize `(v ~T0 @X0 1 ef ]
-"12
-[; ;ECU_Layer/ecu_layer_init.c: 12: {
-{
-[e :U _ecu_layer_initialize ]
-[f ]
-"13
-[; ;ECU_Layer/ecu_layer_init.c: 13:     Std_ReturnType ret = (Std_ReturnType)0x00;
-[v _ret `uc ~T0 @X0 1 a ]
-[e = _ret -> -> 0 `i `uc ]
-"14
-[; ;ECU_Layer/ecu_layer_init.c: 14: }
-[e :UE 282 ]
-}
