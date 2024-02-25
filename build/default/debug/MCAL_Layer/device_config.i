@@ -8,14 +8,8 @@
 # 2 "<built-in>" 2
 # 1 "MCAL_Layer/device_config.c" 2
 
-
-
-
-
-
-
 # 1 "MCAL_Layer/device_config.h" 1
-# 8 "MCAL_Layer/device_config.c" 2
+# 2 "MCAL_Layer/device_config.c" 2
 
 
 
@@ -76,10 +70,6 @@
 
 
 #pragma config EBTRB = OFF
-
-
-
-
 
 
 

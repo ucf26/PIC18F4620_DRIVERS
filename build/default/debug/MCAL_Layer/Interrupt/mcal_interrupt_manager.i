@@ -4234,7 +4234,7 @@ extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
 # 1 "MCAL_Layer/Interrupt/../mcal_std_types.h" 1
 # 12 "MCAL_Layer/Interrupt/../mcal_std_types.h"
 # 1 "MCAL_Layer/Interrupt/../compiler.h" 1
-# 12 "MCAL_Layer/Interrupt/../compiler.h"
+# 11 "MCAL_Layer/Interrupt/../compiler.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4500,7 +4500,7 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
-# 12 "MCAL_Layer/Interrupt/../compiler.h" 2
+# 11 "MCAL_Layer/Interrupt/../compiler.h" 2
 # 12 "MCAL_Layer/Interrupt/../mcal_std_types.h" 2
 
 # 1 "MCAL_Layer/Interrupt/../std_libraries.h" 1
@@ -4796,7 +4796,7 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "MCAL_Layer/Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 15 "MCAL_Layer/Interrupt/mcal_interrupt_config.h" 2
-# 54 "MCAL_Layer/Interrupt/mcal_interrupt_config.h"
+# 56 "MCAL_Layer/Interrupt/mcal_interrupt_config.h"
 typedef enum{
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
@@ -4806,12 +4806,15 @@ typedef enum{
 void INT0_ISR(void);
 void INT1_ISR(void);
 void INT2_ISR(void);
-void RB4_ISR(void);
-void RB5_ISR(void);
-void RB6_ISR(void);
-void RB7_ISR(void);
+void RB4_ISR(uint8 RB4_Source);
+void RB5_ISR(uint8 RB5_Source);
+void RB6_ISR(uint8 RB6_Source);
+void RB7_ISR(uint8 RB7_Source);
 # 7 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c" 2
-# 35 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
+
+
+static volatile uint8 RB4_Flag = 1, RB5_Flag = 1, RB6_Flag = 1, RB7_Flag = 1;
+# 37 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
 void __attribute__((picinterrupt(("")))) InterruptManager(void){
     if((1 == INTCONbits.INT0IE) && (1 == INTCONbits.INT0IF)){
         INT0_ISR();
@@ -4826,20 +4829,58 @@ void __attribute__((picinterrupt(("")))) InterruptManager(void){
     }
     else{ }
 
-    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF )){
-        RB4_ISR();
+
+
+    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF )
+    && (PORTBbits.RB4 == GPIO_HIGH) && (RB4_Flag == 1)){
+        RB4_Flag = 0;
+        RB4_ISR(0);
     }
     else{ }
-    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF )){
-        RB5_ISR();
+    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF )
+    && (PORTBbits.RB4 == GPIO_LOW) && (RB4_Flag == 0)){
+        RB4_Flag = 1;
+        RB4_ISR(1);
     }
     else{ }
-    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF )){
-        RB6_ISR();
+
+    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF )
+    && (PORTBbits.RB5 == GPIO_HIGH) && (RB5_Flag == 1)){
+        RB5_Flag = 0;
+        RB5_ISR(0);
     }
     else{ }
-    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF )){
-        RB7_ISR();
+    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF )
+    && (PORTBbits.RB5 == GPIO_LOW) && (RB5_Flag == 0)){
+        RB5_Flag = 1;
+        RB5_ISR(1);
     }
     else{ }
+
+    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF )
+    && (PORTBbits.RB6 == GPIO_HIGH) && (RB6_Flag == 1)){
+        RB6_Flag = 0;
+        RB6_ISR(0);
+    }
+    else{ }
+    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF )
+    && (PORTBbits.RB6 == GPIO_LOW) && (RB6_Flag == 0)){
+        RB6_Flag = 1;
+        RB6_ISR(1);
+    }
+    else{ }
+
+    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF )
+    && (PORTBbits.RB7 == GPIO_HIGH) && (RB7_Flag == 1)){
+        RB7_Flag = 0;
+        RB7_ISR(0);
+    }
+    else{ }
+    if((1 == INTCONbits.RBIE) && (1 == INTCONbits.RBIF )
+    && (PORTBbits.RB7 == GPIO_LOW) && (RB7_Flag == 0)){
+        RB7_Flag = 1;
+        RB7_ISR(1);
+    }
+    else{ }
+
 }

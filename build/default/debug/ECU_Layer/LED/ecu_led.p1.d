@@ -1,4 +1,4 @@
-build/default/production/ECU_Layer/LED/ecu_led.p1:  \
+build/default/debug/ECU_Layer/LED/ecu_led.p1:  \
 ECU_Layer/LED/ecu_led.c  \
 ECU_Layer/LED/../LED/ecu_led.h  \
 ECU_Layer/LED/../../MCAL_Layer/GPIO/hal_gpio.h  \

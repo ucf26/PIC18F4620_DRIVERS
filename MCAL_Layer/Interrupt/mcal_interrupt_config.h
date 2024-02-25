@@ -39,7 +39,9 @@
 #define INTERRUPT_GlobalInterruptLowEnable()   (INTCONbits.GIEL = 1)
 /* This macro will disable low priority global interrupts. */
 #define INTERRUPT_GlobalInterruptLowDisable()  (INTCONbits.GIEL = 0)
+
 #else
+
 /* This macro will enable global interrupts. */
 #define INTERRUPT_GlobalInterruptEnable()  (INTCONbits.GIE = 1)
 /* This macro will disable global interrupts. */

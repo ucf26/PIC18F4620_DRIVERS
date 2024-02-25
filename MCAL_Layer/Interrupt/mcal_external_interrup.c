@@ -11,16 +11,19 @@ static void (*INT0_InterruptHandler)(void) = NULL;
 static void (*INT1_InterruptHandler)(void) = NULL;
 static void (*INT2_InterruptHandler)(void) = NULL;
 
-static void (*RB4_InterruptHandler)(void) = NULL;
-static void (*RB5_InterruptHandler)(void) = NULL;
-static void (*RB6_InterruptHandler)(void) = NULL;
-static void (*RB7_InterruptHandler)(void) = NULL;
+static void (*RB4_InterruptHandler_HIGH)(void) = NULL;
+static void (*RB4_InterruptHandler_LOW)(void) = NULL;
+static void (*RB5_InterruptHandler_HIGH)(void) = NULL;
+static void (*RB5_InterruptHandler_LOW)(void) = NULL;
+static void (*RB6_InterruptHandler_HIGH)(void) = NULL;
+static void (*RB6_InterruptHandler_LOW)(void) = NULL;
+static void (*RB7_InterruptHandler_HIGH)(void) = NULL;
+static void (*RB7_InterruptHandler_LOW)(void) = NULL;
 
 static Std_ReturnType INT0_SetInterruptHandler(void (*InterruptHandler)(void));
 static Std_ReturnType INT1_SetInterruptHandler(void (*InterruptHandler)(void));
 static Std_ReturnType INT2_SetInterruptHandler(void (*InterruptHandler)(void));
 static Std_ReturnType Interrupt_INTx_SetInterruptHandler(const interrupt_INTx_t *int_obj);
-
 
 static Std_ReturnType Interrupt_INTx_Enable(const interrupt_INTx_t *int_obj);
 static Std_ReturnType Interrupt_INTx_Disable(const interrupt_INTx_t *int_obj);
@@ -33,11 +36,7 @@ static Std_ReturnType Interrupt_RBx_Enable(const interrupt_RBx_t *int_obj);
 static Std_ReturnType Interrupt_RBx_Disable(const interrupt_RBx_t *int_obj);
 static Std_ReturnType Interrupt_RBx_Priority_Init(const interrupt_RBx_t *int_obj);
 static Std_ReturnType Interrupt_RBx_Pin_Init(const interrupt_RBx_t *int_obj);
-/**
- * 
- * @param int_obj
- * @return 
- */
+
 Std_ReturnType Interrupt_INTx_Init(const interrupt_INTx_t *int_obj)
 {
     Std_ReturnType ret = E_NOT_OK;
@@ -102,54 +101,80 @@ void INT2_ISR(void)
     else { /* Nothing */}
 }
 
-void RB4_ISR(void)
+void RB4_ISR(uint8 RB4_Source)
 {
     /* The interrupt flag must be cleared using software. */
     EXT_RBx_InterruptFlagClear();
     /* code in MCAL context */
     
     /* Callback function gets called every time this ISR excutes. */
-    if(RB4_InterruptHandler) { RB4_InterruptHandler(); }
+    if(0 == RB4_Source) { 
+        if(RB4_InterruptHandler_HIGH) RB4_InterruptHandler_HIGH();
+        else { /* Nothing */}
+    }
+    else if(1 == RB4_Source ){
+        if(RB4_InterruptHandler_LOW) RB4_InterruptHandler_LOW();
+        else { /* Nothing */}
+    }
     else { /* Nothing */}
 }
 
-void RB5_ISR(void)
+
+void RB5_ISR(uint8 RB5_Source)
 {
     /* The interrupt flag must be cleared using software. */
     EXT_RBx_InterruptFlagClear();
     /* code in MCAL context */
     
     /* Callback function gets called every time this ISR excutes. */
-    if(RB5_InterruptHandler) { RB5_InterruptHandler(); }
+    if(0 == RB5_Source) { 
+        if(RB5_InterruptHandler_HIGH) RB5_InterruptHandler_HIGH();
+        else { /* Nothing */}
+    }
+    else if(1 == RB5_Source ){
+        if(RB5_InterruptHandler_LOW) RB5_InterruptHandler_LOW();
+        else { /* Nothing */}
+    }
     else { /* Nothing */}
 }
 
-void RB6_ISR(void)
+void RB6_ISR(uint8 RB6_Source)
 {
     /* The interrupt flag must be cleared using software. */
     EXT_RBx_InterruptFlagClear();
     /* code in MCAL context */
     
     /* Callback function gets called every time this ISR excutes. */
-    if(RB6_InterruptHandler) { RB6_InterruptHandler(); }
+    if(0 == RB6_Source) { 
+        if(RB6_InterruptHandler_HIGH) RB6_InterruptHandler_HIGH();
+        else { /* Nothing */}
+    }
+    else if(1 == RB6_Source ){
+        if(RB6_InterruptHandler_LOW) RB6_InterruptHandler_LOW();
+        else { /* Nothing */}
+    }
     else { /* Nothing */}
 }
 
-void RB7_ISR(void)
+void RB7_ISR(uint8 RB7_Source)
 {
     /* The interrupt flag must be cleared using software. */
     EXT_RBx_InterruptFlagClear();
     /* code in MCAL context */
     
     /* Callback function gets called every time this ISR excutes. */
-    if(RB6_InterruptHandler) { RB6_InterruptHandler(); }
+    if(0 == RB7_Source) { 
+        if(RB7_InterruptHandler_HIGH) RB7_InterruptHandler_HIGH();
+        else { /* Nothing */}
+    }
+    else if(1 == RB7_Source ){
+        if(RB7_InterruptHandler_LOW) RB7_InterruptHandler_LOW();
+        else { /* Nothing */}
+    }
     else { /* Nothing */}
 }
-/**
- * 
- * @param int_obj
- * @return 
- */
+
+
 Std_ReturnType Interrupt_INTx_DeInit(const interrupt_INTx_t *int_obj)
 {
     Std_ReturnType ret = E_NOT_OK;
@@ -162,11 +187,6 @@ Std_ReturnType Interrupt_INTx_DeInit(const interrupt_INTx_t *int_obj)
     return ret;
 }
 
-/**
- * 
- * @param int_obj
- * @return 
- */
 
 Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *int_obj)
 {
@@ -176,6 +196,7 @@ Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *int_obj)
     }
     else {
         EXT_RBx_InterruptDisable();
+        
         EXT_RBx_InterruptFlagClear();
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE 
         /* This macro will enable priority levels on interrupts. */
@@ -201,16 +222,20 @@ Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *int_obj)
         switch(int_obj->mcu_pin.pin)
         {
             case (GPIO_PIN4):
-                RB4_InterruptHandler = int_obj->EXT_InterruptHandler;
+                RB4_InterruptHandler_HIGH = int_obj->EXT_InterruptHandler_HIGH;
+                RB4_InterruptHandler_LOW = int_obj->EXT_InterruptHandler_LOW;
                 break;
             case (GPIO_PIN5):
-                RB5_InterruptHandler = int_obj->EXT_InterruptHandler;
+                RB5_InterruptHandler_HIGH = int_obj->EXT_InterruptHandler_HIGH;
+                RB5_InterruptHandler_LOW = int_obj->EXT_InterruptHandler_LOW;
                 break;
             case (GPIO_PIN6):
-                RB6_InterruptHandler = int_obj->EXT_InterruptHandler;
+                RB6_InterruptHandler_HIGH = int_obj->EXT_InterruptHandler_HIGH;
+                RB6_InterruptHandler_LOW = int_obj->EXT_InterruptHandler_LOW;
                 break;
             case (GPIO_PIN7):
-                RB7_InterruptHandler = int_obj->EXT_InterruptHandler;
+                RB7_InterruptHandler_HIGH = int_obj->EXT_InterruptHandler_HIGH;
+                RB7_InterruptHandler_LOW = int_obj->EXT_InterruptHandler_LOW;
                 break;
             default:
                 ret = E_NOT_OK;
@@ -221,11 +246,6 @@ Std_ReturnType Interrupt_RBx_Init(const interrupt_RBx_t *int_obj)
     return ret;
 }
 
-/**
- * 
- * @param int_obj
- * @return 
- */
 Std_ReturnType Interrupt_RBx_DeInit(const interrupt_RBx_t *int_obj)
 {
     Std_ReturnType ret = E_NOT_OK;
@@ -237,12 +257,6 @@ Std_ReturnType Interrupt_RBx_DeInit(const interrupt_RBx_t *int_obj)
     }
     return ret;
 }
-
-/**
- * 
- * @param int_obj
- * @return 
- */
 
 static Std_ReturnType Interrupt_INTx_Enable(const interrupt_INTx_t *int_obj){
     Std_ReturnType ret = E_NOT_OK;
@@ -300,11 +314,7 @@ static Std_ReturnType Interrupt_INTx_Enable(const interrupt_INTx_t *int_obj){
     }
     return ret;
 }
-/**
- * 
- * @param int_obj
- * @return 
- */
+
 static Std_ReturnType Interrupt_INTx_Disable(const interrupt_INTx_t *int_obj)
 {
     Std_ReturnType ret = E_NOT_OK;
@@ -332,11 +342,6 @@ static Std_ReturnType Interrupt_INTx_Disable(const interrupt_INTx_t *int_obj)
     return ret;
 }
 
-/**
- * 
- * @param int_obj
- * @return 
- */
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE 
 static Std_ReturnType Interrupt_INTx_Priority_Init(const interrupt_INTx_t *int_obj){
     Std_ReturnType ret = E_NOT_OK;
@@ -364,13 +369,6 @@ static Std_ReturnType Interrupt_INTx_Priority_Init(const interrupt_INTx_t *int_o
 }
 #endif
 
-/**
- * @brief  
- * @param int_obj  Pointer to the Interrupt configuration object
- * @return Status of the function
- *          (E_OK) : The function done successfully
- *          (E_NOT_OK) : The function has issue to perform this action
- */
 static Std_ReturnType Interrupt_INTx_Edge_Init(const interrupt_INTx_t *int_obj){
     Std_ReturnType ret = E_NOT_OK;
     if(NULL == int_obj){
@@ -402,13 +400,6 @@ static Std_ReturnType Interrupt_INTx_Edge_Init(const interrupt_INTx_t *int_obj){
     return ret;
 }
 
-/**
- * @brief  
- * @param int_obj  Pointer to the Interrupt configuration object
- * @return Status of the function
- *          (E_OK) : The function done successfully
- *          (E_NOT_OK) : The function has issue to perform this action
- */
 static Std_ReturnType Interrupt_INTx_Pin_Init(const interrupt_INTx_t *int_obj){
     Std_ReturnType ret = E_NOT_OK;
     if(NULL == int_obj){
@@ -422,13 +413,6 @@ static Std_ReturnType Interrupt_INTx_Pin_Init(const interrupt_INTx_t *int_obj){
     return ret;
 }
 
-/**
- * @brief  
- * @param int_obj  Pointer to the Interrupt configuration object
- * @return Status of the function
- *          (E_OK) : The function done successfully
- *          (E_NOT_OK) : The function has issue to perform this action
- */
 static Std_ReturnType Interrupt_INTx_Clear_Flag(const interrupt_INTx_t *int_obj){
     Std_ReturnType ret = E_NOT_OK;
     if(NULL == int_obj){
@@ -454,13 +438,6 @@ static Std_ReturnType Interrupt_INTx_Clear_Flag(const interrupt_INTx_t *int_obj)
     return ret;
 }
 
-/**
- * @brief  
- * @param InterruptHandler
- * @return Status of the function
- *          (E_OK) : The function done successfully
- *          (E_NOT_OK) : The function has issue to perform this action
- */
 static Std_ReturnType INT0_SetInterruptHandler(void (*InterruptHandler)(void)){
     Std_ReturnType ret = E_NOT_OK;
     if(NULL == InterruptHandler){
@@ -474,13 +451,6 @@ static Std_ReturnType INT0_SetInterruptHandler(void (*InterruptHandler)(void)){
     return ret;
 }
 
-/**
- * @brief  
- * @param InterruptHandler
- * @return Status of the function
- *          (E_OK) : The function done successfully
- *          (E_NOT_OK) : The function has issue to perform this action
- */
 static Std_ReturnType INT1_SetInterruptHandler(void (*InterruptHandler)(void)){
     Std_ReturnType ret = E_NOT_OK;
     if(NULL == InterruptHandler){
@@ -494,13 +464,6 @@ static Std_ReturnType INT1_SetInterruptHandler(void (*InterruptHandler)(void)){
     return ret;
 }
 
-/**
- * @brief  
- * @param InterruptHandler
- * @return Status of the function
- *          (E_OK) : The function done successfully
- *          (E_NOT_OK) : The function has issue to perform this action
- */
 static Std_ReturnType INT2_SetInterruptHandler(void (*InterruptHandler)(void)){
     Std_ReturnType ret = E_NOT_OK;
     if(NULL == InterruptHandler){
@@ -514,13 +477,6 @@ static Std_ReturnType INT2_SetInterruptHandler(void (*InterruptHandler)(void)){
     return ret;
 }
 
-/**
- * @brief  
- * @param int_obj  Pointer to the Interrupt configuration object
- * @return Status of the function
- *          (E_OK) : The function done successfully
- *          (E_NOT_OK) : The function has issue to perform this action
- */
 static Std_ReturnType Interrupt_INTx_SetInterruptHandler(const interrupt_INTx_t *int_obj){
     Std_ReturnType ret = E_NOT_OK;
     if(NULL == int_obj){

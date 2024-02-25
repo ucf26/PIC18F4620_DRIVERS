@@ -6,6 +6,8 @@
  */
 #include "mcal_interrupt_manager.h"
 
+static volatile uint8 RB4_Flag = 1, RB5_Flag = 1, RB6_Flag = 1, RB7_Flag = 1;
+
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE
 
 void __interrupt() InterruptManagerHigh(void){
@@ -46,22 +48,60 @@ void __interrupt() InterruptManager(void){
     }
     else{ /* Nothing */ }
     
-    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF )){
-        RB4_ISR(); 
+    /* ============================== PORTB On-Change ==============================*/
+    
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF )
+    && (PORTBbits.RB4 == GPIO_HIGH) && (RB4_Flag == 1)){
+        RB4_Flag = 0;
+        RB4_ISR(0); 
     }
     else{ /* Nothing */ }
-    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF )){
-        RB5_ISR(); 
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF ) 
+    && (PORTBbits.RB4 == GPIO_LOW) && (RB4_Flag == 0)){
+        RB4_Flag = 1;
+        RB4_ISR(1); 
     }
     else{ /* Nothing */ }
-    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF )){
-        RB6_ISR(); 
+    
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF )
+    && (PORTBbits.RB5 == GPIO_HIGH) && (RB5_Flag == 1)){
+        RB5_Flag = 0;
+        RB5_ISR(0); 
     }
     else{ /* Nothing */ }
-    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF )){
-        RB7_ISR(); 
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF ) 
+    && (PORTBbits.RB5 == GPIO_LOW) && (RB5_Flag == 0)){
+        RB5_Flag = 1;
+        RB5_ISR(1); 
     }
     else{ /* Nothing */ }
+    
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF )
+    && (PORTBbits.RB6 == GPIO_HIGH) && (RB6_Flag == 1)){
+        RB6_Flag = 0;
+        RB6_ISR(0); 
+    }
+    else{ /* Nothing */ }
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF ) 
+    && (PORTBbits.RB6 == GPIO_LOW) && (RB6_Flag == 0)){
+        RB6_Flag = 1;
+        RB6_ISR(1); 
+    }
+    else{ /* Nothing */ }
+    
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF )
+    && (PORTBbits.RB7 == GPIO_HIGH) && (RB7_Flag == 1)){
+        RB7_Flag = 0;
+        RB7_ISR(0); 
+    }
+    else{ /* Nothing */ }
+    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF ) 
+    && (PORTBbits.RB7 == GPIO_LOW) && (RB7_Flag == 0)){
+        RB7_Flag = 1;
+        RB7_ISR(1); 
+    }
+    else{ /* Nothing */ }
+    
 }
 
 #endif

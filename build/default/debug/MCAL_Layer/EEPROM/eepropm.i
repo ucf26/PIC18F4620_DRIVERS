@@ -4233,7 +4233,7 @@ extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
 # 1 "MCAL_Layer/EEPROM/../mcal_std_types.h" 1
 # 12 "MCAL_Layer/EEPROM/../mcal_std_types.h"
 # 1 "MCAL_Layer/EEPROM/../compiler.h" 1
-# 12 "MCAL_Layer/EEPROM/../compiler.h"
+# 11 "MCAL_Layer/EEPROM/../compiler.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4499,7 +4499,7 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Program Files/Microchip/MPLABX/v6.15/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\\pic\\include\\xc.h" 2 3
-# 12 "MCAL_Layer/EEPROM/../compiler.h" 2
+# 11 "MCAL_Layer/EEPROM/../compiler.h" 2
 # 12 "MCAL_Layer/EEPROM/../mcal_std_types.h" 2
 
 # 1 "MCAL_Layer/EEPROM/../std_libraries.h" 1
@@ -4799,7 +4799,7 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port);
 
 # 1 "MCAL_Layer/EEPROM/../../MCAL_Layer/Interrupt/mcal_interrupt_gen_cfg.h" 1
 # 15 "MCAL_Layer/EEPROM/../../MCAL_Layer/Interrupt/mcal_interrupt_config.h" 2
-# 54 "MCAL_Layer/EEPROM/../../MCAL_Layer/Interrupt/mcal_interrupt_config.h"
+# 56 "MCAL_Layer/EEPROM/../../MCAL_Layer/Interrupt/mcal_interrupt_config.h"
 typedef enum{
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
@@ -4858,6 +4858,20 @@ Std_ReturnType Data_EEPROM_ReadByte(uint16 address, uint8* add_of_data){
     }
     else {
 
+        EEADRH = (uint8)((address >> 8) &0x03);
+        EEADR = (uint8)(address & 0xFF);
+
+        EECON1bits.EEPGD = 0;
+
+        EECON1bits.CFGS = 0;
+
+
+        EECON1bits.RD = 1;
+        __nop();
+        __nop();
+
+        *add_of_data = EEDATA;
+        ret = (Std_ReturnType)0x01;
     }
     return ret;
 }

@@ -1,10 +1,4 @@
-/* 
- * File:   device_config.h
- * Author: Yousef Mahmoud
- *
- * Created on October 4, 2023, 6:21 AM
- */
- 
+
 #include "device_config.h"
 
 // PIC18F4620 Configuration Bit Settings
@@ -68,8 +62,4 @@
 
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
-
-
-
-
 

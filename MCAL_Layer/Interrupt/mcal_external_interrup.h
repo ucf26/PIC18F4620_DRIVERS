@@ -1,8 +1,8 @@
 /* 
- * File:   mcal_external_interrupt.h
- * Author: Ahmed.Elghafar
- * https://www.linkedin.com/in/ahmedabdelghafarmohammed/
- * Created on February 14, 2021, 11:52 PM
+ * File:   mcal_external_interrup.h
+ * Author: Yousef Mahmoud
+ *
+ * Created on February 8, 2024, 2:26 AM
  */
 
 #ifndef MCAL_EXTERNAL_INTERRUPT_H
@@ -101,7 +101,8 @@ typedef struct{
 }interrupt_INTx_t;
 
 typedef struct{
-    void (* EXT_InterruptHandler)(void);
+    void (* EXT_InterruptHandler_HIGH)(void);
+    void (* EXT_InterruptHandler_LOW)(void);
     pin_config_t mcu_pin;
     interrupt_priority_cfg priority;
 }interrupt_RBx_t;

@@ -32,6 +32,7 @@ typedef struct{
 /* Section : Macro Declarations */
 
 /* Section : Functions Declarations */
+
 Std_ReturnType led_initialize(const led_t *led);
 Std_ReturnType led_turn_on(const led_t *led);
 Std_ReturnType led_turn_off(const led_t *led);
