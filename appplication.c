@@ -7,30 +7,50 @@
 
 
 #include "application.h"
-#include "MCAL_Layer/EEPROM/eeprom.h"
+#include "MCAL_Layer/Timer0/timer0.h"
 
-volatile uint8 eeprom_val=0, rd=0;
-Std_ReturnType ret = E_NOT_OK;
 
 led_t ld1= {.led_status = GPIO_LOW, .pin=GPIO_PIN0, .port_name=PORTC_INDEX};
-led_t ld2= {.led_status = GPIO_LOW, .pin=GPIO_PIN1, .port_name=PORTC_INDEX};
-led_t ld3= {.led_status = GPIO_LOW, .pin=GPIO_PIN2, .port_name=PORTC_INDEX};
-led_t ld4= {.led_status = GPIO_LOW, .pin=GPIO_PIN3, .port_name=PORTC_INDEX};
 
+volatile uint16 tmr0_fl = 0, cnt=0;
 
+void timer0_defaulthandler(void){
+    led_turn_toggle(&ld1);
+}
+
+timer0_t timer0_obj={
+    .TMR0_InterruptHandler = timer0_defaulthandler,
+    .prescaler_enable = TIMER0_PRESCALER_ENABLE_CFG,
+    .prescaler_value = TIMER0_PRESCALER_DIV_BY_8,
+    .timer0_mode = TIMER0_TIMER_MODE,
+    .timer0_preloaded_value = 3036,
+    .timer0_register_size = TIMER0_16BIT_REGISTER_MODE,
+    .timer0_counter_edge = TIMER0_COUNTER_RISING_EDGE_CFG
+};
+
+timer0_t timer0_counter_obj={
+    .TMR0_InterruptHandler = timer0_defaulthandler,
+    .prescaler_enable = TIMER0_PRESCALER_DISABLE_CFG,
+    .timer0_mode = TIMER0_COUNTER_MODE,
+    .timer0_preloaded_value = 0,
+    .timer0_register_size = TIMER0_16BIT_REGISTER_MODE,
+    .timer0_counter_edge = TIMER0_COUNTER_RISING_EDGE_CFG
+};
 
 
 int main() {
+    Std_ReturnType ret = E_NOT_OK;
     
+    ret = TIMER0_Init(&timer0_obj);
     ret = led_initialize(&ld1);
-    ret = led_initialize(&ld2);
-    ret = led_initialize(&ld3);
-    ret = led_initialize(&ld4);
+    
     while(1)
     {
         
+      //  ret = TIMER0_Read_Value(&timer0_counter_obj, &cnt);
     }
     return (EXIT_SUCCESS);
 }
+
 
 

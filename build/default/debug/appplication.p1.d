@@ -25,5 +25,5 @@ ECU_Layer/Chr_LCD/ecu_chr_lcd_cfg.h  \
 MCAL_Layer/Interrupt/mcal_external_interrup.h  \
 MCAL_Layer/Interrupt/mcal_interrupt_config.h  \
 MCAL_Layer/Interrupt/mcal_interrupt_gen_cfg.h  \
-MCAL_Layer/EEPROM/eeprom.h  \
-MCAL_Layer/EEPROM/../../MCAL_Layer/Interrupt/mcal_internal_interrup.h 
+MCAL_Layer/Timer0/timer0.h  \
+MCAL_Layer/Timer0/../Interrupt/mcal_internal_interrup.h 

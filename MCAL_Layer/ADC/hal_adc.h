@@ -54,7 +54,7 @@
  *       1 = A/D conversion in progress
  *       0 = A/D Idle 
  */
-#define ADC_COVERSION_STATUS()  (ADCON0bits.GO_nDONE)
+#define ADC_COVERSION_STATUS()  ((uint8)(!(ADCON0bits.GO_nDONE)))
 
 /**
  * @breif : Start Analog-To-Digital Conversion
@@ -146,20 +146,36 @@ typedef enum{
     ADC_CONVERSION_CLOCK_DIV_64
 }adc_conversion_clock_t;
 
+
 typedef struct{
+    
+#if ADC_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
     void (* ADC_InterruptHandler)(void);
-    adc_conversion_clock_t conversion_clock;  /* @ref adc_conversion_clock_t */
-    adc_acquisition_time_t acuisition_time;   /* @ref adc_acquisition_time_t */ 
-    adc_channel_select_t adc_channel;         /* @ref adc_channel_select_t */
+    interrupt_priority_cfg priority;
+#endif
+    
+    adc_conversion_clock_t conversion_clock;         /* @ref adc_conversion_clock_t */
+    adc_acquisition_time_t acuisition_time;          /* @ref adc_acquisition_time_t */ 
+    adc_channel_select_t adc_channel;                /* @ref adc_channel_select_t */
     uint8 result_format : 1;                         /* A/D Result Format */
     uint8 voltage_reference : 1;                     /* Voltage Reference Configuration */
     uint8 ADC_reserved : 6;
 }adc_cfg_t;
 
+
+typedef uint16 adc_result_t;
+
 /* Section : Macro Declarations */
 
 /* Section : Software Interfaces Declarations */
-
-
+Std_ReturnType ADC_Init(const adc_cfg_t *_adc);
+Std_ReturnType ADC_DeInit(const adc_cfg_t *_adc);
+Std_ReturnType ADC_SelectChannel(const adc_cfg_t *_adc, adc_channel_select_t channel);
+Std_ReturnType ADC_StartConversion(const adc_cfg_t *_adc);
+Std_ReturnType ADC_IsConversionDone(const adc_cfg_t *_adc, uint8* conversion_status);
+Std_ReturnType ADC_GetConversionResult(const adc_cfg_t *_adc, adc_result_t* conversion_result);
+Std_ReturnType ADC_GetConversion_Blocking(const adc_cfg_t *_adc, adc_result_t* conversion_result, adc_channel_select_t channel);
+// instead of storing the result of conversion it takes some action 
+Std_ReturnType ADC_StartConversion_Interrupt(const adc_cfg_t *_adc, adc_channel_select_t channel);
 #endif	/* HAL_ADC_H */
 

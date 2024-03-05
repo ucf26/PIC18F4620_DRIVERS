@@ -517,12 +517,20 @@ Std_ReturnType convert_uint8_to_string(uint8 value, uint8 *str){
  */
 Std_ReturnType convert_uint16_to_string(uint16 value, uint8 *str){
     Std_ReturnType ret = E_OK;
+    uint8 Temp_String[6]={0};
+    uint8 L_Counter = 0;
     if(NULL == str){
         ret = E_NOT_OK;
     }
     else{    
-        memset(str, '\0', 6);
-        sprintf(str, "%i", value);
+        memset(str, ' ', 5);
+        str[5] = '\0';
+        sprintf((char*) Temp_String, "%i", value);
+        while(Temp_String[L_Counter] != '\0')
+        {
+            str[L_Counter] = Temp_String[L_Counter];
+            L_Counter++;
+        }
     }
     return ret;
 }

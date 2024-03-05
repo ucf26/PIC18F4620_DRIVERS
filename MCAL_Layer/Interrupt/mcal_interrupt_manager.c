@@ -19,10 +19,6 @@ void __interrupt() InterruptManagerHigh(void){
         INT2_ISR();
     }
     else { /* Nothing */}
-    if((INTERRUPT_ENABLE == INTCONbits.RBIE) && (INTERRUPT_OCCUR == INTCONbits.RBIF )){
-        RB4_ISR(); 
-    }
-    else{ /* Nothing */ }
 }
 
 void __interrupt(low_priority) InterruptManagerLow(void){
@@ -101,6 +97,20 @@ void __interrupt() InterruptManager(void){
         RB7_ISR(1); 
     }
     else{ /* Nothing */ }
+    
+    /* ============================== ADC_Interrupt ==============================*/
+    if((INTERRUPT_ENABLE == PIE1bits.ADIE) && (INTERRUPT_OCCUR == PIR1bits.ADIF)){
+        ADC_ISR();  /* External Interrupt 2 */
+    }
+    else{ /* Nothing */ }
+    
+    /* ============================== TMR0_Interrupt ==============================*/
+    if((INTERRUPT_ENABLE == INTCONbits.TMR0IE) && (INTCONbits.TMR0IF)){
+        TMR0_ISR();  
+    }
+    else{ /* Nothing */ }
+    
+    
     
 }
 

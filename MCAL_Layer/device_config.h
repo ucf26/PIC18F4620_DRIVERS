@@ -12,7 +12,7 @@
 
 
 /* Section : Macro Definitions */
-#define _XTAL_FREQ 4000000UL
+#define _XTAL_FREQ 8000000UL
 
 /* Section : Macro Functions Declarations */
 

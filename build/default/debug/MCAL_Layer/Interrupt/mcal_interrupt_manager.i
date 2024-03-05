@@ -4810,11 +4810,13 @@ void RB4_ISR(uint8 RB4_Source);
 void RB5_ISR(uint8 RB5_Source);
 void RB6_ISR(uint8 RB6_Source);
 void RB7_ISR(uint8 RB7_Source);
+void ADC_ISR(void);
+void TMR0_ISR(void);
 # 7 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c" 2
 
 
 static volatile uint8 RB4_Flag = 1, RB5_Flag = 1, RB6_Flag = 1, RB7_Flag = 1;
-# 37 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
+# 33 "MCAL_Layer/Interrupt/mcal_interrupt_manager.c"
 void __attribute__((picinterrupt(("")))) InterruptManager(void){
     if((1 == INTCONbits.INT0IE) && (1 == INTCONbits.INT0IF)){
         INT0_ISR();
@@ -4882,5 +4884,19 @@ void __attribute__((picinterrupt(("")))) InterruptManager(void){
         RB7_ISR(1);
     }
     else{ }
+
+
+    if((1 == PIE1bits.ADIE) && (1 == PIR1bits.ADIF)){
+        ADC_ISR();
+    }
+    else{ }
+
+
+    if((1 == INTCONbits.TMR0IE) && (INTCONbits.TMR0IF)){
+        TMR0_ISR();
+    }
+    else{ }
+
+
 
 }
