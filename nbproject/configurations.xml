@@ -43,6 +43,10 @@
         <logicalFolder name="EEPROM" displayName="EEPROM" projectFiles="true">
           <itemPath>MCAL_Layer/EEPROM/eeprom.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="EUSART" displayName="EUSART" projectFiles="true">
+          <itemPath>MCAL_Layer/EUSART/hal_usart.h</itemPath>
+          <itemPath>MCAL_Layer/EUSART/hal_usart_cfg.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="GPIO" displayName="GPIO" projectFiles="true">
           <itemPath>MCAL_Layer/GPIO/hal_gpio.h</itemPath>
           <itemPath>MCAL_Layer/device_config.h</itemPath>
@@ -102,6 +106,9 @@
         <logicalFolder name="EEPROM" displayName="EEPROM" projectFiles="true">
           <itemPath>MCAL_Layer/EEPROM/eepropm.c</itemPath>
         </logicalFolder>
+        <logicalFolder name="EUSART" displayName="EUSART" projectFiles="true">
+          <itemPath>MCAL_Layer/EUSART/hal_usart.c</itemPath>
+        </logicalFolder>
         <logicalFolder name="GPIO" displayName="GPIO" projectFiles="true">
           <itemPath>MCAL_Layer/GPIO/hal_gpio.c</itemPath>
         </logicalFolder>
@@ -136,7 +143,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>Simulator</platformTool>
         <languageToolchain>XC8</languageToolchain>
-        <languageToolchainVersion>2.45</languageToolchainVersion>
+        <languageToolchainVersion>2.40</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>

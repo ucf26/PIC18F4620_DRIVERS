@@ -7,47 +7,74 @@
 
 
 #include "application.h"
-#include "MCAL_Layer/Timer0/timer0.h"
 
+uint8 rec_data;
 
-led_t ld1= {.led_status = GPIO_LOW, .pin=GPIO_PIN0, .port_name=PORTC_INDEX};
+led_t led1 = {.port_name = PORTD_INDEX, .pin = GPIO_PIN0, .led_status = LED_off};
+uint32 val_rx, val_tx;
 
-volatile uint16 tmr0_fl = 0, cnt=0;
-
-void timer0_defaulthandler(void){
-    led_turn_toggle(&ld1);
+void tx_isr(void)
+{
+    val_tx++;
+//    led_turn_toggle(&led1);
 }
 
-timer0_t timer0_obj={
-    .TMR0_InterruptHandler = timer0_defaulthandler,
-    .prescaler_enable = TIMER0_PRESCALER_ENABLE_CFG,
-    .prescaler_value = TIMER0_PRESCALER_DIV_BY_8,
-    .timer0_mode = TIMER0_TIMER_MODE,
-    .timer0_preloaded_value = 3036,
-    .timer0_register_size = TIMER0_16BIT_REGISTER_MODE,
-    .timer0_counter_edge = TIMER0_COUNTER_RISING_EDGE_CFG
-};
+void rx_isr(void)
+{
+    EUSART_ASYNC_ReadByteBlocking(&rec_data);
+    val_rx++;
+//    led_turn_toggle(&led1);
+}
 
-timer0_t timer0_counter_obj={
-    .TMR0_InterruptHandler = timer0_defaulthandler,
-    .prescaler_enable = TIMER0_PRESCALER_DISABLE_CFG,
-    .timer0_mode = TIMER0_COUNTER_MODE,
-    .timer0_preloaded_value = 0,
-    .timer0_register_size = TIMER0_16BIT_REGISTER_MODE,
-    .timer0_counter_edge = TIMER0_COUNTER_RISING_EDGE_CFG
-};
+void usart_interrupt_init(){
+    Std_ReturnType ret = E_NOT_OK;
+    usart_t usart_obj;
+    usart_obj.baudrate = 9600;
+    usart_obj.baudrate_config = BAUDRATE_ASYNC_8BIT_LOW_SPEED;
 
+    usart_obj.usart_rx_cfg.usart_rx_enable = EUSART_ASYNCHRONOUS_RX_ENABLE;
+    usart_obj.usart_rx_cfg.usart_rx_9bit_enable = EUSART_ASYNCHRONOUS_9BIT_RX_DISABLE;
+    usart_obj.usart_rx_cfg.usart_rx_interrupt_enable = EUSART_ASYNCHRONOUS_RX_INTERRUPT_ENABLE;
+    
+    usart_obj.usart_tx_cfg.usart_tx_enable = EUSART_ASYNCHRONOUS_TX_ENABLE;
+    usart_obj.usart_tx_cfg.usart_tx_9bit_enable = EUSART_ASYNCHRONOUS_9BIT_TX_DISABLE;
+    usart_obj.usart_tx_cfg.usart_tx_interrupt_enable = EUSART_ASYNCHRONOUS_TX_INTERRUPT_ENABLE;
+    
+    usart_obj.EUSART_FramingErrorHandler = NULL;
+    usart_obj.EUSART_OverrunErrorHandler = NULL;
+    usart_obj.EUSART_Rx_DefaultInterruptHandler = rx_isr;
+    usart_obj.EUSART_Tx_DefaultInterruptHandler = tx_isr;
+    
+    ret = EUSART_ASYNC_Init(&usart_obj);
+}
 
 int main() {
     Std_ReturnType ret = E_NOT_OK;
     
-    ret = TIMER0_Init(&timer0_obj);
-    ret = led_initialize(&ld1);
+    usart_interrupt_init();
+    
+    ret = led_initialize(&led1);
     
     while(1)
     {
-        
-      //  ret = TIMER0_Read_Value(&timer0_counter_obj, &cnt);
+        ret = EUSART_ASYNC_WriteStringBlocking("1\r", 2);
+//        ret = EUSART_ASYNC_WriteByteBlocking('a');
+//        __delay_ms(100);
+//        ret = EUSART_ASYNC_WriteByteBlocking('b');
+//        __delay_ms(1000);
+//        ret = EUSART_ASYNC_ReadByteBlocking(&rec_data);
+//        if(ret == E_OK){
+//            if('a' == rec_data){
+//            ret = led_turn_on(&led1);
+//            ret = EUSART_ASYNC_WriteStringBlocking("led on\r", 7);
+//            }
+//            else if('b' == rec_data){
+//                ret = led_turn_off(&led1);
+//                ret = EUSART_ASYNC_WriteStringBlocking("led off\r", 8);
+//            }
+//            else {}
+//        }
+//        else {}
     }
     return (EXIT_SUCCESS);
 }

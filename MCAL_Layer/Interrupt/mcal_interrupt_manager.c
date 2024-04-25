@@ -110,6 +110,17 @@ void __interrupt() InterruptManager(void){
     }
     else{ /* Nothing */ }
     
+    /* ============================= EUSART_Interrupt =============================*/
+    if((INTERRUPT_ENABLE == PIE1bits.TXIE) && (PIR1bits.TXIF)){
+        EUSART_TX_ISR();  
+    }
+    else{ /* Nothing */ }
+    
+    if((INTERRUPT_ENABLE == PIE1bits.RCIE) && (PIR1bits.RCIF)){
+        EUSART_RX_ISR();  
+    }
+    else{ /* Nothing */ }
+    
     
     
 }

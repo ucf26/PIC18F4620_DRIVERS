@@ -15,7 +15,6 @@
 
 /* Section : Macro Functions Declarations */
 
-
 #if ADC_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
 
 /* This routine clears the interrupt enable for the ADC Module */
@@ -30,6 +29,39 @@
 #define ADC_HighPrioritySet()           (IPR1bits.ADIP = 1)
 /* This routine set the ADC Interrupt Priority to be Low priority */
 #define ADC_LowPrioritySet()            (IPR1bits.ADIP = 0)
+#endif
+
+#endif
+
+
+#if EUSART_TX_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+
+/* This routine clears the interrupt enable for the EUSART Module */
+#define EUSART_TX_InterruptDisable()         (PIE1bits.TXIE = 0)
+/* This routine sets the interrupt enable for the EUSART Module */
+#define EUSART_TX_InterruptEnable()          (PIE1bits.TXIE = 1)
+
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE==(INTERRUPT_FEATURE_ENABLE)
+/* This routine set the EUSART Interrupt Priority to be High priority */
+#define EUSART_TX_HighPrioritySet()           (IPR1bits.TXIP = 1)
+/* This routine set the EUSART Interrupt Priority to be Low priority */
+#define EUSART_TX_LowPrioritySet()            (IPR1bits.TXIP = 0)
+#endif
+
+#endif
+
+#if EUSART_RX_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+
+/* This routine clears the interrupt enable for the EUSART Module */
+#define EUSART_RX_InterruptDisable()         (PIE1bits.RCIE = 0)
+/* This routine sets the interrupt enable for the EUSART Module */
+#define EUSART_RX_InterruptEnable()          (PIE1bits.RCIE = 1)
+
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE==(INTERRUPT_FEATURE_ENABLE)
+/* This routine set the EUSART Interrupt Priority to be High priority */
+#define EUSART_RX_HighPrioritySet()           (IPR1bits.RCIP = 1)
+/* This routine set the EUSART Interrupt Priority to be Low priority */
+#define EUSART_RX_LowPrioritySet()            (IPR1bits.RCIP = 0)
 #endif
 
 #endif

@@ -12,6 +12,8 @@
 /* Section : Includes */
 #include "ECU_Layer/ecu_layer_init.h"
 #include "MCAL_Layer/Interrupt/mcal_external_interrup.h"
+#include "MCAL_Layer/Timer0/timer0.h"
+#include "MCAL_Layer/EUSART/hal_usart.h"
 
 /* Section : Macro Declarations */
 
@@ -21,6 +23,7 @@
 
 /* Section : Functions Declarations */
 void app_init(void);
+
 
 
 #endif	/* APPLICATION_H */
