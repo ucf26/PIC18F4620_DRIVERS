@@ -64,10 +64,10 @@ Std_ReturnType EUSART_ASYNC_WriteByteBlocking(uint8 _data)
 {
     Std_ReturnType ret = E_OK;
     while(!TXSTAbits.TRMT){};
+    TXREG = _data;
 #if EUSART_RX_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
     EUSART_TX_InterruptEnable();
 #endif
-    TXREG = _data;
     return ret;
 }
 
@@ -89,6 +89,39 @@ Std_ReturnType EUSART_ASYNC_WriteStringBlocking(uint8 *_data, uint16 str_len)
     return ret;
 }
 
+Std_ReturnType EUSART_ASYNC_WriteByteNonBlocking(uint8 _data)
+{
+    Std_ReturnType ret = E_OK;
+    if(1 == TXSTAbits.TRMT){
+        TXREG = _data;
+#if EUSART_RX_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+    EUSART_TX_InterruptEnable();
+#endif
+        
+    }
+    else {
+        ret = E_NOT_OK;
+    }
+    return ret;
+}
+
+Std_ReturnType EUSART_ASYNC_WriteStringNonBlocking(uint8 *_data, uint16 str_len)
+{
+    Std_ReturnType ret = E_OK;
+    if(NULL == _data)
+    {
+        ret = E_NOT_OK;
+    }
+    else 
+    {
+        uint16 L_counter = ZERO_INIT;
+        for(L_counter = ZERO_INIT; L_counter < str_len; L_counter++){
+            ret = EUSART_ASYNC_WriteByteNonBlocking(_data[L_counter]);
+        }
+        ret = E_OK;
+    }
+    return ret;
+}
 
 Std_ReturnType EUSART_ASYNC_ReadByteBlocking(uint8 *_data)
 {
@@ -277,16 +310,16 @@ static void EUSART_ASYNC_RX_Init(const usart_t* _eusart)
     else { /* Nothing */}
 }
 
-#if EUSART_TX_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+
 void EUSART_TX_ISR(void){
     EUSART_TX_InterruptDisable();
     if(EUSART_TxInterruptHandler){
         EUSART_TxInterruptHandler();
     }else { /* Nothing */}
 }
-#endif
 
-#if EUSART_RX_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+
+
 void EUSART_RX_ISR(void){
     if(EUSART_RxInterruptHandler){
         EUSART_RxInterruptHandler();
@@ -298,4 +331,3 @@ void EUSART_RX_ISR(void){
         EUSART_OverrunErrorHandler();
     }else { /* Nothing */}
 }
-#endif

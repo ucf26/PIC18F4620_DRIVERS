@@ -11,18 +11,47 @@
 uint8 rec_data;
 
 led_t led1 = {.port_name = PORTD_INDEX, .pin = GPIO_PIN0, .led_status = LED_off};
+led_t led2 = {.port_name = PORTD_INDEX, .pin = GPIO_PIN1, .led_status = LED_off};
 uint32 val_rx, val_tx;
 
 void tx_isr(void)
 {
     val_tx++;
+    PIE1bits.TXIE = 0;
 //    led_turn_toggle(&led1);
 }
 
 void rx_isr(void)
 {
-    EUSART_ASYNC_ReadByteBlocking(&rec_data);
-    val_rx++;
+//    EUSART_ASYNC_ReadByteBlocking(&rec_data);
+//    val_rx++;
+//    Std_ReturnType ret = E_NOT_OK;
+//    
+//    ret = EUSART_ASYNC_ReadByteNonBlocking(&rec_data);
+//    
+//    switch(rec_data){
+//        case 'a':
+//            ret = led_turn_on(&led1);
+//            ret = EUSART_ASYNC_WriteStringBlocking("led1 on\r", 8);
+//            break;
+//        case 'b':
+//            ret = led_turn_off(&led1);
+//            ret = EUSART_ASYNC_WriteStringBlocking("led1 off\r", 9);
+//            break;
+//        case 'c':
+//            ret = led_turn_on(&led2);
+//            ret = EUSART_ASYNC_WriteStringBlocking("led2 on\r", 8);
+//            break;
+//        case 'd':
+//            ret = led_turn_off(&led2);
+//            ret = EUSART_ASYNC_WriteStringBlocking("led2 off\r", 9);
+//            break;
+//        default :
+//            ret = led_turn_off(&led2);
+//            ret = led_turn_off(&led1);
+//    }
+    
+    
 //    led_turn_toggle(&led1);
 }
 
@@ -42,7 +71,7 @@ void usart_interrupt_init(){
     
     usart_obj.EUSART_FramingErrorHandler = NULL;
     usart_obj.EUSART_OverrunErrorHandler = NULL;
-    usart_obj.EUSART_Rx_DefaultInterruptHandler = rx_isr;
+    usart_obj.EUSART_Rx_DefaultInterruptHandler = NULL;
     usart_obj.EUSART_Tx_DefaultInterruptHandler = tx_isr;
     
     ret = EUSART_ASYNC_Init(&usart_obj);
@@ -54,10 +83,13 @@ int main() {
     usart_interrupt_init();
     
     ret = led_initialize(&led1);
+    ret = led_initialize(&led2);
     
     while(1)
     {
-        ret = EUSART_ASYNC_WriteStringBlocking("1\r", 2);
+        
+        ret = EUSART_ASYNC_WriteByteNonBlocking('a');
+        ret = EUSART_ASYNC_WriteByteNonBlocking('b');
 //        ret = EUSART_ASYNC_WriteByteBlocking('a');
 //        __delay_ms(100);
 //        ret = EUSART_ASYNC_WriteByteBlocking('b');

@@ -4838,8 +4838,13 @@ typedef struct{
 
 Std_ReturnType EUSART_ASYNC_Init(const usart_t* _eusart);
 Std_ReturnType EUSART_ASYNC_DeInit(const usart_t* _eusart);
+
 Std_ReturnType EUSART_ASYNC_WriteByteBlocking(uint8 _data);
 Std_ReturnType EUSART_ASYNC_WriteStringBlocking(uint8 *_data, uint16 str_len);
+
+Std_ReturnType EUSART_ASYNC_WriteByteNonBlocking(uint8 _data);
+Std_ReturnType EUSART_ASYNC_WriteStringNonBlocking(uint8 *_data, uint16 str_len);
+
 Std_ReturnType EUSART_ASYNC_ReadByteBlocking(uint8 *_data);
 Std_ReturnType EUSART_ASYNC_ReadByteNonBlocking(uint8 *_data);
 # 8 "MCAL_Layer/EUSART/hal_usart.c" 2
@@ -4902,10 +4907,10 @@ Std_ReturnType EUSART_ASYNC_WriteByteBlocking(uint8 _data)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
     while(!TXSTAbits.TRMT){};
+    TXREG = _data;
 
     (PIE1bits.TXIE = 1);
 
-    TXREG = _data;
     return ret;
 }
 
@@ -4927,6 +4932,39 @@ Std_ReturnType EUSART_ASYNC_WriteStringBlocking(uint8 *_data, uint16 str_len)
     return ret;
 }
 
+Std_ReturnType EUSART_ASYNC_WriteByteNonBlocking(uint8 _data)
+{
+    Std_ReturnType ret = (Std_ReturnType)0x01;
+    if(1 == TXSTAbits.TRMT){
+        TXREG = _data;
+
+    (PIE1bits.TXIE = 1);
+
+
+    }
+    else {
+        ret = (Std_ReturnType)0x00;
+    }
+    return ret;
+}
+
+Std_ReturnType EUSART_ASYNC_WriteStringNonBlocking(uint8 *_data, uint16 str_len)
+{
+    Std_ReturnType ret = (Std_ReturnType)0x01;
+    if(((void*)0) == _data)
+    {
+        ret = (Std_ReturnType)0x00;
+    }
+    else
+    {
+        uint16 L_counter = 0;
+        for(L_counter = 0; L_counter < str_len; L_counter++){
+            ret = EUSART_ASYNC_WriteByteNonBlocking(_data[L_counter]);
+        }
+        ret = (Std_ReturnType)0x01;
+    }
+    return ret;
+}
 
 Std_ReturnType EUSART_ASYNC_ReadByteBlocking(uint8 *_data)
 {
@@ -5022,7 +5060,7 @@ static void EUSART_ASYNC_TX_Init(const usart_t* _eusart)
 
 
         (PIE1bits.TXIE = 1);
-# 200 "MCAL_Layer/EUSART/hal_usart.c"
+# 233 "MCAL_Layer/EUSART/hal_usart.c"
         (INTCONbits.GIE = 1);
         (INTCONbits.PEIE = 1);
 
@@ -5064,7 +5102,7 @@ static void EUSART_ASYNC_RX_Init(const usart_t* _eusart)
 
 
         (PIE1bits.RCIE = 1);
-# 254 "MCAL_Layer/EUSART/hal_usart.c"
+# 287 "MCAL_Layer/EUSART/hal_usart.c"
         (INTCONbits.GIE = 1);
         (INTCONbits.PEIE = 1);
 

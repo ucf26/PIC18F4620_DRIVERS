@@ -5131,8 +5131,13 @@ typedef struct{
 
 Std_ReturnType EUSART_ASYNC_Init(const usart_t* _eusart);
 Std_ReturnType EUSART_ASYNC_DeInit(const usart_t* _eusart);
+
 Std_ReturnType EUSART_ASYNC_WriteByteBlocking(uint8 _data);
 Std_ReturnType EUSART_ASYNC_WriteStringBlocking(uint8 *_data, uint16 str_len);
+
+Std_ReturnType EUSART_ASYNC_WriteByteNonBlocking(uint8 _data);
+Std_ReturnType EUSART_ASYNC_WriteStringNonBlocking(uint8 *_data, uint16 str_len);
+
 Std_ReturnType EUSART_ASYNC_ReadByteBlocking(uint8 *_data);
 Std_ReturnType EUSART_ASYNC_ReadByteNonBlocking(uint8 *_data);
 # 16 "./application.h" 2
@@ -5144,19 +5149,19 @@ void app_init(void);
 uint8 rec_data;
 
 led_t led1 = {.port_name = PORTD_INDEX, .pin = GPIO_PIN0, .led_status = LED_off};
+led_t led2 = {.port_name = PORTD_INDEX, .pin = GPIO_PIN1, .led_status = LED_off};
 uint32 val_rx, val_tx;
 
 void tx_isr(void)
 {
     val_tx++;
+    PIE1bits.TXIE = 0;
 
 }
 
 void rx_isr(void)
 {
-    EUSART_ASYNC_ReadByteBlocking(&rec_data);
-    val_rx++;
-
+# 56 "appplication.c"
 }
 
 void usart_interrupt_init(){
@@ -5175,7 +5180,7 @@ void usart_interrupt_init(){
 
     usart_obj.EUSART_FramingErrorHandler = ((void*)0);
     usart_obj.EUSART_OverrunErrorHandler = ((void*)0);
-    usart_obj.EUSART_Rx_DefaultInterruptHandler = rx_isr;
+    usart_obj.EUSART_Rx_DefaultInterruptHandler = ((void*)0);
     usart_obj.EUSART_Tx_DefaultInterruptHandler = tx_isr;
 
     ret = EUSART_ASYNC_Init(&usart_obj);
@@ -5187,11 +5192,14 @@ int main() {
     usart_interrupt_init();
 
     ret = led_initialize(&led1);
+    ret = led_initialize(&led2);
 
     while(1)
     {
-        ret = EUSART_ASYNC_WriteStringBlocking("1\r", 2);
-# 78 "appplication.c"
+
+        ret = EUSART_ASYNC_WriteByteNonBlocking('a');
+        ret = EUSART_ASYNC_WriteByteNonBlocking('b');
+# 110 "appplication.c"
     }
     return (0);
 }
