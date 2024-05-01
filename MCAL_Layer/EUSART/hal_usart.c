@@ -93,9 +93,10 @@ Std_ReturnType EUSART_ASYNC_WriteByteNonBlocking(uint8 _data)
 {
     Std_ReturnType ret = E_OK;
     if(1 == TXSTAbits.TRMT){
+        EUSART_TX_InterruptEnable();
         TXREG = _data;
 #if EUSART_RX_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
-    EUSART_TX_InterruptEnable();
+    
 #endif
         
     }

@@ -4936,9 +4936,10 @@ Std_ReturnType EUSART_ASYNC_WriteByteNonBlocking(uint8 _data)
 {
     Std_ReturnType ret = (Std_ReturnType)0x01;
     if(1 == TXSTAbits.TRMT){
+        (PIE1bits.TXIE = 1);
         TXREG = _data;
 
-    (PIE1bits.TXIE = 1);
+
 
 
     }
@@ -5060,7 +5061,7 @@ static void EUSART_ASYNC_TX_Init(const usart_t* _eusart)
 
 
         (PIE1bits.TXIE = 1);
-# 233 "MCAL_Layer/EUSART/hal_usart.c"
+# 234 "MCAL_Layer/EUSART/hal_usart.c"
         (INTCONbits.GIE = 1);
         (INTCONbits.PEIE = 1);
 
@@ -5102,7 +5103,7 @@ static void EUSART_ASYNC_RX_Init(const usart_t* _eusart)
 
 
         (PIE1bits.RCIE = 1);
-# 287 "MCAL_Layer/EUSART/hal_usart.c"
+# 288 "MCAL_Layer/EUSART/hal_usart.c"
         (INTCONbits.GIE = 1);
         (INTCONbits.PEIE = 1);
 

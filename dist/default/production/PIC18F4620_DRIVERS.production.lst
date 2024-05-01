@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.40 build 20220703182018 
-                                                                                               Sun Apr 28 00:32:46 2024
+                                                                                               Sun Apr 28 06:36:47 2024
 
 Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1 
      1                           	processor	18F4620
@@ -944,7 +944,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
    912                           
    913 ;; *************** function _EUSART_Baud_Rate_Calculation *****************
    914 ;; Defined at:
-   915 ;;		line 161 in file "MCAL_Layer/EUSART/hal_usart.c"
+   915 ;;		line 162 in file "MCAL_Layer/EUSART/hal_usart.c"
    916 ;; Parameters:    Size  Location     Type
    917 ;;  _eusart         2   58[COMRAM] PTR const struct .
    918 ;;		 -> usart_interrupt_init@usart_obj(18), 
@@ -987,8 +987,8 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
    950   001016                     _EUSART_Baud_Rate_Calculation:
    951                           	callstack 24
    952   001016                     
-   953                           ;MCAL_Layer/EUSART/hal_usart.c: 161: static void EUSART_Baud_Rate_Calculation (const usa
-      +                          rt_t* _eusart);MCAL_Layer/EUSART/hal_usart.c: 162: {;MCAL_Layer/EUSART/hal_usart.c: 163:
+   953                           ;MCAL_Layer/EUSART/hal_usart.c: 162: static void EUSART_Baud_Rate_Calculation (const usa
+      +                          rt_t* _eusart);MCAL_Layer/EUSART/hal_usart.c: 163: {;MCAL_Layer/EUSART/hal_usart.c: 164:
       +                               float Baud_Rate_Temp = 0;
    954   001016  0E00               	movlw	0
    955   001018  6E3F               	movwf	EUSART_Baud_Rate_Calculation@Baud_Rate_Temp^0,c
@@ -999,20 +999,20 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
    960   001022  0E00               	movlw	0
    961   001024  6E42               	movwf	(EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+3)^0,c
    962                           
-   963                           ;MCAL_Layer/EUSART/hal_usart.c: 164:     switch(_eusart->baudrate_config)
+   963                           ;MCAL_Layer/EUSART/hal_usart.c: 165:     switch(_eusart->baudrate_config)
    964   001026  EF2F  F00A         	goto	l6515
    965   00102A                     l576:
    966                           
-   967                           ;MCAL_Layer/EUSART/hal_usart.c: 167:             TXSTAbits.SYNC = 0;
+   967                           ;MCAL_Layer/EUSART/hal_usart.c: 168:             TXSTAbits.SYNC = 0;
    968   00102A  98AC               	bcf	172,4,c	;volatile
    969                           
-   970                           ;MCAL_Layer/EUSART/hal_usart.c: 168:             BAUDCONbits.BRG16 = 0;
+   970                           ;MCAL_Layer/EUSART/hal_usart.c: 169:             BAUDCONbits.BRG16 = 0;
    971   00102C  96B8               	bcf	184,3,c	;volatile
    972                           
-   973                           ;MCAL_Layer/EUSART/hal_usart.c: 169:             TXSTAbits.BRGH = 0;
+   973                           ;MCAL_Layer/EUSART/hal_usart.c: 170:             TXSTAbits.BRGH = 0;
    974   00102E  94AC               	bcf	172,2,c	;volatile
    975   001030                     
-   976                           ;MCAL_Layer/EUSART/hal_usart.c: 170:             Baud_Rate_Temp = ((8000000UL / (float)_
+   976                           ;MCAL_Layer/EUSART/hal_usart.c: 171:             Baud_Rate_Temp = ((8000000UL / (float)_
       +                          eusart->baudrate) / 64) - 1;
    977   001030  C03B  FFD9         	movff	EUSART_Baud_Rate_Calculation@_eusart,fsr2l
    978   001034  C03C  FFDA         	movff	EUSART_Baud_Rate_Calculation@_eusart+1,fsr2h
@@ -1040,7 +1040,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   1000   00107A  C014  F045         	movff	?___fldiv+2,_EUSART_Baud_Rate_Calculation$3459+2
   1001   00107E  C015  F046         	movff	?___fldiv+3,_EUSART_Baud_Rate_Calculation$3459+3
   1002   001082                     
-  1003                           ;MCAL_Layer/EUSART/hal_usart.c: 170:             Baud_Rate_Temp = ((8000000UL / (float)_
+  1003                           ;MCAL_Layer/EUSART/hal_usart.c: 171:             Baud_Rate_Temp = ((8000000UL / (float)_
       +                          eusart->baudrate) / 64) - 1;
   1004   001082  0E00               	movlw	0
   1005   001084  6E16               	movwf	___fldiv@a^0,c
@@ -1073,20 +1073,20 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   1032   0010D2  C02D  F041         	movff	?___fladd+2,EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+2
   1033   0010D6  C02E  F042         	movff	?___fladd+3,EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+3
   1034                           
-  1035                           ;MCAL_Layer/EUSART/hal_usart.c: 171:             break;
+  1035                           ;MCAL_Layer/EUSART/hal_usart.c: 172:             break;
   1036   0010DA  EF5A  F00A         	goto	l6517
   1037   0010DE                     l578:
   1038                           
-  1039                           ;MCAL_Layer/EUSART/hal_usart.c: 173:             TXSTAbits.SYNC = 0;
+  1039                           ;MCAL_Layer/EUSART/hal_usart.c: 174:             TXSTAbits.SYNC = 0;
   1040   0010DE  98AC               	bcf	172,4,c	;volatile
   1041                           
-  1042                           ;MCAL_Layer/EUSART/hal_usart.c: 174:             BAUDCONbits.BRG16 = 0;
+  1042                           ;MCAL_Layer/EUSART/hal_usart.c: 175:             BAUDCONbits.BRG16 = 0;
   1043   0010E0  96B8               	bcf	184,3,c	;volatile
   1044                           
-  1045                           ;MCAL_Layer/EUSART/hal_usart.c: 175:             TXSTAbits.BRGH = 1;
+  1045                           ;MCAL_Layer/EUSART/hal_usart.c: 176:             TXSTAbits.BRGH = 1;
   1046   0010E2  84AC               	bsf	172,2,c	;volatile
   1047   0010E4                     
-  1048                           ;MCAL_Layer/EUSART/hal_usart.c: 176:             Baud_Rate_Temp = ((8000000UL / (float)_
+  1048                           ;MCAL_Layer/EUSART/hal_usart.c: 177:             Baud_Rate_Temp = ((8000000UL / (float)_
       +                          eusart->baudrate) / 16) - 1;
   1049   0010E4  C03B  FFD9         	movff	EUSART_Baud_Rate_Calculation@_eusart,fsr2l
   1050   0010E8  C03C  FFDA         	movff	EUSART_Baud_Rate_Calculation@_eusart+1,fsr2h
@@ -1114,7 +1114,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   1072   00112E  C014  F045         	movff	?___fldiv+2,_EUSART_Baud_Rate_Calculation$3459+2
   1073   001132  C015  F046         	movff	?___fldiv+3,_EUSART_Baud_Rate_Calculation$3459+3
   1074   001136                     
-  1075                           ;MCAL_Layer/EUSART/hal_usart.c: 176:             Baud_Rate_Temp = ((8000000UL / (float)_
+  1075                           ;MCAL_Layer/EUSART/hal_usart.c: 177:             Baud_Rate_Temp = ((8000000UL / (float)_
       +                          eusart->baudrate) / 16) - 1;
   1076   001136  0E00               	movlw	0
   1077   001138  6E16               	movwf	___fldiv@a^0,c
@@ -1147,20 +1147,20 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   1104   001186  C02D  F041         	movff	?___fladd+2,EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+2
   1105   00118A  C02E  F042         	movff	?___fladd+3,EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+3
   1106                           
-  1107                           ;MCAL_Layer/EUSART/hal_usart.c: 177:             break;
+  1107                           ;MCAL_Layer/EUSART/hal_usart.c: 178:             break;
   1108   00118E  EF5A  F00A         	goto	l6517
   1109   001192                     l579:
   1110                           
-  1111                           ;MCAL_Layer/EUSART/hal_usart.c: 179:             TXSTAbits.SYNC = 0;
+  1111                           ;MCAL_Layer/EUSART/hal_usart.c: 180:             TXSTAbits.SYNC = 0;
   1112   001192  98AC               	bcf	172,4,c	;volatile
   1113                           
-  1114                           ;MCAL_Layer/EUSART/hal_usart.c: 180:             BAUDCONbits.BRG16 = 1;
+  1114                           ;MCAL_Layer/EUSART/hal_usart.c: 181:             BAUDCONbits.BRG16 = 1;
   1115   001194  86B8               	bsf	184,3,c	;volatile
   1116                           
-  1117                           ;MCAL_Layer/EUSART/hal_usart.c: 181:             TXSTAbits.BRGH = 0;
+  1117                           ;MCAL_Layer/EUSART/hal_usart.c: 182:             TXSTAbits.BRGH = 0;
   1118   001196  94AC               	bcf	172,2,c	;volatile
   1119   001198                     
-  1120                           ;MCAL_Layer/EUSART/hal_usart.c: 182:             Baud_Rate_Temp = ((8000000UL / (float)_
+  1120                           ;MCAL_Layer/EUSART/hal_usart.c: 183:             Baud_Rate_Temp = ((8000000UL / (float)_
       +                          eusart->baudrate) / 16) - 1;
   1121   001198  C03B  FFD9         	movff	EUSART_Baud_Rate_Calculation@_eusart,fsr2l
   1122   00119C  C03C  FFDA         	movff	EUSART_Baud_Rate_Calculation@_eusart+1,fsr2h
@@ -1188,7 +1188,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   1144   0011E2  C014  F045         	movff	?___fldiv+2,_EUSART_Baud_Rate_Calculation$3459+2
   1145   0011E6  C015  F046         	movff	?___fldiv+3,_EUSART_Baud_Rate_Calculation$3459+3
   1146   0011EA                     
-  1147                           ;MCAL_Layer/EUSART/hal_usart.c: 182:             Baud_Rate_Temp = ((8000000UL / (float)_
+  1147                           ;MCAL_Layer/EUSART/hal_usart.c: 183:             Baud_Rate_Temp = ((8000000UL / (float)_
       +                          eusart->baudrate) / 16) - 1;
   1148   0011EA  0E00               	movlw	0
   1149   0011EC  6E16               	movwf	___fldiv@a^0,c
@@ -1221,20 +1221,20 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   1176   00123A  C02D  F041         	movff	?___fladd+2,EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+2
   1177   00123E  C02E  F042         	movff	?___fladd+3,EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+3
   1178                           
-  1179                           ;MCAL_Layer/EUSART/hal_usart.c: 183:             break;
+  1179                           ;MCAL_Layer/EUSART/hal_usart.c: 184:             break;
   1180   001242  EF5A  F00A         	goto	l6517
   1181   001246                     l580:
   1182                           
-  1183                           ;MCAL_Layer/EUSART/hal_usart.c: 185:             TXSTAbits.SYNC = 0;
+  1183                           ;MCAL_Layer/EUSART/hal_usart.c: 186:             TXSTAbits.SYNC = 0;
   1184   001246  98AC               	bcf	172,4,c	;volatile
   1185                           
-  1186                           ;MCAL_Layer/EUSART/hal_usart.c: 186:             BAUDCONbits.BRG16 = 1;
+  1186                           ;MCAL_Layer/EUSART/hal_usart.c: 187:             BAUDCONbits.BRG16 = 1;
   1187   001248  86B8               	bsf	184,3,c	;volatile
   1188                           
-  1189                           ;MCAL_Layer/EUSART/hal_usart.c: 187:             TXSTAbits.BRGH = 1;
+  1189                           ;MCAL_Layer/EUSART/hal_usart.c: 188:             TXSTAbits.BRGH = 1;
   1190   00124A  84AC               	bsf	172,2,c	;volatile
   1191   00124C                     
-  1192                           ;MCAL_Layer/EUSART/hal_usart.c: 188:             Baud_Rate_Temp = ((8000000UL / (float)_
+  1192                           ;MCAL_Layer/EUSART/hal_usart.c: 189:             Baud_Rate_Temp = ((8000000UL / (float)_
       +                          eusart->baudrate) / 4) - 1;
   1193   00124C  C03B  FFD9         	movff	EUSART_Baud_Rate_Calculation@_eusart,fsr2l
   1194   001250  C03C  FFDA         	movff	EUSART_Baud_Rate_Calculation@_eusart+1,fsr2h
@@ -1262,7 +1262,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   1216   001296  C014  F045         	movff	?___fldiv+2,_EUSART_Baud_Rate_Calculation$3459+2
   1217   00129A  C015  F046         	movff	?___fldiv+3,_EUSART_Baud_Rate_Calculation$3459+3
   1218   00129E                     
-  1219                           ;MCAL_Layer/EUSART/hal_usart.c: 188:             Baud_Rate_Temp = ((8000000UL / (float)_
+  1219                           ;MCAL_Layer/EUSART/hal_usart.c: 189:             Baud_Rate_Temp = ((8000000UL / (float)_
       +                          eusart->baudrate) / 4) - 1;
   1220   00129E  0E00               	movlw	0
   1221   0012A0  6E16               	movwf	___fldiv@a^0,c
@@ -1295,17 +1295,17 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   1248   0012EE  C02D  F041         	movff	?___fladd+2,EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+2
   1249   0012F2  C02E  F042         	movff	?___fladd+3,EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+3
   1250                           
-  1251                           ;MCAL_Layer/EUSART/hal_usart.c: 189:             break;
+  1251                           ;MCAL_Layer/EUSART/hal_usart.c: 190:             break;
   1252   0012F6  EF5A  F00A         	goto	l6517
   1253   0012FA                     l581:
   1254                           
-  1255                           ;MCAL_Layer/EUSART/hal_usart.c: 191:             TXSTAbits.SYNC = 1;
+  1255                           ;MCAL_Layer/EUSART/hal_usart.c: 192:             TXSTAbits.SYNC = 1;
   1256   0012FA  88AC               	bsf	172,4,c	;volatile
   1257                           
-  1258                           ;MCAL_Layer/EUSART/hal_usart.c: 192:             BAUDCONbits.BRG16 = 1;
+  1258                           ;MCAL_Layer/EUSART/hal_usart.c: 193:             BAUDCONbits.BRG16 = 1;
   1259   0012FC  86B8               	bsf	184,3,c	;volatile
   1260   0012FE                     
-  1261                           ;MCAL_Layer/EUSART/hal_usart.c: 193:             Baud_Rate_Temp = ((8000000UL / (float)_
+  1261                           ;MCAL_Layer/EUSART/hal_usart.c: 194:             Baud_Rate_Temp = ((8000000UL / (float)_
       +                          eusart->baudrate) / 4) - 1;
   1262   0012FE  C03B  FFD9         	movff	EUSART_Baud_Rate_Calculation@_eusart,fsr2l
   1263   001302  C03C  FFDA         	movff	EUSART_Baud_Rate_Calculation@_eusart+1,fsr2h
@@ -1333,7 +1333,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   1285   001348  C014  F045         	movff	?___fldiv+2,_EUSART_Baud_Rate_Calculation$3459+2
   1286   00134C  C015  F046         	movff	?___fldiv+3,_EUSART_Baud_Rate_Calculation$3459+3
   1287   001350                     
-  1288                           ;MCAL_Layer/EUSART/hal_usart.c: 193:             Baud_Rate_Temp = ((8000000UL / (float)_
+  1288                           ;MCAL_Layer/EUSART/hal_usart.c: 194:             Baud_Rate_Temp = ((8000000UL / (float)_
       +                          eusart->baudrate) / 4) - 1;
   1289   001350  0E00               	movlw	0
   1290   001352  6E16               	movwf	___fldiv@a^0,c
@@ -1366,17 +1366,17 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   1317   0013A0  C02D  F041         	movff	?___fladd+2,EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+2
   1318   0013A4  C02E  F042         	movff	?___fladd+3,EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+3
   1319                           
-  1320                           ;MCAL_Layer/EUSART/hal_usart.c: 194:             break;
+  1320                           ;MCAL_Layer/EUSART/hal_usart.c: 195:             break;
   1321   0013A8  EF5A  F00A         	goto	l6517
   1322   0013AC                     l582:
   1323                           
-  1324                           ;MCAL_Layer/EUSART/hal_usart.c: 196:             TXSTAbits.SYNC = 1;
+  1324                           ;MCAL_Layer/EUSART/hal_usart.c: 197:             TXSTAbits.SYNC = 1;
   1325   0013AC  88AC               	bsf	172,4,c	;volatile
   1326                           
-  1327                           ;MCAL_Layer/EUSART/hal_usart.c: 197:             BAUDCONbits.BRG16 = 0;
+  1327                           ;MCAL_Layer/EUSART/hal_usart.c: 198:             BAUDCONbits.BRG16 = 0;
   1328   0013AE  96B8               	bcf	184,3,c	;volatile
   1329   0013B0                     
-  1330                           ;MCAL_Layer/EUSART/hal_usart.c: 198:             Baud_Rate_Temp = ((8000000UL / (float)_
+  1330                           ;MCAL_Layer/EUSART/hal_usart.c: 199:             Baud_Rate_Temp = ((8000000UL / (float)_
       +                          eusart->baudrate) / 4) - 1;
   1331   0013B0  C03B  FFD9         	movff	EUSART_Baud_Rate_Calculation@_eusart,fsr2l
   1332   0013B4  C03C  FFDA         	movff	EUSART_Baud_Rate_Calculation@_eusart+1,fsr2h
@@ -1404,7 +1404,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   1354   0013FA  C014  F045         	movff	?___fldiv+2,_EUSART_Baud_Rate_Calculation$3459+2
   1355   0013FE  C015  F046         	movff	?___fldiv+3,_EUSART_Baud_Rate_Calculation$3459+3
   1356   001402                     
-  1357                           ;MCAL_Layer/EUSART/hal_usart.c: 198:             Baud_Rate_Temp = ((8000000UL / (float)_
+  1357                           ;MCAL_Layer/EUSART/hal_usart.c: 199:             Baud_Rate_Temp = ((8000000UL / (float)_
       +                          eusart->baudrate) / 4) - 1;
   1358   001402  0E00               	movlw	0
   1359   001404  6E16               	movwf	___fldiv@a^0,c
@@ -1437,7 +1437,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   1386   001452  C02D  F041         	movff	?___fladd+2,EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+2
   1387   001456  C02E  F042         	movff	?___fladd+3,EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+3
   1388                           
-  1389                           ;MCAL_Layer/EUSART/hal_usart.c: 199:             break;
+  1389                           ;MCAL_Layer/EUSART/hal_usart.c: 200:             break;
   1390   00145A  EF5A  F00A         	goto	l6517
   1391   00145E                     l6515:
   1392   00145E  EE20 F004          	lfsr	2,4
@@ -1492,7 +1492,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   1440   0014B0  EF5A  F00A         	goto	l6517
   1441   0014B4                     l6517:
   1442                           
-  1443                           ;MCAL_Layer/EUSART/hal_usart.c: 202:     SPBRG = (uint8)((uint32)Baud_Rate_Temp);
+  1443                           ;MCAL_Layer/EUSART/hal_usart.c: 203:     SPBRG = (uint8)((uint32)Baud_Rate_Temp);
   1444   0014B4  C03F  F004         	movff	EUSART_Baud_Rate_Calculation@Baud_Rate_Temp,___fltol@f1
   1445   0014B8  C040  F005         	movff	EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+1,___fltol@f1+1
   1446   0014BC  C041  F006         	movff	EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+2,___fltol@f1+2
@@ -1501,7 +1501,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   1449   0014C8  5004               	movf	?___fltol^0,w,c
   1450   0014CA  6EAF               	movwf	175,c	;volatile
   1451                           
-  1452                           ;MCAL_Layer/EUSART/hal_usart.c: 203:     SPBRGH = (uint8)(((uint32)Baud_Rate_Temp) >> 8)
+  1452                           ;MCAL_Layer/EUSART/hal_usart.c: 204:     SPBRGH = (uint8)(((uint32)Baud_Rate_Temp) >> 8)
       +                          ;
   1453   0014CC  C03F  F004         	movff	EUSART_Baud_Rate_Calculation@Baud_Rate_Temp,___fltol@f1
   1454   0014D0  C040  F005         	movff	EUSART_Baud_Rate_Calculation@Baud_Rate_Temp+1,___fltol@f1+1
@@ -3031,7 +3031,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   2958                           
   2959 ;; *************** function _EUSART_ASYNC_TX_Init *****************
   2960 ;; Defined at:
-  2961 ;;		line 206 in file "MCAL_Layer/EUSART/hal_usart.c"
+  2961 ;;		line 207 in file "MCAL_Layer/EUSART/hal_usart.c"
   2962 ;; Parameters:    Size  Location     Type
   2963 ;;  _eusart         2    3[COMRAM] PTR const struct .
   2964 ;;		 -> usart_interrupt_init@usart_obj(18), 
@@ -3071,8 +3071,8 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   2993   00266A                     _EUSART_ASYNC_TX_Init:
   2994                           	callstack 25
   2995   00266A                     
-  2996                           ;MCAL_Layer/EUSART/hal_usart.c: 206: static void EUSART_ASYNC_TX_Init(const usart_t* _eu
-      +                          sart);MCAL_Layer/EUSART/hal_usart.c: 207: {;MCAL_Layer/EUSART/hal_usart.c: 208:     if(1
+  2996                           ;MCAL_Layer/EUSART/hal_usart.c: 207: static void EUSART_ASYNC_TX_Init(const usart_t* _eu
+      +                          sart);MCAL_Layer/EUSART/hal_usart.c: 208: {;MCAL_Layer/EUSART/hal_usart.c: 209:     if(1
       +                           == _eusart->usart_tx_cfg.usart_tx_enable)
   2997   00266A  EE20 F005          	lfsr	2,5
   2998   00266E  5004               	movf	EUSART_ASYNC_TX_Init@_eusart^0,w,c
@@ -3086,11 +3086,11 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3006   002680  EF8E  F013         	goto	l597
   3007   002684                     u6430:
   3008   002684                     
-  3009                           ;MCAL_Layer/EUSART/hal_usart.c: 209:     {;MCAL_Layer/EUSART/hal_usart.c: 210:         T
+  3009                           ;MCAL_Layer/EUSART/hal_usart.c: 210:     {;MCAL_Layer/EUSART/hal_usart.c: 211:         T
       +                          XSTAbits.TXEN = 1;
   3010   002684  8AAC               	bsf	172,5,c	;volatile
   3011   002686                     
-  3012                           ;MCAL_Layer/EUSART/hal_usart.c: 211:         EUSART_TxInterruptHandler = _eusart->EUSART
+  3012                           ;MCAL_Layer/EUSART/hal_usart.c: 212:         EUSART_TxInterruptHandler = _eusart->EUSART
       +                          _Tx_DefaultInterruptHandler;
   3013   002686  EE20 F00A          	lfsr	2,10
   3014   00268A  5004               	movf	EUSART_ASYNC_TX_Init@_eusart^0,w,c
@@ -3100,7 +3100,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3018   002692  CFDE F05A          	movff	postinc2,_EUSART_TxInterruptHandler
   3019   002696  CFDD F05B          	movff	postdec2,_EUSART_TxInterruptHandler+1
   3020                           
-  3021                           ;MCAL_Layer/EUSART/hal_usart.c: 214:         if(1 == _eusart->usart_tx_cfg.usart_tx_inte
+  3021                           ;MCAL_Layer/EUSART/hal_usart.c: 215:         if(1 == _eusart->usart_tx_cfg.usart_tx_inte
       +                          rrupt_enable)
   3022   00269A  EE20 F005          	lfsr	2,5
   3023   00269E  5004               	movf	EUSART_ASYNC_TX_Init@_eusart^0,w,c
@@ -3114,20 +3114,20 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3031   0026B0  EF60  F013         	goto	l6457
   3032   0026B4                     u6440:
   3033   0026B4                     
-  3034                           ;MCAL_Layer/EUSART/hal_usart.c: 215:         {;MCAL_Layer/EUSART/hal_usart.c: 216:      
+  3034                           ;MCAL_Layer/EUSART/hal_usart.c: 216:         {;MCAL_Layer/EUSART/hal_usart.c: 217:      
       +                                 PIE1bits.TXIE = 1;
   3035   0026B4  889D               	bsf	157,4,c	;volatile
   3036                           
-  3037                           ;MCAL_Layer/EUSART/hal_usart.c: 219:         (PIE1bits.TXIE = 1);
+  3037                           ;MCAL_Layer/EUSART/hal_usart.c: 220:         (PIE1bits.TXIE = 1);
   3038   0026B6  889D               	bsf	157,4,c	;volatile
   3039                           
-  3040                           ;MCAL_Layer/EUSART/hal_usart.c: 233:         (INTCONbits.GIE = 1);
+  3040                           ;MCAL_Layer/EUSART/hal_usart.c: 234:         (INTCONbits.GIE = 1);
   3041   0026B8  8EF2               	bsf	242,7,c	;volatile
   3042                           
-  3043                           ;MCAL_Layer/EUSART/hal_usart.c: 234:         (INTCONbits.PEIE = 1);
+  3043                           ;MCAL_Layer/EUSART/hal_usart.c: 235:         (INTCONbits.PEIE = 1);
   3044   0026BA  8CF2               	bsf	242,6,c	;volatile
   3045                           
-  3046                           ;MCAL_Layer/EUSART/hal_usart.c: 237:         }
+  3046                           ;MCAL_Layer/EUSART/hal_usart.c: 238:         }
   3047   0026BC  EF6E  F013         	goto	l6461
   3048   0026C0                     l6457:
   3049   0026C0  EE20 F005          	lfsr	2,5
@@ -3142,12 +3142,12 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3058   0026D6  EF6E  F013         	goto	l6461
   3059   0026DA                     u6450:
   3060   0026DA                     
-  3061                           ;MCAL_Layer/EUSART/hal_usart.c: 239:         {;MCAL_Layer/EUSART/hal_usart.c: 240:      
+  3061                           ;MCAL_Layer/EUSART/hal_usart.c: 240:         {;MCAL_Layer/EUSART/hal_usart.c: 241:      
       +                                 PIE1bits.TXIE = 0;
   3062   0026DA  989D               	bcf	157,4,c	;volatile
   3063   0026DC                     l6461:
   3064                           
-  3065                           ;MCAL_Layer/EUSART/hal_usart.c: 245:         if(1 == _eusart->usart_tx_cfg.usart_tx_9bit
+  3065                           ;MCAL_Layer/EUSART/hal_usart.c: 246:         if(1 == _eusart->usart_tx_cfg.usart_tx_9bit
       +                          _enable)
   3066   0026DC  EE20 F005          	lfsr	2,5
   3067   0026E0  5004               	movf	EUSART_ASYNC_TX_Init@_eusart^0,w,c
@@ -3161,11 +3161,11 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3075   0026F2  EF7E  F013         	goto	l6465
   3076   0026F6                     u6460:
   3077   0026F6                     
-  3078                           ;MCAL_Layer/EUSART/hal_usart.c: 246:         {;MCAL_Layer/EUSART/hal_usart.c: 247:      
+  3078                           ;MCAL_Layer/EUSART/hal_usart.c: 247:         {;MCAL_Layer/EUSART/hal_usart.c: 248:      
       +                                 TXSTAbits.TX9 = 1;
   3079   0026F6  8CAC               	bsf	172,6,c	;volatile
   3080                           
-  3081                           ;MCAL_Layer/EUSART/hal_usart.c: 248:         }
+  3081                           ;MCAL_Layer/EUSART/hal_usart.c: 249:         }
   3082   0026F8  EF8E  F013         	goto	l597
   3083   0026FC                     l6465:
   3084   0026FC  EE20 F005          	lfsr	2,5
@@ -3180,11 +3180,11 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3093   002712  EF8E  F013         	goto	l593
   3094   002716                     u6470:
   3095   002716                     
-  3096                           ;MCAL_Layer/EUSART/hal_usart.c: 250:         {;MCAL_Layer/EUSART/hal_usart.c: 251:      
+  3096                           ;MCAL_Layer/EUSART/hal_usart.c: 251:         {;MCAL_Layer/EUSART/hal_usart.c: 252:      
       +                                 TXSTAbits.TX9 = 0;
   3097   002716  9CAC               	bcf	172,6,c	;volatile
   3098                           
-  3099                           ;MCAL_Layer/EUSART/hal_usart.c: 252:         }
+  3099                           ;MCAL_Layer/EUSART/hal_usart.c: 253:         }
   3100   002718  EF8E  F013         	goto	l597
   3101   00271C                     l593:
   3102   00271C                     l597:
@@ -3194,7 +3194,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3106                           
   3107 ;; *************** function _EUSART_ASYNC_RX_Init *****************
   3108 ;; Defined at:
-  3109 ;;		line 259 in file "MCAL_Layer/EUSART/hal_usart.c"
+  3109 ;;		line 260 in file "MCAL_Layer/EUSART/hal_usart.c"
   3110 ;; Parameters:    Size  Location     Type
   3111 ;;  _eusart         2    3[COMRAM] PTR const struct .
   3112 ;;		 -> usart_interrupt_init@usart_obj(18), 
@@ -3234,8 +3234,8 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3141   00258E                     _EUSART_ASYNC_RX_Init:
   3142                           	callstack 25
   3143   00258E                     
-  3144                           ;MCAL_Layer/EUSART/hal_usart.c: 259: static void EUSART_ASYNC_RX_Init(const usart_t* _eu
-      +                          sart);MCAL_Layer/EUSART/hal_usart.c: 260: {;MCAL_Layer/EUSART/hal_usart.c: 261:     if(1
+  3144                           ;MCAL_Layer/EUSART/hal_usart.c: 260: static void EUSART_ASYNC_RX_Init(const usart_t* _eu
+      +                          sart);MCAL_Layer/EUSART/hal_usart.c: 261: {;MCAL_Layer/EUSART/hal_usart.c: 262:     if(1
       +                           == _eusart->usart_rx_cfg.usart_rx_enable)
   3145   00258E  EE20 F007          	lfsr	2,7
   3146   002592  5004               	movf	EUSART_ASYNC_RX_Init@_eusart^0,w,c
@@ -3249,11 +3249,11 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3154   0025A4  EF34  F013         	goto	l610
   3155   0025A8                     u6480:
   3156   0025A8                     
-  3157                           ;MCAL_Layer/EUSART/hal_usart.c: 262:     {;MCAL_Layer/EUSART/hal_usart.c: 263:         R
+  3157                           ;MCAL_Layer/EUSART/hal_usart.c: 263:     {;MCAL_Layer/EUSART/hal_usart.c: 264:         R
       +                          CSTAbits.CREN = 1;
   3158   0025A8  88AB               	bsf	171,4,c	;volatile
   3159   0025AA                     
-  3160                           ;MCAL_Layer/EUSART/hal_usart.c: 264:         EUSART_RxInterruptHandler = _eusart->EUSART
+  3160                           ;MCAL_Layer/EUSART/hal_usart.c: 265:         EUSART_RxInterruptHandler = _eusart->EUSART
       +                          _Rx_DefaultInterruptHandler;
   3161   0025AA  EE20 F00C          	lfsr	2,12
   3162   0025AE  5004               	movf	EUSART_ASYNC_RX_Init@_eusart^0,w,c
@@ -3263,7 +3263,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3166   0025B6  CFDE F058          	movff	postinc2,_EUSART_RxInterruptHandler
   3167   0025BA  CFDD F059          	movff	postdec2,_EUSART_RxInterruptHandler+1
   3168                           
-  3169                           ;MCAL_Layer/EUSART/hal_usart.c: 265:         EUSART_FramingErrorHandler = _eusart->EUSAR
+  3169                           ;MCAL_Layer/EUSART/hal_usart.c: 266:         EUSART_FramingErrorHandler = _eusart->EUSAR
       +                          T_FramingErrorHandler;
   3170   0025BE  EE20 F00E          	lfsr	2,14
   3171   0025C2  5004               	movf	EUSART_ASYNC_RX_Init@_eusart^0,w,c
@@ -3273,7 +3273,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3175   0025CA  CFDE F056          	movff	postinc2,_EUSART_FramingErrorHandler
   3176   0025CE  CFDD F057          	movff	postdec2,_EUSART_FramingErrorHandler+1
   3177                           
-  3178                           ;MCAL_Layer/EUSART/hal_usart.c: 266:         EUSART_OverrunErrorHandler = _eusart->EUSAR
+  3178                           ;MCAL_Layer/EUSART/hal_usart.c: 267:         EUSART_OverrunErrorHandler = _eusart->EUSAR
       +                          T_OverrunErrorHandler;
   3179   0025D2  EE20 F010          	lfsr	2,16
   3180   0025D6  5004               	movf	EUSART_ASYNC_RX_Init@_eusart^0,w,c
@@ -3283,7 +3283,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3184   0025DE  CFDE F054          	movff	postinc2,_EUSART_OverrunErrorHandler
   3185   0025E2  CFDD F055          	movff	postdec2,_EUSART_OverrunErrorHandler+1
   3186                           
-  3187                           ;MCAL_Layer/EUSART/hal_usart.c: 268:         if(1 == _eusart->usart_rx_cfg.usart_rx_inte
+  3187                           ;MCAL_Layer/EUSART/hal_usart.c: 269:         if(1 == _eusart->usart_rx_cfg.usart_rx_inte
       +                          rrupt_enable)
   3188   0025E6  EE20 F007          	lfsr	2,7
   3189   0025EA  5004               	movf	EUSART_ASYNC_RX_Init@_eusart^0,w,c
@@ -3297,20 +3297,20 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3197   0025FC  EF06  F013         	goto	l6477
   3198   002600                     u6490:
   3199   002600                     
-  3200                           ;MCAL_Layer/EUSART/hal_usart.c: 269:         {;MCAL_Layer/EUSART/hal_usart.c: 270:      
+  3200                           ;MCAL_Layer/EUSART/hal_usart.c: 270:         {;MCAL_Layer/EUSART/hal_usart.c: 271:      
       +                                 PIE1bits.RCIE = 1;
   3201   002600  8A9D               	bsf	157,5,c	;volatile
   3202                           
-  3203                           ;MCAL_Layer/EUSART/hal_usart.c: 273:         (PIE1bits.RCIE = 1);
+  3203                           ;MCAL_Layer/EUSART/hal_usart.c: 274:         (PIE1bits.RCIE = 1);
   3204   002602  8A9D               	bsf	157,5,c	;volatile
   3205                           
-  3206                           ;MCAL_Layer/EUSART/hal_usart.c: 287:         (INTCONbits.GIE = 1);
+  3206                           ;MCAL_Layer/EUSART/hal_usart.c: 288:         (INTCONbits.GIE = 1);
   3207   002604  8EF2               	bsf	242,7,c	;volatile
   3208                           
-  3209                           ;MCAL_Layer/EUSART/hal_usart.c: 288:         (INTCONbits.PEIE = 1);
+  3209                           ;MCAL_Layer/EUSART/hal_usart.c: 289:         (INTCONbits.PEIE = 1);
   3210   002606  8CF2               	bsf	242,6,c	;volatile
   3211                           
-  3212                           ;MCAL_Layer/EUSART/hal_usart.c: 292:         }
+  3212                           ;MCAL_Layer/EUSART/hal_usart.c: 293:         }
   3213   002608  EF14  F013         	goto	l6481
   3214   00260C                     l6477:
   3215   00260C  EE20 F007          	lfsr	2,7
@@ -3325,12 +3325,12 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3224   002622  EF14  F013         	goto	l6481
   3225   002626                     u6500:
   3226   002626                     
-  3227                           ;MCAL_Layer/EUSART/hal_usart.c: 294:         {;MCAL_Layer/EUSART/hal_usart.c: 295:      
+  3227                           ;MCAL_Layer/EUSART/hal_usart.c: 295:         {;MCAL_Layer/EUSART/hal_usart.c: 296:      
       +                                 PIE1bits.RCIE = 0;
   3228   002626  9A9D               	bcf	157,5,c	;volatile
   3229   002628                     l6481:
   3230                           
-  3231                           ;MCAL_Layer/EUSART/hal_usart.c: 300:         if(1 == _eusart->usart_rx_cfg.usart_rx_9bit
+  3231                           ;MCAL_Layer/EUSART/hal_usart.c: 301:         if(1 == _eusart->usart_rx_cfg.usart_rx_9bit
       +                          _enable)
   3232   002628  EE20 F007          	lfsr	2,7
   3233   00262C  5004               	movf	EUSART_ASYNC_RX_Init@_eusart^0,w,c
@@ -3344,11 +3344,11 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3241   00263E  EF24  F013         	goto	l6485
   3242   002642                     u6510:
   3243   002642                     
-  3244                           ;MCAL_Layer/EUSART/hal_usart.c: 301:         {;MCAL_Layer/EUSART/hal_usart.c: 302:      
+  3244                           ;MCAL_Layer/EUSART/hal_usart.c: 302:         {;MCAL_Layer/EUSART/hal_usart.c: 303:      
       +                                 RCSTAbits.RX9 = 1;
   3245   002642  8CAB               	bsf	171,6,c	;volatile
   3246                           
-  3247                           ;MCAL_Layer/EUSART/hal_usart.c: 303:         }
+  3247                           ;MCAL_Layer/EUSART/hal_usart.c: 304:         }
   3248   002644  EF34  F013         	goto	l610
   3249   002648                     l6485:
   3250   002648  EE20 F007          	lfsr	2,7
@@ -3363,11 +3363,11 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3259   00265E  EF34  F013         	goto	l606
   3260   002662                     u6520:
   3261   002662                     
-  3262                           ;MCAL_Layer/EUSART/hal_usart.c: 305:         {;MCAL_Layer/EUSART/hal_usart.c: 306:      
+  3262                           ;MCAL_Layer/EUSART/hal_usart.c: 306:         {;MCAL_Layer/EUSART/hal_usart.c: 307:      
       +                                 RCSTAbits.RX9 = 0;
   3263   002662  9CAB               	bcf	171,6,c	;volatile
   3264                           
-  3265                           ;MCAL_Layer/EUSART/hal_usart.c: 307:         }
+  3265                           ;MCAL_Layer/EUSART/hal_usart.c: 308:         }
   3266   002664  EF34  F013         	goto	l610
   3267   002668                     l606:
   3268   002668                     l610:
@@ -4114,22 +4114,22 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   3964   002968  EFBB  F014         	goto	l2653
   3965   00296C                     u1260:
   3966   00296C                     
-  3967                           ;MCAL_Layer/EUSART/hal_usart.c: 96:         TXREG = _data;
-  3968   00296C  C004  FFAD         	movff	EUSART_ASYNC_WriteByteNonBlocking@_data,4013	;volatile
-  3969   002970                     
-  3970                           ;MCAL_Layer/EUSART/hal_usart.c: 98:     (PIE1bits.TXIE = 1);
-  3971   002970  889D               	bsf	157,4,c	;volatile
+  3967                           ;MCAL_Layer/EUSART/hal_usart.c: 96:         (PIE1bits.TXIE = 1);
+  3968   00296C  889D               	bsf	157,4,c	;volatile
+  3969   00296E                     
+  3970                           ;MCAL_Layer/EUSART/hal_usart.c: 97:         TXREG = _data;
+  3971   00296E  C004  FFAD         	movff	EUSART_ASYNC_WriteByteNonBlocking@_data,4013	;volatile
   3972                           
-  3973                           ;MCAL_Layer/EUSART/hal_usart.c: 101:     }
+  3973                           ;MCAL_Layer/EUSART/hal_usart.c: 102:     }
   3974   002972  EFBD  F014         	goto	l2655
   3975   002976                     l2653:
   3976                           
-  3977                           ;MCAL_Layer/EUSART/hal_usart.c: 103:         ret = (Std_ReturnType)0x00;
+  3977                           ;MCAL_Layer/EUSART/hal_usart.c: 104:         ret = (Std_ReturnType)0x00;
   3978   002976  0E00               	movlw	0
   3979   002978  6E05               	movwf	EUSART_ASYNC_WriteByteNonBlocking@ret^0,c
   3980   00297A                     l2655:
   3981                           
-  3982                           ;MCAL_Layer/EUSART/hal_usart.c: 105:     return ret;
+  3982                           ;MCAL_Layer/EUSART/hal_usart.c: 106:     return ret;
   3983   00297A  5005               	movf	EUSART_ASYNC_WriteByteNonBlocking@ret^0,w,c
   3984   00297C  0012               	return		;funcret
   3985   00297E                     __end_of_EUSART_ASYNC_WriteByteNonBlocking:
@@ -5099,7 +5099,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   4865                           
   4866 ;; *************** function _EUSART_TX_ISR *****************
   4867 ;; Defined at:
-  4868 ;;		line 314 in file "MCAL_Layer/EUSART/hal_usart.c"
+  4868 ;;		line 315 in file "MCAL_Layer/EUSART/hal_usart.c"
   4869 ;; Parameters:    Size  Location     Type
   4870 ;;		None
   4871 ;; Auto vars:     Size  Location     Type
@@ -5139,10 +5139,10 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   4900   00292A                     _EUSART_TX_ISR:
   4901                           	callstack 24
   4902   00292A                     
-  4903                           ;MCAL_Layer/EUSART/hal_usart.c: 315:     (PIE1bits.TXIE = 0);
+  4903                           ;MCAL_Layer/EUSART/hal_usart.c: 316:     (PIE1bits.TXIE = 0);
   4904   00292A  989D               	bcf	157,4,c	;volatile
   4905   00292C                     
-  4906                           ;MCAL_Layer/EUSART/hal_usart.c: 316:     if(EUSART_TxInterruptHandler){
+  4906                           ;MCAL_Layer/EUSART/hal_usart.c: 317:     if(EUSART_TxInterruptHandler){
   4907   00292C  505A               	movf	_EUSART_TxInterruptHandler^0,w,c
   4908   00292E  105B               	iorwf	(_EUSART_TxInterruptHandler+1)^0,w,c
   4909   002930  B4D8               	btfsc	status,2,c
@@ -5152,7 +5152,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   4913   00293A  EFAB  F014         	goto	i2l615
   4914   00293E                     i2u424_40:
   4915   00293E                     
-  4916                           ;MCAL_Layer/EUSART/hal_usart.c: 317:         EUSART_TxInterruptHandler();
+  4916                           ;MCAL_Layer/EUSART/hal_usart.c: 318:         EUSART_TxInterruptHandler();
   4917   00293E  D802               	call	i2u425_48
   4918   002940  EFAB  F014         	goto	i2u425_49
   4919   002944                     i2u425_48:
@@ -5232,7 +5232,7 @@ Microchip MPLAB XC8 C Compiler v2.40 (Free license) build 20220703182018 Og1
   4988                           
   4989 ;; *************** function _EUSART_RX_ISR *****************
   4990 ;; Defined at:
-  4991 ;;		line 323 in file "MCAL_Layer/EUSART/hal_usart.c"
+  4991 ;;		line 324 in file "MCAL_Layer/EUSART/hal_usart.c"
   4992 ;; Parameters:    Size  Location     Type
   4993 ;;		None
   4994 ;; Auto vars:     Size  Location     Type
@@ -6102,7 +6102,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.40 build 20220703182018 
-Symbol Table                                                                                   Sun Apr 28 00:32:46 2024
+Symbol Table                                                                                   Sun Apr 28 06:36:47 2024
 
                         ??_InterruptManager 0002                                ___fldiv@aexp 002A  
                               ___fldiv@bexp 0029                                ___fldiv@sign 0022  
@@ -6128,7 +6128,7 @@ Symbol Table                                                                    
                                       l1806 21AE                                        l1719 1D4C  
                                       l1665 16E2                                        l1682 17FC  
                                       l1674 19B2                                        l1666 16D0  
-                                      l2651 2970                                        l1691 18CC  
+                                      l2651 296E                                        l1691 18CC  
                                       l1667 1696                                        l1692 18BA  
                                       l2653 2976                                        l2645 295A  
                                       l6101 1662                                        l6021 1500  
