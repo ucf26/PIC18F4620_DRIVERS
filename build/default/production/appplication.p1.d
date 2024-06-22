@@ -28,4 +28,5 @@ MCAL_Layer/Interrupt/mcal_interrupt_gen_cfg.h  \
 MCAL_Layer/Timer0/timer0.h  \
 MCAL_Layer/Timer0/../Interrupt/mcal_internal_interrup.h  \
 MCAL_Layer/EUSART/hal_usart.h  \
-MCAL_Layer/EUSART/hal_usart_cfg.h 
+MCAL_Layer/EUSART/hal_usart_cfg.h  \
+MCAL_Layer/SPI/hal_spi.h 

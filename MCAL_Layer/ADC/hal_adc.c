@@ -265,8 +265,9 @@ static inline void configure_voltage_reference(const adc_cfg_t *_adc)
 }
 
 
-#if ADC_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+
 void ADC_ISR(void){
+#if ADC_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
     /* The interrupt flag must be cleared using software. */
     ADC_InterruptFlagClear();
     /* code in MCAL context */
@@ -274,5 +275,5 @@ void ADC_ISR(void){
     /* Callback function gets called every time this ISR excutes. */
     if(ADC_InterruptHandler) { ADC_InterruptHandler(); }
     else { /* Nothing */}
-}
 #endif
+}

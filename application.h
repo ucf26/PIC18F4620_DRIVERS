@@ -14,6 +14,7 @@
 #include "MCAL_Layer/Interrupt/mcal_external_interrup.h"
 #include "MCAL_Layer/Timer0/timer0.h"
 #include "MCAL_Layer/EUSART/hal_usart.h"
+#include "MCAL_Layer/SPI/hal_spi.h"
 
 /* Section : Macro Declarations */
 

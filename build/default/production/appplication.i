@@ -5141,65 +5141,60 @@ Std_ReturnType EUSART_ASYNC_WriteStringNonBlocking(uint8 *_data, uint16 str_len)
 Std_ReturnType EUSART_ASYNC_ReadByteBlocking(uint8 *_data);
 Std_ReturnType EUSART_ASYNC_ReadByteNonBlocking(uint8 *_data);
 # 16 "./application.h" 2
-# 25 "./application.h"
+
+# 1 "./MCAL_Layer/SPI/hal_spi.h" 1
+# 60 "./MCAL_Layer/SPI/hal_spi.h"
+typedef struct{
+
+}SPI_Control_Config;
+
+typedef struct{
+
+    void (* MSSP_SPI_Interrupt_Handler)(void);
+    interrupt_priority_cfg priority;
+
+    uint8 spi_mode:3;
+    uint8 ClockPolarity:1;
+    uint8 SampleSelect :1;
+    uint8 ClockSelect:1;
+}SPI_Config;
+
+
+
+Std_ReturnType SPI_Init(SPI_Config *_config);
+Std_ReturnType SPI_DeInit(SPI_Config *_config);
+Std_ReturnType SPI_Send_Byte(SPI_Config *_config, const uint8 _data);
+Std_ReturnType SPI_Read_Byte(SPI_Config *_config, uint8 *_data);
+Std_ReturnType SPI_Send_Byte_NonBlocking(SPI_Config *_config, const uint8 _data);
+Std_ReturnType SPI_Read_Byte_NonBlocking(SPI_Config *_config, uint8 *_data);
+# 17 "./application.h" 2
+# 26 "./application.h"
 void app_init(void);
 # 9 "appplication.c" 2
 
 
-uint8 rec_data;
 
-led_t led1 = {.port_name = PORTD_INDEX, .pin = GPIO_PIN0, .led_status = LED_off};
-led_t led2 = {.port_name = PORTD_INDEX, .pin = GPIO_PIN1, .led_status = LED_off};
-uint32 val_rx, val_tx;
-
-void tx_isr(void)
-{
-    val_tx++;
-    PIE1bits.TXIE = 0;
-
-}
-
-void rx_isr(void)
-{
-# 56 "appplication.c"
-}
-
-void usart_interrupt_init(){
-    Std_ReturnType ret = (Std_ReturnType)0x00;
-    usart_t usart_obj;
-    usart_obj.baudrate = 9600;
-    usart_obj.baudrate_config = BAUDRATE_ASYNC_8BIT_LOW_SPEED;
-
-    usart_obj.usart_rx_cfg.usart_rx_enable = 1;
-    usart_obj.usart_rx_cfg.usart_rx_9bit_enable = 0;
-    usart_obj.usart_rx_cfg.usart_rx_interrupt_enable = 1;
-
-    usart_obj.usart_tx_cfg.usart_tx_enable = 1;
-    usart_obj.usart_tx_cfg.usart_tx_9bit_enable = 0;
-    usart_obj.usart_tx_cfg.usart_tx_interrupt_enable = 1;
-
-    usart_obj.EUSART_FramingErrorHandler = ((void*)0);
-    usart_obj.EUSART_OverrunErrorHandler = ((void*)0);
-    usart_obj.EUSART_Rx_DefaultInterruptHandler = ((void*)0);
-    usart_obj.EUSART_Tx_DefaultInterruptHandler = tx_isr;
-
-    ret = EUSART_ASYNC_Init(&usart_obj);
-}
+SPI_Config spi_ob = {
+    .spi_mode = 0,
+    .ClockPolarity = 1,
+    .SampleSelect = 0,
+    .ClockSelect = 1
+};
 
 int main() {
     Std_ReturnType ret = (Std_ReturnType)0x00;
+    ret = SPI_Init(&spi_ob);
 
-    usart_interrupt_init();
-
-    ret = led_initialize(&led1);
-    ret = led_initialize(&led2);
+    uint8 str[]="yous";
 
     while(1)
     {
+        for(int i=0;i<4;i++){
+            ret = SPI_Send_Byte(&spi_ob, str[i]);
+            _delay((unsigned long)((100)*(8000000UL/4000.0)));
+        }
 
-        ret = EUSART_ASYNC_WriteByteNonBlocking('a');
-        ret = EUSART_ASYNC_WriteByteNonBlocking('b');
-# 110 "appplication.c"
+
     }
     return (0);
 }

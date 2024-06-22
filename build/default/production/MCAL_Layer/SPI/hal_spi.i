@@ -1,4 +1,4 @@
-# 1 "MCAL_Layer/ADC/hal_adc.c"
+# 1 "MCAL_Layer/SPI/hal_spi.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "MCAL_Layer/ADC/hal_adc.c" 2
+# 1 "MCAL_Layer/SPI/hal_spi.c" 2
 
 
 
@@ -14,8 +14,11 @@
 
 
 
-# 1 "MCAL_Layer/ADC/hal_adc.h" 1
-# 14 "MCAL_Layer/ADC/hal_adc.h"
+
+# 1 "MCAL_Layer/SPI/hal_spi.h" 1
+# 13 "MCAL_Layer/SPI/hal_spi.h"
+# 1 "MCAL_Layer/SPI/../GPIO/hal_gpio.h" 1
+# 12 "MCAL_Layer/SPI/../GPIO/hal_gpio.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\proc\\pic18f4620.h" 1 3
 # 45 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\proc\\pic18f4620.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\__at.h" 1 3
@@ -4229,14 +4232,12 @@ extern volatile __bit nWR __attribute__((address(0x7C21)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x7E3A)));
-# 14 "MCAL_Layer/ADC/hal_adc.h" 2
+# 12 "MCAL_Layer/SPI/../GPIO/hal_gpio.h" 2
 
-# 1 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/hal_gpio.h" 1
-# 13 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/hal_gpio.h"
-# 1 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/../mcal_std_types.h" 1
-# 12 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/../mcal_std_types.h"
-# 1 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/../compiler.h" 1
-# 11 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/../compiler.h"
+# 1 "MCAL_Layer/SPI/../GPIO/../mcal_std_types.h" 1
+# 12 "MCAL_Layer/SPI/../GPIO/../mcal_std_types.h"
+# 1 "MCAL_Layer/SPI/../GPIO/../compiler.h" 1
+# 11 "MCAL_Layer/SPI/../GPIO/../compiler.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4487,11 +4488,11 @@ __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer suppo
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\xc.h" 2 3
-# 11 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/../compiler.h" 2
-# 12 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 11 "MCAL_Layer/SPI/../GPIO/../compiler.h" 2
+# 12 "MCAL_Layer/SPI/../GPIO/../mcal_std_types.h" 2
 
-# 1 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/../std_libraries.h" 1
-# 14 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/../std_libraries.h"
+# 1 "MCAL_Layer/SPI/../GPIO/../std_libraries.h" 1
+# 14 "MCAL_Layer/SPI/../GPIO/../std_libraries.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 1 3
@@ -4636,7 +4637,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 14 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/../std_libraries.h" 2
+# 14 "MCAL_Layer/SPI/../GPIO/../std_libraries.h" 2
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\string.h" 1 3
@@ -4694,8 +4695,8 @@ size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
 
 
 void *memccpy (void *restrict, const void *restrict, int, size_t);
-# 16 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/../std_libraries.h" 2
-# 13 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/../mcal_std_types.h" 2
+# 16 "MCAL_Layer/SPI/../GPIO/../std_libraries.h" 2
+# 13 "MCAL_Layer/SPI/../GPIO/../mcal_std_types.h" 2
 
 
 
@@ -4710,14 +4711,14 @@ typedef signed short sint16;
 typedef signed long sint32;
 
 typedef uint8 Std_ReturnType;
-# 13 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 13 "MCAL_Layer/SPI/../GPIO/hal_gpio.h" 2
 
-# 1 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/../device_config.h" 1
-# 14 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/hal_gpio.h" 2
+# 1 "MCAL_Layer/SPI/../GPIO/../device_config.h" 1
+# 14 "MCAL_Layer/SPI/../GPIO/hal_gpio.h" 2
 
-# 1 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/hal_gpio_cfg.h" 1
-# 15 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/hal_gpio.h" 2
-# 38 "MCAL_Layer/ADC/../../MCAL_Layer/GPIO/hal_gpio.h"
+# 1 "MCAL_Layer/SPI/../GPIO/hal_gpio_cfg.h" 1
+# 15 "MCAL_Layer/SPI/../GPIO/hal_gpio.h" 2
+# 38 "MCAL_Layer/SPI/../GPIO/hal_gpio.h"
 typedef enum{
     GPIO_LOW = 0,
     GPIO_HIGH
@@ -4767,358 +4768,210 @@ Std_ReturnType gpio_port_get_direction_status(port_index_t port, uint8 *directio
 Std_ReturnType gpio_port_write_logic(port_index_t port,uint8 logic);
 Std_ReturnType gpio_port_read_logic(port_index_t port,uint8 *logic);
 Std_ReturnType gpio_port_toggle_logic(port_index_t port);
-# 15 "MCAL_Layer/ADC/hal_adc.h" 2
+# 13 "MCAL_Layer/SPI/hal_spi.h" 2
 
-
-# 1 "MCAL_Layer/ADC/../Interrupt/mcal_internal_interrup.h" 1
-# 12 "MCAL_Layer/ADC/../Interrupt/mcal_internal_interrup.h"
-# 1 "MCAL_Layer/ADC/../Interrupt/mcal_interrupt_config.h" 1
-# 15 "MCAL_Layer/ADC/../Interrupt/mcal_interrupt_config.h"
-# 1 "MCAL_Layer/ADC/../Interrupt/mcal_interrupt_gen_cfg.h" 1
-# 15 "MCAL_Layer/ADC/../Interrupt/mcal_interrupt_config.h" 2
-# 56 "MCAL_Layer/ADC/../Interrupt/mcal_interrupt_config.h"
+# 1 "MCAL_Layer/SPI/../Interrupt/mcal_internal_interrup.h" 1
+# 12 "MCAL_Layer/SPI/../Interrupt/mcal_internal_interrup.h"
+# 1 "MCAL_Layer/SPI/../Interrupt/mcal_interrupt_config.h" 1
+# 15 "MCAL_Layer/SPI/../Interrupt/mcal_interrupt_config.h"
+# 1 "MCAL_Layer/SPI/../Interrupt/mcal_interrupt_gen_cfg.h" 1
+# 15 "MCAL_Layer/SPI/../Interrupt/mcal_interrupt_config.h" 2
+# 56 "MCAL_Layer/SPI/../Interrupt/mcal_interrupt_config.h"
 typedef enum{
     INTERRUPT_LOW_PRIORITY = 0,
     INTERRUPT_HIGH_PRIORITY
 }interrupt_priority_cfg;
-# 12 "MCAL_Layer/ADC/../Interrupt/mcal_internal_interrup.h" 2
-# 17 "MCAL_Layer/ADC/hal_adc.h" 2
+# 12 "MCAL_Layer/SPI/../Interrupt/mcal_internal_interrup.h" 2
+# 14 "MCAL_Layer/SPI/hal_spi.h" 2
+# 60 "MCAL_Layer/SPI/hal_spi.h"
+typedef struct{
 
-# 1 "MCAL_Layer/ADC/hal_adc_cfg.h" 1
-# 18 "MCAL_Layer/ADC/hal_adc.h" 2
-# 99 "MCAL_Layer/ADC/hal_adc.h"
-typedef enum{
-    ADC_CHANNEL_AN0 = 0,
-    ADC_CHANNEL_AN1,
-    ADC_CHANNEL_AN2,
-    ADC_CHANNEL_AN3,
-    ADC_CHANNEL_AN4,
-    ADC_CHANNEL_AN5,
-    ADC_CHANNEL_AN6,
-    ADC_CHANNEL_AN7,
-    ADC_CHANNEL_AN8,
-    ADC_CHANNEL_AN9,
-    ADC_CHANNEL_AN10,
-    ADC_CHANNEL_AN11,
-    ADC_CHANNEL_AN12
-}adc_channel_select_t;
-# 122 "MCAL_Layer/ADC/hal_adc.h"
-typedef enum{
-    ADC_0_TAD = 0,
-    ADC_2_TAD,
-    ADC_4_TAD,
-    ADC_6_TAD,
-    ADC_8_TAD,
-    ADC_12_TAD,
-    ADC_16_TAD,
-    ADC_20_TAD
-}adc_acquisition_time_t;
-
-
-
-
-
-
-
-typedef enum{
-    ADC_CONVERSION_CLOCK_DIV_2 = 0,
-    ADC_CONVERSION_CLOCK_DIV_8,
-    ADC_CONVERSION_CLOCK_DIV_32,
-    ADC_CONVERSION_CLOCK_DIV_FRC,
-    ADC_CONVERSION_CLOCK_DIV_4,
-    ADC_CONVERSION_CLOCK_DIV_16,
-    ADC_CONVERSION_CLOCK_DIV_64
-}adc_conversion_clock_t;
-
+}SPI_Control_Config;
 
 typedef struct{
 
-
-    void (* ADC_InterruptHandler)(void);
+    void (* MSSP_SPI_Interrupt_Handler)(void);
     interrupt_priority_cfg priority;
 
-
-    adc_conversion_clock_t conversion_clock;
-    adc_acquisition_time_t acuisition_time;
-    adc_channel_select_t adc_channel;
-    uint8 result_format : 1;
-    uint8 voltage_reference : 1;
-    uint8 ADC_reserved : 6;
-}adc_cfg_t;
-
-
-typedef uint16 adc_result_t;
+    uint8 spi_mode:3;
+    uint8 ClockPolarity:1;
+    uint8 SampleSelect :1;
+    uint8 ClockSelect:1;
+}SPI_Config;
 
 
 
-
-Std_ReturnType ADC_Init(const adc_cfg_t *_adc);
-Std_ReturnType ADC_DeInit(const adc_cfg_t *_adc);
-Std_ReturnType ADC_SelectChannel(const adc_cfg_t *_adc, adc_channel_select_t channel);
-Std_ReturnType ADC_StartConversion(const adc_cfg_t *_adc);
-Std_ReturnType ADC_IsConversionDone(const adc_cfg_t *_adc, uint8* conversion_status);
-Std_ReturnType ADC_GetConversionResult(const adc_cfg_t *_adc, adc_result_t* conversion_result);
-Std_ReturnType ADC_GetConversion_Blocking(const adc_cfg_t *_adc, adc_result_t* conversion_result, adc_channel_select_t channel);
-
-Std_ReturnType ADC_StartConversion_Interrupt(const adc_cfg_t *_adc, adc_channel_select_t channel);
-# 8 "MCAL_Layer/ADC/hal_adc.c" 2
+Std_ReturnType SPI_Init(SPI_Config *_config);
+Std_ReturnType SPI_DeInit(SPI_Config *_config);
+Std_ReturnType SPI_Send_Byte(SPI_Config *_config, const uint8 _data);
+Std_ReturnType SPI_Read_Byte(SPI_Config *_config, uint8 *_data);
+Std_ReturnType SPI_Send_Byte_NonBlocking(SPI_Config *_config, const uint8 _data);
+Std_ReturnType SPI_Read_Byte_NonBlocking(SPI_Config *_config, uint8 *_data);
+# 9 "MCAL_Layer/SPI/hal_spi.c" 2
 
 
 
-
-static void (*ADC_InterruptHandler)(void) = ((void*)0);
-
+static void (*SPI_InterruptHandler)(void) = ((void*)0);
 
 
-static __attribute__((inline)) void select_result_format(const adc_cfg_t *_adc);
-static __attribute__((inline)) void configure_voltage_reference(const adc_cfg_t *_adc);
-static __attribute__((inline)) void adc_input_channel_port_cfg(adc_channel_select_t channel);
+static void MSSP_SPI_Interrupt_Init(SPI_Config *_config);
+static void MSSP_SPI_MASTER_MODE_GPIO_PIN_CONFIG(void);
+static void MSSP_SPI_SLAVE_MODE_GPIO_PIN_CONFIG(SPI_Config *_config);
 
 
-Std_ReturnType ADC_Init(const adc_cfg_t *_adc)
-{
+Std_ReturnType SPI_Init(SPI_Config *_config){
     Std_ReturnType ret = (Std_ReturnType)0x00;
-    if(((void*)0) == _adc)
-    {
+    if(((void*)0) == _config){
         ret = (Std_ReturnType)0x00;
     }
-    else
-    {
+    else {
 
-        (ADCON0bits.ADON=0);
-
-
-        ADCON1bits.PCFG = _adc->adc_channel;
-        adc_input_channel_port_cfg(_adc);
+        (SSPCON1bits.SSPEN = 0);
 
 
-        ADCON2bits.ACQT = _adc->acuisition_time;
+        SSPCON1bits.SSPM = _config->spi_mode;
 
 
-        select_result_format(_adc);
-
-
-
-        (PIE1bits.ADIE = 1);
-        (PIR1bits.ADIF = 0);
-# 60 "MCAL_Layer/ADC/hal_adc.c"
-        (INTCONbits.GIE = 1);
-        (INTCONbits.PEIE = 1);
-
-        ADC_InterruptHandler = _adc->ADC_InterruptHandler;
-
-
-        ADCON2bits.ADCS = _adc->conversion_clock;
-
-
-        configure_voltage_reference(_adc);
-
-
-        (ADCON0bits.ADON=1);
-
-        ret = (Std_ReturnType)0x01;
-    }
-    return ret;
-}
-
-Std_ReturnType ADC_DeInit(const adc_cfg_t *_adc)
-{
-    Std_ReturnType ret = (Std_ReturnType)0x00;
-    if(((void*)0) == _adc)
-    {
-        ret = (Std_ReturnType)0x00;
-    }
-    else
-    {
-
-        (ADCON0bits.ADON=0);
-
-
-
-
-
-
-        ret = (Std_ReturnType)0x01;
-    }
-    return ret;
-}
-
-Std_ReturnType ADC_SelectChannel(const adc_cfg_t *_adc, adc_channel_select_t channel)
-{
-    Std_ReturnType ret = (Std_ReturnType)0x00;
-    if(((void*)0) == _adc)
-    {
-        ret = (Std_ReturnType)0x00;
-    }
-    else
-    {
-
-        ADCON0bits.CHS = channel;
-        adc_input_channel_port_cfg(channel);
-        ret = (Std_ReturnType)0x01;
-    }
-    return ret;
-}
-
-Std_ReturnType ADC_StartConversion(const adc_cfg_t *_adc)
-{
-    Std_ReturnType ret = (Std_ReturnType)0x00;
-    if(((void*)0) == _adc)
-    {
-        ret = (Std_ReturnType)0x00;
-    }
-    else
-    {
-        (ADCON0bits.GODONE = 1);
-        ret = (Std_ReturnType)0x01;
-    }
-    return ret;
-}
-
-Std_ReturnType ADC_IsConversionDone(const adc_cfg_t *_adc, uint8* conversion_status)
-{
-    Std_ReturnType ret = (Std_ReturnType)0x00;
-    if((((void*)0) == _adc) || (((void*)0) == conversion_status))
-    {
-        ret = (Std_ReturnType)0x00;
-    }
-    else
-    {
-        *conversion_status = ((uint8)(!(ADCON0bits.GO_nDONE)));
-        ret = (Std_ReturnType)0x01;
-    }
-    return ret;
-}
-
-Std_ReturnType ADC_GetConversionResult(const adc_cfg_t *_adc, adc_result_t* conversion_result)
-{
-    Std_ReturnType ret = (Std_ReturnType)0x00;
-    if((((void*)0) == _adc) || (((void*)0) == conversion_result))
-    {
-        ret = (Std_ReturnType)0x00;
-    }
-    else
-    {
-        if(0x01U == _adc->result_format)
+        if(0 == _config->spi_mode || 1 ==_config->spi_mode ||
+           2 == _config->spi_mode || 3 ==_config->spi_mode)
         {
-            *conversion_result = (adc_result_t)((ADRESH << 8) + ADRESL) ;
+            MSSP_SPI_MASTER_MODE_GPIO_PIN_CONFIG();
         }
-        else if(0x00U == _adc->result_format)
+        else if(4 == _config->spi_mode || 5 == _config->spi_mode)
         {
-            *conversion_result = (adc_result_t)(((ADRESH << 8) + ADRESL) >> 6);
+            MSSP_SPI_SLAVE_MODE_GPIO_PIN_CONFIG(_config);
         }
-        else
-        {
-            *conversion_result = (adc_result_t)((ADRESH << 8) + ADRESL) ;
-        }
+
+
+        SSPCON1bits.CKP = _config->ClockPolarity;
+
+
+        SSPSTATbits.SMP = _config->SampleSelect;
+
+
+        SSPSTATbits.CKE = _config->ClockSelect;
+
+
+        (SSPCON1bits.SSPEN = 1);
+
         ret = (Std_ReturnType)0x01;
     }
     return ret;
 }
 
-Std_ReturnType ADC_GetConversion_Blocking(const adc_cfg_t *_adc, adc_result_t* conversion_result, adc_channel_select_t channel)
-{
+Std_ReturnType SPI_DeInit(SPI_Config *_config){
     Std_ReturnType ret = (Std_ReturnType)0x00;
-    if((((void*)0) == _adc) || (((void*)0) == conversion_result))
-    {
+    if(((void*)0) == _config){
         ret = (Std_ReturnType)0x00;
     }
-    else
-    {
+    else {
 
-        ret &= ADC_SelectChannel(_adc, channel);
+        (SSPCON1bits.SSPEN = 0);
 
-        ret &= ADC_StartConversion(_adc);
 
-        while(ADCON0bits.GO_nDONE);
 
-        ret &= ADC_GetConversionResult(_adc, conversion_result);
+        (PIE1bits.SSPIE = 0);
 
         ret = (Std_ReturnType)0x01;
     }
     return ret;
 }
 
-Std_ReturnType ADC_StartConversion_Interrupt(const adc_cfg_t *_adc, adc_channel_select_t channel)
-{
+Std_ReturnType SPI_Send_Byte(SPI_Config *_config, const uint8 _data){
     Std_ReturnType ret = (Std_ReturnType)0x00;
-    if(((void*)0) == _adc)
-    {
+    if(((void*)0) == _config){
         ret = (Std_ReturnType)0x00;
     }
-    else
-    {
+    else {
+        SSPBUF = _data;
+        while(!(PIR1bits.SSPIF));
+        PIR1bits.SSPIF=0;
 
-        ret &= ADC_SelectChannel(_adc, channel);
 
-        ret &= ADC_StartConversion(_adc);
+
         ret = (Std_ReturnType)0x01;
     }
     return ret;
 }
 
-static __attribute__((inline)) void adc_input_channel_port_cfg(adc_channel_select_t channel)
+Std_ReturnType SPI_Read_Byte(SPI_Config *_config, uint8 *_data){
+    Std_ReturnType ret = (Std_ReturnType)0x00;
+    if(((void*)0) == _config){
+        ret = (Std_ReturnType)0x00;
+    }
+    else {
+        while(!(PIR1bits.SSPIF));
+        *_data = SSPBUF;
+        ret = (Std_ReturnType)0x01;
+    }
+    return ret;
+}
+
+Std_ReturnType SPI_Send_Byte_NonBlocking(SPI_Config *_config, const uint8 _data){
+    Std_ReturnType ret = (Std_ReturnType)0x00;
+    if(((void*)0) == _config){
+        ret = (Std_ReturnType)0x00;
+    }
+    else {
+
+
+        ret = (Std_ReturnType)0x01;
+    }
+    return ret;
+}
+
+Std_ReturnType SPI_Read_Byte_NonBlocking(SPI_Config *_config, uint8 *_data){
+    Std_ReturnType ret = (Std_ReturnType)0x00;
+    if(((void*)0) == _config){
+        ret = (Std_ReturnType)0x00;
+    }
+    else {
+
+
+        ret = (Std_ReturnType)0x01;
+    }
+    return ret;
+}
+
+static void MSSP_SPI_MASTER_MODE_GPIO_PIN_CONFIG(void)
 {
-    switch(channel){
-        case ADC_CHANNEL_AN0: (TRISA |= (((uint8)1) << 0x0)); break;
-        case ADC_CHANNEL_AN1: (TRISA |= (((uint8)1) << 0x1)); break;
-        case ADC_CHANNEL_AN2: (TRISA |= (((uint8)1) << 0x2)); break;
-        case ADC_CHANNEL_AN3: (TRISA |= (((uint8)1) << 0x3)); break;
-        case ADC_CHANNEL_AN4: (TRISA |= (((uint8)1) << 0x5)); break;
-        case ADC_CHANNEL_AN5: (TRISE |= (((uint8)1) << 0x0)); break;
-        case ADC_CHANNEL_AN6: (TRISE |= (((uint8)1) << 0x1)); break;
-        case ADC_CHANNEL_AN7: (TRISE |= (((uint8)1) << 0x2)); break;
-        case ADC_CHANNEL_AN8: (TRISB |= (((uint8)1) << 0x2)); break;
-        case ADC_CHANNEL_AN9: (TRISB |= (((uint8)1) << 0x3)); break;
-        case ADC_CHANNEL_AN10: (TRISB |= (((uint8)1) << 0x1)); break;
-        case ADC_CHANNEL_AN11: (TRISB |= (((uint8)1) << 0x4)); break;
-        case ADC_CHANNEL_AN12: (TRISB |= (((uint8)1) << 0x0)); break;
-        default: break;
+    Std_ReturnType ret = (Std_ReturnType)0x00;
+    pin_config_t SPI_SDO = {.direction = GPIO_DIRECTION_OUTPUT, .port = PORTC_INDEX, .pin = GPIO_PIN5};
+    pin_config_t SPI_SDI = {.direction = GPIO_DIRECTION_INPUT , .port = PORTC_INDEX, .pin = GPIO_PIN4};
+    pin_config_t SPI_CLK = {.direction = GPIO_DIRECTION_OUTPUT, .port = PORTC_INDEX, .pin = GPIO_PIN3};
+
+    ret = gpio_pin_direction_initialize(&SPI_CLK);
+    ret = gpio_pin_direction_initialize(&SPI_SDO);
+    ret = gpio_pin_direction_initialize(&SPI_SDI);
+}
+
+
+static void MSSP_SPI_SLAVE_MODE_GPIO_PIN_CONFIG(SPI_Config *_config)
+{
+    Std_ReturnType ret = (Std_ReturnType)0x00;
+    pin_config_t SPI_SDO = {.direction = GPIO_DIRECTION_OUTPUT, .port = PORTC_INDEX, .pin = GPIO_PIN5};
+    pin_config_t SPI_SDI = {.direction = GPIO_DIRECTION_INPUT , .port = PORTC_INDEX, .pin = GPIO_PIN4};
+    pin_config_t SPI_CLK = {.direction = GPIO_DIRECTION_OUTPUT, .port = PORTC_INDEX, .pin = GPIO_PIN3};
+    pin_config_t SPI_SS = {.direction = GPIO_DIRECTION_OUTPUT, .port = PORTA_INDEX, .pin = GPIO_PIN5};
+
+    ret = gpio_pin_direction_initialize(&SPI_CLK);
+    ret = gpio_pin_direction_initialize(&SPI_SDO);
+    ret = gpio_pin_direction_initialize(&SPI_SDI);
+
+    if(4 == _config->spi_mode){
+        ret = gpio_pin_direction_initialize(&SPI_SS);
     }
 }
 
-static __attribute__((inline)) void select_result_format(const adc_cfg_t *_adc)
+static void MSSP_SPI_Interrupt_Init(SPI_Config *_config)
 {
-    if(0x01U == _adc->result_format)
-    {
-        (ADCON2bits.ADFM = 1);
-    }
-    else if(0x00U == _adc->result_format)
-    {
-        (ADCON2bits.ADFM = 0);
-    }
-    else
-    {
-        (ADCON2bits.ADFM = 1);
-    }
-}
 
-static __attribute__((inline)) void configure_voltage_reference(const adc_cfg_t *_adc)
-{
-    if(0x01U == _adc->voltage_reference)
-    {
-        do{ADCON1bits.VCFG1 = 1; ADCON1bits.VCFG0 = 1;}while(0);
-    }
-    else if(0x00U == _adc->voltage_reference)
-    {
-        do{ADCON1bits.VCFG1 = 0; ADCON1bits.VCFG0 = 0;}while(0);
-    }
-    else
-    {
-        do{ADCON1bits.VCFG1 = 1; ADCON1bits.VCFG0 = 1;}while(0);
-    }
-}
+    (PIE1bits.SSPIE = 1);
+    (PIR1bits.SSPIF = 0);
+# 182 "MCAL_Layer/SPI/hal_spi.c"
+    (INTCONbits.GIE = 1);
+    (INTCONbits.PEIE = 1);
 
 
-
-void ADC_ISR(void){
-
-
-    (PIR1bits.ADIF = 0);
-
-
-
-    if(ADC_InterruptHandler) { ADC_InterruptHandler(); }
-    else { }
 
 }
