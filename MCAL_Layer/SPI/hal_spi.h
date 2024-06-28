@@ -10,6 +10,7 @@
 
 
 /* Section : Includes */
+#include "pic18f4620.h"
 #include "../GPIO/hal_gpio.h"
 #include "../Interrupt/mcal_internal_interrup.h"
 

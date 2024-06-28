@@ -8,28 +8,29 @@
 
 #include "application.h"
 
+i2c_t i2c_obj;
 
-SPI_Config spi_ob = {
-    .spi_mode = SPI_MASTER_FOSC_DIV4,
-    .ClockPolarity = SPI_IDLE_STATE_HIGH_LEVEL,
-    .SampleSelect = SPI_DATA_SAMPLE_MIDDLE,
-    .ClockSelect = SPI_TRANSMIT_ACTIVE_TO_IDLE
-};
 
 int main() {
     Std_ReturnType ret = E_NOT_OK;
-    ret = SPI_Init(&spi_ob);
     
-    uint8 str[]="yous";
+    i2c_obj.i2c_clock = 100000;
+    i2c_obj.i2c_cfg.i2c_mode = MSSP_I2C_MASTER_MODE;
+    i2c_obj.i2c_cfg.i2c_mode_cnfg = MSSP_I2C_MASTER_MODE_DEFINED_CLOCK;
+    i2c_obj.i2c_cfg.i2c_SMbus_control = I2C_SMBus_DISABLE;
+    i2c_obj.i2c_cfg.i2c_slew_rate = I2C_SLEW_RATE_DISABLE;
+    i2c_obj.I2C_DefaultInterruptHandler = NULL;
+    
+    ret = MSSP_I2C_Init(&i2c_obj);
+    ret = MSSP_I2C_Master_Send_Start(&i2c_obj);
     
     while(1)
     {
-        for(int i=0;i<4;i++){
-            ret = SPI_Send_Byte(&spi_ob, str[i]);
-            __delay_ms(100);
-        }
-        
-        
+        ret = MSSP_I2C_Master_Send_Start(&i2c_obj);
+        __delay_ms(1000);
+        ret = MSSP_I2C_Master_Send_Repeated_Start(&i2c_obj);
+        __delay_ms(1000);
+        ret = MSSP_I2C_Master_Send_Stop(&i2c_obj);
     }
     return (EXIT_SUCCESS);
 }

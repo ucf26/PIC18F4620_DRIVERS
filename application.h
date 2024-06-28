@@ -15,6 +15,7 @@
 #include "MCAL_Layer/Timer0/timer0.h"
 #include "MCAL_Layer/EUSART/hal_usart.h"
 #include "MCAL_Layer/SPI/hal_spi.h"
+#include "MCAL_Layer/I2C/i2c.h"
 
 /* Section : Macro Declarations */
 

@@ -24,7 +24,7 @@
 
 /* ----------------- Macro Functions Declarations -----------------*/
 
-#if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE 
+#if INTERRUPT_PRIORITY_LEVELS_ENABLE 
 /* This macro will enable priority levels on interrupts. */
 #define INTERRUPT_PriorityLevelsEnable()  (RCONbits.IPEN = 1)
 /* This macro will disable  priority levels on interrupts. */

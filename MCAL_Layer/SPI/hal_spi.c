@@ -163,6 +163,7 @@ static void MSSP_SPI_SLAVE_MODE_GPIO_PIN_CONFIG(SPI_Config *_config)
 
 static void MSSP_SPI_Interrupt_Init(SPI_Config *_config)
 {
+    
 #if MSSP_SPI_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
     MSSP_SPI_InterruptEnable();
     MSSP_SPI_InterruptFlagClear();
