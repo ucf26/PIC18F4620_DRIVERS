@@ -106,17 +106,22 @@
 #if MSSP_I2C_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
 
 /* This routine clears the interrupt enable for the I2C Module */
-#define MSSP_I2C_InterruptDisable()         (PIE1bits.SSPIE = 0)
+#define MSSP_I2C_InterruptDisable()               (PIE1bits.SSPIE = 0)
+#define MSSP_I2C_Bus_Col_InterruptDisable()       (PIE2bits.BCLIE = 0)
 /* This routine sets the interrupt enable for the I2C Module */
-#define MSSP_I2C_InterruptEnable()          (PIE1bits.SSPIE = 1)
+#define MSSP_I2C_InterruptEnable()                  (PIE1bits.SSPIE = 1)
+#define MSSP_I2C_Bus_Col_InterruptEnable()          (PIE2bits.BCLIE = 1)
 /* This routine clears the interrupt flag for the I2C Module */
-#define MSSP_I2C_InterruptFlagClear()       (PIR1bits.SSPIF = 0)
+#define MSSP_I2C_InterruptFlagClear()               (PIR1bits.SSPIF = 0)
+#define MSSP_I2C_Bus_Col_InterruptFlagClear()       (PIR2bits.BCLIF = 0)
 
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE==(INTERRUPT_FEATURE_ENABLE)
 /* This routine set the I2C Interrupt Priority to be High priority */
-#define MSSP_I2C_HighPrioritySet()           (IPR1bits.SSPIP = 1)
+#define MSSP_I2C_HighPrioritySet()                   (IPR1bits.SSPIP = 1)
+#define MSSP_I2C_Bus_Col_HighPrioritySet()           (IPR2bits.BCLIP = 1)
 /* This routine set the I2C Interrupt Priority to be Low priority */
-#define MSSP_I2C_LowPrioritySet()            (IPR1bits.SSPIP = 0)
+#define MSSP_I2C_LowPrioritySet()                    (IPR1bits.SSPIP = 0)
+#define MSSP_I2C_Bus_Col_LowPrioritySet()            (IPR2bits.BCLIP = 0)
 #endif
 
 #endif

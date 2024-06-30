@@ -12,7 +12,6 @@
 #include "pic18f4620.h"
 #include "../mcal_std_types.h"
 #include "../Interrupt/mcal_internal_interrup.h"
-#include "../Interrupt/mcal_interrupt_config.h"
 
 #include "../GPIO/hal_gpio.h"
 
@@ -126,8 +125,8 @@ Std_ReturnType MSSP_I2C_DeInit(i2c_t *_config);
 Std_ReturnType MSSP_I2C_Master_Send_Start(i2c_t *_config);
 Std_ReturnType MSSP_I2C_Master_Send_Repeated_Start(i2c_t *_config);
 Std_ReturnType MSSP_I2C_Master_Send_Stop(i2c_t *_config);
-Std_ReturnType MSSP_I2C_Write(i2c_t *_config, uint8 _data);
-Std_ReturnType MSSP_I2C_Read(i2c_t *_config, uint8 *ack, uint8 *_data);
+Std_ReturnType MSSP_I2C_Master_Write_Blocking(i2c_t *_config, uint8 _data, uint8 *ack_report);
+Std_ReturnType MSSP_I2C_Master_Read_Blocking(i2c_t *_config, uint8 ack, uint8 *_data);
 
 
 

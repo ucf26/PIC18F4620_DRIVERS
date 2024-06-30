@@ -32,5 +32,9 @@ void TMR0_ISR(void);
 void EUSART_RX_ISR(void);
 void EUSART_TX_ISR(void);
 
+void MSSP_I2C_ISR();
+void MSSP_I2C_BC_ISR();
+
+
 #endif	/* MCAL_INTERRUPT_MANAGER_H */
 

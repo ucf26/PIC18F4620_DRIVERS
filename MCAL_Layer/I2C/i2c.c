@@ -8,7 +8,15 @@
 
 static inline void MSSP_I2C_Mode_GPIO_Config(void);
 static inline void I2C_Master_Mode_Clock_Config(i2c_t *_config);
+static inline void I2C_Slave_Mode_Config(i2c_t *_config);
 static inline void MSSP_I2C_Interrupt_Config(i2c_t *_config);
+
+#if MSSP_I2C_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+    void (*I2C_Report_Write_Collision_InterruptHandler)(void);
+    void (*I2C_Report_Over_Flow_InterruptHandler)(void);
+    void (*I2C_DefaultInterruptHandler)(void);
+#endif 
+
 
 Std_ReturnType MSSP_I2C_Init(i2c_t *_config)
 {
@@ -54,6 +62,12 @@ Std_ReturnType MSSP_I2C_Init(i2c_t *_config)
             
             /* Release The Clock */
             SSPCON1bits.CKP = 1;
+            
+            /* Assign Address */
+            SSPADD = _config->i2c_cfg.i2c_slave_address;
+            
+            /* Configure Slave Mode */
+            I2C_Slave_Mode_Config(_config);
         }
         else { /* Nothing */ }
         
@@ -83,8 +97,9 @@ Std_ReturnType MSSP_I2C_Init(i2c_t *_config)
         else { /* Nothing */ }
         
         /* Handle Interrupt */
-//        MSSP_I2C_Interrupt_Config(_config);
-        
+#if MSSP_I2C_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
+        MSSP_I2C_Interrupt_Config(_config);
+#endif
         /* Enable The Module */
         MSSP_MODULE_ENABLE();
         ret = E_OK;
@@ -104,7 +119,8 @@ Std_ReturnType MSSP_I2C_DeInit(i2c_t *_config)
         
         /* Handle Interrupt */
 #if MSSP_I2C_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
-        MSSP_I2C_InterruptEnable();
+        MSSP_I2C_InterruptDisable();
+        MSSP_I2C_Bus_Col_InterruptDisable();
 #endif
         ret = E_OK;
     }
@@ -191,32 +207,74 @@ Std_ReturnType MSSP_I2C_Master_Send_Stop(i2c_t *_config)
     return ret;
 }
 
-Std_ReturnType MSSP_I2C_Write(i2c_t *_config, uint8 _data)
+Std_ReturnType MSSP_I2C_Master_Write_Blocking(i2c_t *_config, uint8 _data, uint8 *ack_report)
 {
     Std_ReturnType ret = E_NOT_OK;
-    if(NULL == _config){
+    if(NULL == _config || NULL == ack_report){
         ret = E_NOT_OK;
     }
     else {
+        /* Write the data */
+        SSPBUF = _data;
+        
+        /* Wait for The transmission to be completed */
+        while(!PIR1bits.SSPIF);
+        
+        /* clear the flag */
+        PIR1bits.SSPIF = 0;
+        
+        /* Report The Acknowledge */
+        *ack_report = (uint8)(SSPCON2bits.ACKSTAT) ;
+        ret = E_OK;
+    }
+    return ret;
+}
+
+Std_ReturnType MSSP_I2C_Master_Read_Blocking(i2c_t *_config, uint8 ack, uint8 *_data)
+{
+    Std_ReturnType ret = E_NOT_OK;
+    if(NULL == _config || NULL == _data){
+        ret = E_NOT_OK;
+    }
+    else {
+        /* Enable the receive mode and it will sen the clock automatically */
+        I2C_MASTER_RECEIVE_ENABLE_CFG();
+        
+        /* Wait for The transmission to be completed */
+        while(!SSPSTATbits.BF);
+        
+        /* Read the data */
+        *_data = SSPBUF;
+        
+        /* Report The Acknowledge */
+            /* send the ack selected */
+        SSPCON2bits.ACKDT = ack;
+        
+            /* initiates */
+        SSPCON2bits.ACKEN = 1;
+        while(SSPCON2bits.ACKEN);
         
         ret = E_OK;
     }
     return ret;
 }
 
-Std_ReturnType MSSP_I2C_Read(i2c_t *_config, uint8 *ack, uint8 *_data)
+
+void MSSP_I2C_ISR()
 {
-    Std_ReturnType ret = E_NOT_OK;
-    if(NULL == _config){
-        ret = E_NOT_OK;
+    MSSP_I2C_InterruptFlagClear();
+    if(I2C_DefaultInterruptHandler){
+        I2C_DefaultInterruptHandler();
     }
-    else {
-        
-        ret = E_OK;
-    }
-    return ret;
 }
 
+void MSSP_I2C_BC_ISR()
+{
+    MSSP_I2C_Bus_Col_InterruptFlagClear();
+    if(I2C_Report_Write_Collision_InterruptHandler){
+        I2C_Report_Write_Collision_InterruptHandler();
+    }
+}
 
 static inline void I2C_Master_Mode_Clock_Config(i2c_t *_config)
 {
@@ -230,15 +288,21 @@ static inline void MSSP_I2C_Mode_GPIO_Config(void)
     TRISCbits.RC4 = 1;
 }
 
-
 static inline void MSSP_I2C_Interrupt_Config(i2c_t *_config)
 {
 #if MSSP_I2C_INTERRUPT_FEATURE_ENABLE==INTERRUPT_FEATURE_ENABLE
     MSSP_I2C_InterruptEnable();
     MSSP_I2C_InterruptFlagClear();
+    MSSP_I2C_Bus_Col_InterruptEnable();
+    MSSP_I2C_Bus_Col_InterruptFlagClear();
+    I2C_Report_Write_Collision_InterruptHandler = _config->I2C_Report_Write_Collision;
+    I2C_Report_Over_Flow_InterruptHandler = _config->I2C_Report_Over_Flow;
+    I2C_DefaultInterruptHandler = _config->I2C_DefaultInterruptHandler;
     
 #if INTERRUPT_PRIORITY_LEVELS_ENABLE==INTERRUPT_FEATURE_ENABLE
     INTERRUPT_PriorityLevelsEnable();
+    
+    /* Interrupt Priority Configurations for SSP */
     if(INTERRUPT_HIGH_PRIORITY ==_config->i2c_cfg.mssp_i2c_priority ){
         MSSP_I2C_HighPrioritySet();
         INTERRUPT_GlobalInterruptHighEnable();
@@ -248,10 +312,26 @@ static inline void MSSP_I2C_Interrupt_Config(i2c_t *_config)
         INTERRUPT_GlobalInterruptLowEnable();
     }
     else {/* Nothing */}
+    
+    /* Interrupt Priority Configurations for Bus Collisions */
+    if(INTERRUPT_HIGH_PRIORITY ==_config->i2c_cfg.mssp_i2c_bc_priority ){
+        MSSP_I2C_Bus_Col_HighPrioritySet()();
+        INTERRUPT_GlobalInterruptHighEnable();
+    }
+    else if(INTERRUPT_LOW_PRIORITY ==_config->i2c_cfg.mssp_i2c_bc_priority){
+        MSSP_I2C_Bus_Col_LowPrioritySet();
+        INTERRUPT_GlobalInterruptLowEnable();
+    }
+    else {/* Nothing */}
 #else 
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
 #endif
     
 #endif
+}
+
+static inline void I2C_Slave_Mode_Config(i2c_t *_config)
+{
+    SSPCON1bits.SSPM = _config->i2c_cfg.i2c_mode_cnfg;
 }

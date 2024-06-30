@@ -9,7 +9,7 @@
 #include "application.h"
 
 i2c_t i2c_obj;
-
+uint8 rep;
 
 int main() {
     Std_ReturnType ret = E_NOT_OK;
@@ -28,7 +28,11 @@ int main() {
     {
         ret = MSSP_I2C_Master_Send_Start(&i2c_obj);
         __delay_ms(1000);
-        ret = MSSP_I2C_Master_Send_Repeated_Start(&i2c_obj);
+        // ret = MSSP_I2C_Master_Send_Repeated_Start(&i2c_obj);
+        ret = MSSP_I2C_Master_Write_Blocking(&i2c_obj, 'Y', &rep);
+        ret = MSSP_I2C_Master_Write_Blocking(&i2c_obj, 'o', &rep);
+        ret = MSSP_I2C_Master_Write_Blocking(&i2c_obj, 'u', &rep);
+
         __delay_ms(1000);
         ret = MSSP_I2C_Master_Send_Stop(&i2c_obj);
     }

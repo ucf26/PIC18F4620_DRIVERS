@@ -105,19 +105,30 @@ void __interrupt() InterruptManager(void){
     else{ /* Nothing */ }
     
     /* ============================== TMR0_Interrupt ==============================*/
-    if((INTERRUPT_ENABLE == INTCONbits.TMR0IE) && (INTCONbits.TMR0IF)){
+    if((INTERRUPT_ENABLE == INTCONbits.TMR0IE) && (INTERRUPT_ENABLE == INTCONbits.TMR0IF)){
         TMR0_ISR();  
     }
     else{ /* Nothing */ }
     
     /* ============================= EUSART_Interrupt =============================*/
-    if((INTERRUPT_ENABLE == PIE1bits.TXIE) && (PIR1bits.TXIF)){
+    if((INTERRUPT_ENABLE == PIE1bits.TXIE) && (INTERRUPT_ENABLE == PIR1bits.TXIF)){
         EUSART_TX_ISR();  
     }
     else{ /* Nothing */ }
     
-    if((INTERRUPT_ENABLE == PIE1bits.RCIE) && (PIR1bits.RCIF)){
+    if((INTERRUPT_ENABLE == PIE1bits.RCIE) && (INTERRUPT_ENABLE == PIR1bits.RCIF)){
         EUSART_RX_ISR();  
+    }
+    else{ /* Nothing */ }
+    
+    /* ============================= I2C_Interrupt =============================*/
+    if((INTERRUPT_ENABLE == PIE1bits.SSPIE) && (INTERRUPT_ENABLE == PIR1bits.SSPIF)){
+        MSSP_I2C_ISR();  
+    }
+    else{ /* Nothing */ }
+    
+    if((INTERRUPT_ENABLE == PIE2bits.BCLIE) && (INTERRUPT_ENABLE == PIR2bits.BCLIF)){
+        MSSP_I2C_BC_ISR();  
     }
     else{ /* Nothing */ }
     
